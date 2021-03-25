@@ -147,7 +147,6 @@ public class TestGestionGrilleHoraire {
     
     /**
      * Affiche toutes les colonnes horaires d'une grille
-     * @param uneGrille
      */
     private static final void testAfficherHoraireDesserte() {        
         /*
@@ -165,7 +164,22 @@ public class TestGestionGrilleHoraire {
         }        
     }
     
-    
+    /**
+     * Affiche toutes une grille entière
+     */
+    private static final void testAfficherGrille() {        
+        /*
+         *  création d'une grille horaire exemple à partir de laquelle les tests 
+         *  des autres méthodes pourront être réalisés 
+         */
+        final int[][] HORAIRE_EXEMPLE = preparerGrilleExemple();
+        
+        System.out.println ("TEST : méthode afficherGrille (test visuel)\n "                
+                + "---------------------------------------------------\n");           
+        GestionGrilleHoraire.afficherGrille(HORAIRE_EXEMPLE);
+
+      
+    }
     
     
     /*              programme principal pour lancer les  tests             */
@@ -174,7 +188,8 @@ public class TestGestionGrilleHoraire {
     
     
     public static void main(String[] args) {        
-        testAfficherHoraireDesserte();
+        //testAfficherHoraireDesserte();
+        testAfficherGrille();
     }
     
 

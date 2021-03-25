@@ -3,7 +3,6 @@
  * GestionGrilleHoraire.java                                                 02/21
  */
 package applicationhorairebus.programme;
-import applicationhorairebus.programme.OutilHoraire;
 
 /**
  * Classe permettant de gérer la grille des horaires de bus. Les horaires de passage
@@ -58,10 +57,10 @@ public class GestionGrilleHoraire {
              *  on affiche les horaires de la colonne argument
              *  Les horaires doivent être affichés dans le format cchcc
              */
-            // TODO : écrire la boucle
-
-            for(int indice = 0  ; indice < horaire.length && horaire[indice][colonne] > -1 ; indice++) {
-                System.out.printf("Horaire ligne %d :  %s \n",indice, OutilHoraire.convertir(horaire[indice][colonne]) );
+            // horaire.length = 50
+            /* boucle permettant afficher les horaires de la |colonne| et si valeur = -1 on arrête */
+            for(int ligne = 0; ligne < horaire.length && horaire[ligne][colonne] > -1; ligne++) {
+                System.out.printf("Horaire ligne %d :  %s \n",ligne, OutilHoraire.convertir(horaire[ligne][colonne]) );
 
             }
         }
@@ -75,10 +74,25 @@ public class GestionGrilleHoraire {
      * Cette méthode sera utile en phase de test de l'application
      * Elle vous permettra de tester plus facilement l'ajout d'une liste
      * d'horaires ou la suppression d'une telle liste
-     * @param horaire   tableau des horaires à afficher
+     * @param grille   tableau des horaires à afficher
      */
     public static void afficherGrille(int[][] grille) {
-        // TODO : écrire le code
+
+        /*
+        *  on affiche les horaires de la colonne argument
+        *  Les horaires doivent être affichés dans le format cchcc
+        */
+        
+
+        /* boucle permettant d'afficher les horaires de la |grille| */
+        for(int ligne = 0; ligne < grille.length; ligne++) { // parcourir les lignes
+            /* parcourir les colonnes et si une valeur = -1 on arrête et passe à la ligne suivante */
+            for(int colonne = 0; colonne < 10 && grille[ligne][colonne] > -1; colonne++ ) { 
+                /* affiche les valeurs par ligne */
+                System.out.print(OutilHoraire.convertir(grille[ligne][colonne]) + "\t");
+            }
+            System.out.print("\n");
+        }
     }
     
     
