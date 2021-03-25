@@ -93,7 +93,7 @@ A Buanton, B Vallon, C Centre de secours, D Maréchal Joffre, F Maréchal Joffre
 + ApplicationBus (main)
 
 ## Consignes à respecter 
-+ Le  travail  sera  réalisé  par  groupe  de  4  ou  de  5  étudiants.  Les  groupes  de  5  ajouteront  les fonctionnalités de la version 2.0. (voir cahier des charges).
++ Le  travail  sera  réalisé  par  groupe  de  4  ou  de  5  étudiants.  Les  groupes  de  5  ajouteront  les fonctionnalités de la version 2.0. (voir cahier des charges dans **horaire bus cahier charges 2020.pdf**).
 
 + L’ensemble  du  travail    à  rendre  sera  placé  dans  un  dossier  compressé  et  mis  à  disposition  sur  la plateforme de téléchargement [smash](http://fromsmash.com/).
 
