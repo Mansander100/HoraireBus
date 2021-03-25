@@ -2,7 +2,7 @@
  * Classe avec des méthodes outils qui s'appliquent à des horaires
  * OutilHoraire.java                                                    01/19
  */
-package coo.applicationhorairebus.programme;
+package applicationhorairebus.programme;
 
 import java.util.Calendar;
 import java.util.Scanner;
