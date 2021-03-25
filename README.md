@@ -1,12 +1,24 @@
-# GameLIB : Introduction
+# HoraireBus : Introduction
 
-[Lien du site](https://tchiiii.github.io/GameLIB/index.html)
+![Image de l'IUT de Rodez](http://www.iut-rodez.fr/logo.jpg)
 
-Simulation d'une __plateforme de vente de jeux vidéos dématérialisé__.  
-(Comme *Epic Games* et *Steam*)  
-Il s'agit d'une **simulation** car aucun achat ne peut aboutir.  
-Toutes les données sont **stocké localement** sur le navigateur.  
-(Car le principe de ce projet est l'aboutissement de l'étude des langages **HTML**, **CSS** et **JS**)  
+[Lien du site](http://www.iut-rodez.fr/)
+
+
+## Contexte
++ Plusieurs  lignes de  bus passent à  proximité  de  l’IUT et permettent de  se  rendre au centre  ville.  
+Les arrêts  les  plus  proches  de  l’IUT  sont :
+A Buanton, B Vallon, C Centre de secours, D Maréchal Joffre, F Maréchal Joffre  
+
++ L’objectif est de disposer d’une **application facilitant la recherche des horaires de passage des bus**.
+Les lignes de bus sont identifiées par une lettre majuscule (de ‘A’ à ‘Z’).
+Un nom d’arrêt est un texte non vide d’au plus 25 caractères (tout caractère est autorisé).
+
++ On entend par desserte une paire formée des deux informations suivantes : nom de l’arrêt et ligne qui passe à cet arrêt. 
+
++ On suppose qu’il n’y aura pas plus de 10 dessertes. Deux dessertes identiques ne peuvent pas exister.
+L’application est destinée à 2 types d’utilisateurs : voyageurs et administrateurs.
+
 
 ## Les pages du site
 + Page d'accueil (**index.html**)
@@ -39,12 +51,11 @@ Page contenant un formulaire de contact qui invite l'utilisateur
 saisies seront retranscrites sur le serveur Discord du groupe
 de développement via un Webhook (outils Discord pour transmettre des
 informations par requetes HTTP).
-
 + Page "à propos" (html/**aPropos.html**)
 Page qui présentera l'équipe qui a réalisé le site
 Mettra a disposition des iconnes de réseaux sociaux pour
 suivre l'investissement du projet. (seul le lien du server Discord sera fonctionnel).
-
+	
 + Pages Cachées
 	+ Page de développement (html/**dev.html**)
 	Cette page référence toutes les données stockées sur le site,
