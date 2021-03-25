@@ -101,7 +101,7 @@ A Buanton, B Vallon, C Centre de secours, D Maréchal Joffre, F Maréchal Joffre
 
 ## Réalisation à rendre
 
-+ Un dossier au format pdf (voir modalités dans le pdf). 
++ Un dossier au format pdf (voir modalités dans **bus réalisation à rendre 2021.pdf**). 
 
 + Les classes de l’application y compris les classes de test. 
 
