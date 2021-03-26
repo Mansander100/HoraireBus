@@ -7,6 +7,7 @@ package applicationhorairebus.test;
 import java.util.Scanner;
 
 import applicationhorairebus.programme.GestionGrilleHoraire;
+import applicationhorairebus.programme.OutilHoraire;
 
 
 /**
@@ -19,7 +20,7 @@ import applicationhorairebus.programme.GestionGrilleHoraire;
  *    
  * TODO : compléter
  * 
- * @author INFO1 Semestre 2
+ * @author Serieys, Simon
  * @version 1.0
  *
  */
@@ -63,7 +64,9 @@ public class TestGestionGrilleHoraire {
     private static final int[] DESSERTE4 =
         {362, 477, 612, 737, 867, 1062};
     
-    
+    /** tableau d'horaire inférieur à DESSERTE4 */
+    private static final int[] HORAIRE_A_TESTER =
+        {435, 185, 611, 47, 653, 999, 45, 87, 1172, 1200};
     
     
     /* ****************   2 méthodes outils pour gérer les tests   ************** */
@@ -165,7 +168,7 @@ public class TestGestionGrilleHoraire {
     }
     
     /**
-     * Affiche toutes une grille entière
+     * Affiche toute une grille entière
      */
     private static final void testAfficherGrille() {        
         /*
@@ -177,8 +180,32 @@ public class TestGestionGrilleHoraire {
         System.out.println ("TEST : méthode afficherGrille (test visuel)\n "                
                 + "---------------------------------------------------\n");           
         GestionGrilleHoraire.afficherGrille(HORAIRE_EXEMPLE);
+    }
 
-      
+
+    /**
+     * Test de recherche horaires postérieures dans les colonnes d'une grille
+     */
+    private static final void testRecherchePorchainPassage() {        
+        
+        final int[][] HORAIRE_EXEMPLE = preparerGrilleExemple();
+
+        for (int i = 0; i < 10; i++) {            
+            System.out.println("Prochaine horaire après " 
+                               + HORAIRE_A_TESTER[i] 
+                               + " de la desserte située en colonne " + i + " est : ");
+            System.out.println(GestionGrilleHoraire.rechercherProchainPassage(HORAIRE_EXEMPLE, i, HORAIRE_A_TESTER[i]));
+            continuer();
+        }     
+
+
+/*
+        if (i == HORAIRE_A_TESTER.length) {
+            System.out.print("Tous les tests ont réussi");
+        } else {
+            System.out.print(HORAIRE_A_TESTER[i] + " a échoué");
+        }
+*/
     }
     
     
@@ -189,7 +216,8 @@ public class TestGestionGrilleHoraire {
     
     public static void main(String[] args) {        
         //testAfficherHoraireDesserte();
-        testAfficherGrille();
+        //testAfficherGrille();
+        testRecherchePorchainPassage();
     }
     
 

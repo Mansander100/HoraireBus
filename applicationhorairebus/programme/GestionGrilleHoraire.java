@@ -1,6 +1,6 @@
 /*
  * Classe permettant de gérer la grille des horaires de bus
- * GestionGrilleHoraire.java                                                 02/21
+ * GestionGrilleHoraire.java                                               25 mars 2021
  */
 package applicationhorairebus.programme;
 
@@ -16,7 +16,7 @@ package applicationhorairebus.programme;
  * Les cases non significatives de la grille seront égales à -1.
  * 
  * 
- * @author INFO1
+ * @author Serieys, Simon
  * @version 1.0
  *
  */
@@ -57,11 +57,11 @@ public class GestionGrilleHoraire {
              *  on affiche les horaires de la colonne argument
              *  Les horaires doivent être affichés dans le format cchcc
              */
-            // horaire.length = 50
+
             /* boucle permettant afficher les horaires de la |colonne| et si valeur = -1 on arrête */
             for(int ligne = 0; ligne < horaire.length && horaire[ligne][colonne] > -1; ligne++) {
-                System.out.printf("Horaire ligne %d :  %s \n",ligne, OutilHoraire.convertir(horaire[ligne][colonne]) );
-
+                System.out.printf("Horaire ligne %d :  %s \n",
+                                  ligne, OutilHoraire.convertir(horaire[ligne][colonne]));
             }
         }
     }
@@ -141,15 +141,27 @@ public class GestionGrilleHoraire {
      * Recherche dans la colonne argument de la grille horaire argument, le premier
      * passage de bus dont l'horaire est strictement postérieur à l'horaire argument.
      * L'horaire de ce passage est le résultat renvoyé par la méthode
-     * @param grille      grille contenant les horaies en minutes
-     * @param colonne     numéro de la colonne dans laquelle rechercher
-     * @param horaire     horaie de la recherche
-     * @return  l'horaire du premier passage postérieur à l'horaire argument
+     * @param grille        grille contenant les horaies en minutes
+     * @param colonne       numéro de la colonne dans laquelle rechercher
+     * @param horaire       horaie de la recherche
+     * @return l'horaire du premier passage postérieur à l'horaire argument
      *          ou bien la valeur -1 si aucun passage postérieur
      */
     public static int rechercherProchainPassage(int [][] grille, int colonne, 
                                                 int horaire) {
-        return 0;
+        int ligne;
+        int v = -1;
+        /* on parcourt chaque |colonne| à la recherche de horaireGrille > |horaire| */
+        for(ligne = 0; ligne < grille.length && grille[ligne][colonne] < horaire; ligne++) {
+        // TODO à finir, problème de détection passage de bus supérieur à l'horaire argument
+        
+            if (ligne == grille.length) {
+                v = -1;
+            } else {
+                v = grille[ligne+1][colonne];
+            }
+        }    
+        return v;
     }
     
     //TODO : compléter
