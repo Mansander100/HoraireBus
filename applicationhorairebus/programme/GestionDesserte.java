@@ -81,8 +81,7 @@ public class GestionDesserte {
      */
     public static String[] saisirDesserte() {
         String[] desserte = new String[2];
-        
-        // TODO : remplacer l'appel à lireChaineNonVide par la méthode adéquate
+
         desserte[0] = lireArret();
         desserte[1] = lireLigne();
         return desserte;         
@@ -192,6 +191,9 @@ public class GestionDesserte {
         indiceAjout = -1;
         
         // TODO : écrire le code
+        if (desserteValide(arret, ligne)){
+            
+        }
         return indiceAjout;
     }
     

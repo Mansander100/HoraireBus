@@ -153,7 +153,7 @@ public class TestGestionDesserte {
      * Test de la méthode saisirDesserte (test interactif)
      */
     public static void testSaisirDesserte() {
-        String[] desserte;        // desserte saisie
+        String[][] desserte;        // desserte saisie
         
         System.out.println (
             "TEST : méthode saisirDesserte (test interactif "
@@ -161,7 +161,7 @@ public class TestGestionDesserte {
                             + "---------------------------------------------------");
         // 
         for (int i = 0; i < NB_TEST; i++) {
-            GestionDesserte.saisirDesserte();
+            desserte[i] = GestionDesserte.saisirDesserte();
         }
         continuer();
     }
@@ -174,18 +174,21 @@ public class TestGestionDesserte {
      * Test de la méthode dessertValide (test unitaire)
      */
     public static void testDessertValide() {
+        final String[][] TEST_DESSERTE = { {"Buanton", "Vallon", "Centre de secours", "Marechal Joffre",
+        "Marechal Joffre", " ", null, null, null, null},
+        {"A", "C", "C", "D", "F", " ", null, null, null, null} };
         int testOk = 0;
         int testNotOk = 0;
-        for (int i = 0 ; i < EXEMPLE_DESSERTE[0].length; i++){
-            if (GestionDesserte.desserteValide(EXEMPLE_DESSERTE[0][i],EXEMPLE_DESSERTE[1][i])){
+        for (int i = 0 ; i < TEST_DESSERTE[0].length; i++){
+            if (GestionDesserte.desserteValide(TEST_DESSERTE[0][i],TEST_DESSERTE[1][i])){
                 testOk++;
             } else {
                 testNotOk++;
             }
         }
 
-        afficherResultatTest(EXEMPLE_DESSERTE[0].length/2, testOk); // afichage du resultat du nombre de tests correctes
-        afficherResultatTest(EXEMPLE_DESSERTE[0].length/2, testNotOk); // afichage du resultat du nombre de tests incorrectes
+        afficherResultatTest(TEST_DESSERTE[0].length/2, testOk); // afichage du resultat du nombre de tests correctes
+        afficherResultatTest(TEST_DESSERTE[0].length/2, testNotOk); // afichage du resultat du nombre de tests incorrectes
     }
     
     
