@@ -3,9 +3,9 @@
  * qui desservent ces arrêts ou autrement dit gestion des dessertes.
  * GestionDesserte.java                                                 01/19
  */
-package applicationhorairesdebus.programme;
+package applicationhorairebus.programme;
 
-import  applicationhorairesdebus.programme.OutilSaisie;
+import  applicationhorairebus.programme.OutilSaisie;
 
 /**
  * Classe permettant de gérer les arrêts de bus, ainsi que les noms des lignes de bus
@@ -31,23 +31,46 @@ public class GestionDesserte {
     private static final String[] ARRET = {"Buanton", "Vallon", "Centre de secours",
                                                  "Marechal Joffre"};
 
-    private static final String[] LIGNES = {"A", "C", "D", "F"};
+    private static final String[] LIGNE = {"A", "C", "D", "F"};
     
-   public static String lireArret(String message) {
+   public static String lireArret() {
 
-       int compteur = 0;
+        String arretLue;
+        int compteur = 0;
 
-        if (message.lireChaineNonVide) {
+        do {
+            arretLue = OutilSaisie.lireChaineNonVide("Entrez le nom de l'arret : ");
             for (int i = 0; i < ARRET.length; i++) {
-                if (message == ARRET[i]) {
-                    compteur ++;
-                }
+                if (arretLue.equals(ARRET[i])) {
+                    compteur++;
+                } 
             }
 
-            
-        }
-        return 
+        } while (compteur == 0);
+
+        return arretLue;
    }
+
+
+   public static String lireLigne() {
+
+    String ligneLue = "";
+    char convertir = 0;
+    int compteur = 0;
+    do {
+        convertir = ligneLue.charAt(0);
+        convertir = OutilSaisie.lireMajuscule("Entrez la lettre de la ligne : ");
+        ligneLue = String.valueOf(convertir); 
+
+        for (int i = 0; i < LIGNE.length; i++) {
+            if (ligneLue.equals(LIGNE[i])) {
+                compteur++;
+            } 
+        }
+    } while (compteur == 0);
+
+    return ligneLue;
+}
 
 
 
@@ -60,8 +83,8 @@ public class GestionDesserte {
         String[] desserte = new String[2];
         
         // TODO : remplacer l'appel à lireChaineNonVide par la méthode adéquate
-        desserte[0] = OutilSaisie.lireChaineNonVide("Entrez l'arrêt de la desserte : ");
-        desserte[1] = OutilSaisie.lireMajuscule("Entrez la lettre de la ligne : ") + "";
+        desserte[0] = lireArret();
+        desserte[1] = lireLigne();
         return desserte;         
     }
     
@@ -140,8 +163,16 @@ public class GestionDesserte {
      * @return  un booléen égal à vrai ssi la desserte argument est valide
      */
     public static boolean desserteValide(String arret, String ligne) {
-        // TODO : écrire le code
-        return false;
+        
+        if (arret != null && Character.isUpperCase(ligne.charAt(0)) && ligne.length() == 1 && ligne != null) {
+            return true;
+        } else{
+            return false;
+        }
+        
+        
+
+        
     }
     
     
