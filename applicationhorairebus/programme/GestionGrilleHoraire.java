@@ -58,7 +58,7 @@ public class GestionGrilleHoraire {
              *  Les horaires doivent être affichés dans le format cchcc
              */
 
-            /* boucle permettant afficher les horaires de la |colonne| et si valeur = -1 on arrête */
+            /* permet d'afficher les horaires de la |colonne| et si valeur = -1 on arrête */
             for(int ligne = 0; ligne < horaire.length && horaire[ligne][colonne] > -1; ligne++) {
                 System.out.printf("Horaire ligne %d :  %s \n",
                                   ligne, OutilHoraire.convertir(horaire[ligne][colonne]));
@@ -84,7 +84,7 @@ public class GestionGrilleHoraire {
         */
         
 
-        /* boucle permettant d'afficher les horaires de la |grille| */
+        /* permet d'afficher les horaires de la |grille| */
         for(int ligne = 0; ligne < grille.length; ligne++) { // parcourir les lignes
             /* parcourir les colonnes et si une valeur = -1 on arrête et passe à la ligne suivante */
             for(int colonne = 0; colonne < 10 && grille[ligne][colonne] > -1; colonne++ ) { 
@@ -115,7 +115,7 @@ public class GestionGrilleHoraire {
         int colonne = 0;
         int ligne = 0;
 
-        /* boucle permettant d'afficher les horaires de la |grille| */
+        /* permet d'afficher les horaires de la |grille| */
         for( ligne = 0; ligne < grille.length && grille[ligne][colonne] > -1 ; ligne++) { // parcourir les lignes
     
             /* parcourir les colonnes et si une valeur = -1 on arrête et passe à la ligne suivante */
@@ -152,10 +152,10 @@ public class GestionGrilleHoraire {
         // si le tableau n'est pas plein 
         if( !tableauHorairesDessertePlein( grille ) ) { 
 
-            /* Cette boucle donne l'indice de la colonne */
+            /* donne l'indice de la colonne */
             for ( colonne = 0,ligne = 0 ; grille[ligne][colonne] > -1; colonne++);
 
-            /* Cette boucle affecte les valeurs du tableau en argument à la grille */
+            /* affecte les valeurs du tableau en argument à la grille */
             for (ligne = 0; ligne < horaire.length; ligne++) {
                 grille[ligne][colonne] = horaire[ligne];
             }
@@ -192,9 +192,9 @@ public class GestionGrilleHoraire {
             afficherGrille(grille);
 
         } else { // Cas où un décalage est nécéssaire 
-            /* Boucle qui indique si les colonne suivantes sont vide ou pas  */
+            /* permet de passer à la colonne suivante  */
             for (int n = 0; colonne + n < 9; n++) {
-                /* Boucle qui affecte à la colonne la colonne suivante  */
+                /* affecte à la colonne la colonne suivante  */
                 for (ligne = 0 ; ligne < grille.length ; ligne++) {
                     grille[ligne][colonne + n] = grille[ligne][colonne + n + 1];
                 }
@@ -219,31 +219,49 @@ public class GestionGrilleHoraire {
      * L'horaire de ce passage est le résultat renvoyé par la méthode
      * @param grille        grille contenant les horaies en minutes
      * @param colonne       numéro de la colonne dans laquelle rechercher
-     * @param horaire       horaie de la recherche
+     * @param horaire       horaire de la recherche
      * @return l'horaire du premier passage postérieur à l'horaire argument
      *          ou bien la valeur -1 si aucun passage postérieur
      */
     public static int rechercherProchainPassage(int [][] grille, int colonne, 
                                                 int horaire) {
         int ligne;
-        int v = -1;
+        int passagePosterieur = -1;
+
         /* on parcourt chaque |colonne| à la recherche de horaireGrille > |horaire| */
-        for(ligne = 0; ligne < grille.length && grille[ligne][colonne] < horaire; ligne++) {
-        // TODO à finir, problème de détection passage de bus supérieur à l'horaire argument
-        
-            if (ligne == grille.length) {
-                v = -1;
-            } else {
-                v = grille[ligne+1][colonne];
-            }
-        }    
-        return v;
+        for(ligne = 0; 
+            ligne < grille[ligne].length && grille[ligne][colonne] <= horaire; 
+            ligne++); // corps vide
+
+        passagePosterieur = grille[ligne][colonne];
+
+        return passagePosterieur;
     }
     
-    //TODO : compléter
-    
-    
-    
+
+    /**
+     * Recherche dans la colonne argument de la grille horaire argument, les
+     * horaires situés sur la colonne argument et compris entre borneInf et borneSup
+     * Le tableau contenant ces horaires est le résultat renvoyé par la méthode
+     * @param grille        grille contenant les horaies en minutes
+     * @param colonne       numéro de la colonne dans laquelle rechercher
+     * @param borneInf      borne inférieure du tableau
+     * @param borneSup      borne supérieure du tableau
+     * @return le tableau compris dans la |colonne| et les bornes
+     */
+    public static int[] rechercherHoraire(int[][] grille, int colonne, 
+                                            int borneInf, int borneSup) {
+
+        int tableResultat[] = new int[borneSup-borneInf];
+
+        /* on parcourt chaque |colonne| à la recherche de horaireGrille > |horaire| */
+        for(int i = 0, ligne = borneInf; ligne < borneSup; ligne++, i++) {
+            tableResultat[i] = grille[ligne][colonne];
+        }
+
+        return tableResultat;
+    }
+
     
     /*        Méthodes pour analyser le contenu des fichiers textes               */
     /*               contenant les horaires à intégrer à l'application            */
