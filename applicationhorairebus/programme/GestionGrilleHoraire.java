@@ -103,14 +103,14 @@ public class GestionGrilleHoraire {
     /**
      * Ajoute à la grille horaire les horaires situés dans le tableau horaire.
      * Les horaires sont ajoutés sur la première colonne significative.
-     * TODO : compléter
+     * 
      * @param grille         grille contenant les horaies en minutes
      * @return un booléen égal à vrai ssi le tableau est plein 
      */
     
     public static boolean tableauHorairesDessertePlein(int[][] grille) {
     
-     // TODO Afficher la grille pour que l'on voit si elle est pleine ou pas visuellement 
+
         afficherGrille(grille);
         int colonne = 0;
         int ligne = 0;
@@ -138,17 +138,18 @@ public class GestionGrilleHoraire {
     /**
      * Ajoute à la grille horaire les horaires situés dans le tableau horaire.
      * Les horaires sont ajoutés sur la première colonne significative.
-     * TODO : compléter
+     * 
      * @param grille         grille contenant les horaies en minutes
      * @param horaire        tableau contenant les horaires à ajouter en minutes
      * @return un booléen égal à vrai ssi les horaires ont pu être ajoutés
      */
     public static boolean ajouterHoraire(int [][] grille, int[] horaire) {
 
-// TODO afficher ancienne grille 
+ 
 
         int colonne,
             ligne; 
+        // si le tableau n'est pas plein 
         if( !tableauHorairesDessertePlein( grille ) ) { 
 
             /* Cette boucle donne l'indice de la colonne */
@@ -158,9 +159,9 @@ public class GestionGrilleHoraire {
             for (ligne = 0; ligne < horaire.length; ligne++) {
                 grille[ligne][colonne] = horaire[ligne];
             }
-            // TODO afficher nouvelle grille 
+ 
             System.out.printf("La desserte a ete ajoutee a la colonne %d \n",colonne);
-            afficherGrille(grille);
+            afficherGrille(grille); // Affiche la grille après ajout 
             return true;
         } else {
             System.out.print("La desserte n'a pas ete ajoutee \n");
@@ -173,7 +174,7 @@ public class GestionGrilleHoraire {
     /**
      * Supprime de la grille horaire d'une colonne précise
      * (un décalage de colonne sera effectué)
-     * TODO : compléter
+     * 
      * @param grille         grille contenant les horaies en minutes
      * @param colonne        numéro de la colonne dont les horaires doivent être 
      *                       supprimés
@@ -193,13 +194,13 @@ public class GestionGrilleHoraire {
         } else { // Cas où un décalage est nécéssaire 
             /* Boucle qui indique si les colonne suivantes sont vide ou pas  */
             for (int n = 0; colonne + n < 9; n++) {
-                /*  */
+                /* Boucle qui affecte à la colonne la colonne suivante  */
                 for (ligne = 0 ; ligne < grille.length ; ligne++) {
                     grille[ligne][colonne + n] = grille[ligne][colonne + n + 1];
                 }
             }
             System.out.print("La colonne a bien été supprimée \n");
-            afficherGrille(grille);
+            afficherGrille(grille); // Affiche la grille après supression 
         }
         return true;
     }
