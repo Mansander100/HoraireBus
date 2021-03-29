@@ -153,7 +153,7 @@ public class TestGestionDesserte {
      * Test de la méthode saisirDesserte (test interactif)
      */
     public static void testSaisirDesserte() {
-        String[][] desserte;        // desserte saisie
+        String[] desserte;       // desserte saisie
         
         System.out.println (
             "TEST : méthode saisirDesserte (test interactif "
@@ -161,7 +161,7 @@ public class TestGestionDesserte {
                             + "---------------------------------------------------");
         // 
         for (int i = 0; i < NB_TEST; i++) {
-            desserte[i] = GestionDesserte.saisirDesserte();
+            desserte = GestionDesserte.saisirDesserte();
         }
         continuer();
     }
@@ -382,8 +382,8 @@ public class TestGestionDesserte {
         System.out.println("TESTS DES METHODES DE LA CLASSE GESTION DESSERTE\n\n");
         
         // testAfficherDesserte();
-        // testSaisirDesserte();   
-        testDessertValide();     
+        testSaisirDesserte();   
+        // testDessertValide();     
         // testRechercherDesserte();
         // testAjouterDesserte();
     }

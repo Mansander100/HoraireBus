@@ -84,6 +84,9 @@ public class GestionDesserte {
 
         desserte[0] = lireArret();
         desserte[1] = lireLigne();
+        for (int i = 0; i < desserte.length; i++) {
+            System.out.print(desserte[i]);
+        }
         return desserte;         
     }
     
@@ -187,12 +190,17 @@ public class GestionDesserte {
     public static int ajouterDesserte(String[][] table, 
                                       String arret, String ligne) {
         int indiceAjout;        // indice de l'ajout de la desserte
-        
+        int i;
         indiceAjout = -1;
         
         // TODO : écrire le code
-        if (desserteValide(arret, ligne)){
-            
+        if (desserteValide(arret, ligne)) {
+            for (i = 0; i < table[0].length && table[0][i] != null; i++); // corps vide
+            if (i != table[0].length) {
+                table[0][i] = arret;
+                table[1][i] = ligne;
+                indiceAjout = i;
+            }
         }
         return indiceAjout;
     }
