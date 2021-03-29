@@ -2,10 +2,10 @@
  * Test de la classe GestionIDesserte
  * TestGestionDesserte.java                                        01/19
  */
-package applicationhorairesdebus.test;
+package applicationhorairebus.test;
 
 import java.util.Scanner;
-import applicationhorairesdebus.programme.GestionDesserte;
+import applicationhorairebus.programme.GestionDesserte;
 
 
 
@@ -155,11 +155,37 @@ public class TestGestionDesserte {
     public static void testSaisirDesserte() {
         String[] desserte;        // desserte saisie
         
-        System.out.println ("TEST : méthode saisirDesserte (test interactif "
+        System.out.println (
+            "TEST : méthode saisirDesserte (test interactif "
                             + "recommencé " + NB_TEST + " fois)\n----------------"
                             + "---------------------------------------------------");
-        // TODO : Compléter 
+        // 
+        for (int i = 0; i < NB_TEST; i++) {
+            GestionDesserte.saisirDesserte();
+        }
         continuer();
+    }
+
+
+        /* ********   Méthode de test pour la méthode     dessertValide    ********* */
+    /* ************************************************************************** */
+    
+    /**
+     * Test de la méthode dessertValide (test unitaire)
+     */
+    public static void testDessertValide() {
+        int testOk = 0;
+        int testNotOk = 0;
+        for (int i = 0 ; i < EXEMPLE_DESSERTE[0].length; i++){
+            if (GestionDesserte.desserteValide(EXEMPLE_DESSERTE[0][i],EXEMPLE_DESSERTE[1][i])){
+                testOk++;
+            } else {
+                testNotOk++;
+            }
+        }
+
+        afficherResultatTest(EXEMPLE_DESSERTE[0].length/2, testOk); // afichage du resultat du nombre de tests correctes
+        afficherResultatTest(EXEMPLE_DESSERTE[0].length/2, testNotOk); // afichage du resultat du nombre de tests incorrectes
     }
     
     
@@ -353,7 +379,8 @@ public class TestGestionDesserte {
         System.out.println("TESTS DES METHODES DE LA CLASSE GESTION DESSERTE\n\n");
         
         // testAfficherDesserte();
-        // testSaisirDesserte();        
+        // testSaisirDesserte();   
+        testDessertValide();     
         // testRechercherDesserte();
         // testAjouterDesserte();
     }

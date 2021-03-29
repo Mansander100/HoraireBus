@@ -2,7 +2,7 @@
  * Classe avec des méthodes outils pour effectuer des saisies
  * OutilSaisie.java                                 01/21
  */
-package coo.applicationhorairebus.programme;
+package applicationhorairebus.programme;
 
 import java.util.Scanner;
 
