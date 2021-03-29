@@ -217,6 +217,24 @@ public class TestGestionGrilleHoraire {
     }
 
 
+    /**
+     * Renvoie un booleen pour savoir si la desserte a bien pu être supprimée ou non 
+     */
+    private static final void testSupprimerHoraire() {
+       
+        /*
+         *  Supprime une desserte de la colonne indiqué et renvoie un booleen en fonction 
+         *  de si l'action a pu être réalisé ou pas 
+         */
+        final int[][] HORAIRE_EXEMPLE = preparerGrilleExemple();
+
+        
+        System.out.println ("TEST : méthode supprimerHoraire (test visuel)\n "                
+                + "---------------------------------------------------\n");           
+        GestionGrilleHoraire.supprimerHoraire(HORAIRE_EXEMPLE, 2 );
+    }
+
+
 
 
     /**

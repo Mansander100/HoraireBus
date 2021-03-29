@@ -165,7 +165,7 @@ public class GestionGrilleHoraire {
         } else {
             System.out.print("La desserte n'a pas ete ajoutee \n");
             return false; 
-    }
+        }
     }
     
     
@@ -180,8 +180,31 @@ public class GestionGrilleHoraire {
      * @return un booléen égal à vrai ssi la supression a pu être effectuée
      */
     public static boolean supprimerHoraire(int [][] grille, int colonne) {
-        
-        return false;
+        afficherGrille(grille); 
+        int ligne = 0;
+        /* Cas où la colonne suivante est vide  */
+        if ( grille[ligne][colonne +1 ] <= -1 ) {
+            for (ligne = 0 ; ligne < grille.length ; ligne++) {
+                grille[ligne][colonne]= -1;
+            } 
+            System.out.print("La colonne a bien été supprimée \n");
+            afficherGrille(grille);
+            
+        /* Cas où un décalage est nécéssaire */
+        } else {
+            /* Boucle qui indique si les colonne suivantes sont vide ou pas  */
+            for (int n = 0; 
+                grille[ligne][colonne] > -1 ;
+                n++) {
+                /*  */
+                for (ligne = 0 ; ligne < grille.length ; ligne++) {
+                    grille[ligne][colonne + n  ] = grille[ligne][colonne + n + 1];
+                }
+            }
+            System.out.print("La colonne a bien été supprimée \n");
+            afficherGrille(grille);
+        }
+        return true;
     }
     
     
