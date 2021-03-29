@@ -231,7 +231,7 @@ public class TestGestionGrilleHoraire {
         
         System.out.println ("TEST : méthode supprimerHoraire (test visuel)\n "                
                 + "---------------------------------------------------\n");           
-        GestionGrilleHoraire.supprimerHoraire(HORAIRE_EXEMPLE, 2 );
+        GestionGrilleHoraire.supprimerHoraire(HORAIRE_EXEMPLE, 4 );
     }
 
 
