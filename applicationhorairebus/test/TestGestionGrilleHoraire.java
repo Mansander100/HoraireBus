@@ -209,7 +209,7 @@ public class TestGestionGrilleHoraire {
          *  de si l'action a pu être réalisé ou pas 
          */
         final int[][] HORAIRE_EXEMPLE = preparerGrilleExemple();
-        final int[] AJOUT_EXEMPLE = { 1, 2, 456 };
+        final int[] AJOUT_EXEMPLE = HORAIRE_A_TESTER;
         
         System.out.println ("TEST : méthode ajouterHoraire (test visuel)\n "                
                 + "---------------------------------------------------\n");           
@@ -253,8 +253,9 @@ public class TestGestionGrilleHoraire {
     public static void main(String[] args) {        
         //testAfficherHoraireDesserte();
         //testAfficherGrille();
-        testTableauHorairesDessertePlein();
-        //testAjouterHoraire();
+        // testTableauHorairesDessertePlein()
+        // testAjouterHoraire();
+        testSupprimerHoraire(); 
         // testRechercheProchainPassage();
     }
     

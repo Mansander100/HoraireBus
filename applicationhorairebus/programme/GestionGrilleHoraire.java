@@ -111,7 +111,7 @@ public class GestionGrilleHoraire {
     public static boolean tableauHorairesDessertePlein(int[][] grille) {
     
      // TODO Afficher la grille pour que l'on voit si elle est pleine ou pas visuellement 
-      //  afficherGrille(grille[][])
+        afficherGrille(grille);
         int colonne = 0;
         int ligne = 0;
 
@@ -124,11 +124,11 @@ public class GestionGrilleHoraire {
         }
         if ( ligne < grille.length || colonne < 10) {
 
-            System.out.print("La grille n'est pas remplie !");
+            System.out.println("\n La grille n'est pas remplie !");
             return false;
         } else {
 
-            System.out.print("La grille est remplie... ");
+            System.out.println("\n La grille est remplie... ");
             return true;
         }       
     
@@ -149,7 +149,7 @@ public class GestionGrilleHoraire {
 
         int colonne,
             ligne; 
-        if( !(tableauHorairesDessertePlein(grille[][]) ) ) { 
+        if( !tableauHorairesDessertePlein( grille ) ) { 
 
             /* Cette boucle donne l'indice de la colonne */
             for ( colonne = 0,ligne = 0 ; grille[ligne][colonne] > -1; colonne++);
@@ -159,12 +159,13 @@ public class GestionGrilleHoraire {
                 grille[ligne][colonne] = horaire[ligne];
             }
             // TODO afficher nouvelle grille 
-            System.out.printf("La desserte a ete ajoutee a la colonne %d",colonne);
+            System.out.printf("La desserte a ete ajoutee a la colonne %d \n",colonne);
+            afficherGrille(grille);
             return true;
         } else {
-            System.out.print("La desserte n'a pas ete ajoutee ");
+            System.out.print("La desserte n'a pas ete ajoutee \n");
             return false; 
-        }
+    }
     }
     
     
@@ -179,27 +180,7 @@ public class GestionGrilleHoraire {
      * @return un booléen égal à vrai ssi la supression a pu être effectuée
      */
     public static boolean supprimerHoraire(int [][] grille, int colonne) {
-        int ligne;
-        /* Il s'agit du cas où il n'y a pas de décalage à faire */
-        // TODO Afficher grille totale 
-        if (grille[ligne][colonne+1]==-1) {
-            for(ligne = 0 ; ligne < grille.length ; ligne++) {
-                grille[ligne][colonne]=-1;
-            }
-        // Il s'agit du cas où il y a un décalage à faire 
-        } else {
-
-            /* Boucle qui répète le décalage jusqu'à tomber sur -1 */
-            for(int n = 1 ; grille[ligne][colonne+n] < grille[ligne].length ; n++) {
-
-                /* Boucle qui affecte à la colonne supprimé la colonne suivante */
-                for(ligne=0 ; ligne < grille.length ; ligne++) {
-                    grille[ligne][colonne]=grille[ligne][colonne+1];
-                }
-            }
-
-        }
-
+        
         return false;
     }
     
