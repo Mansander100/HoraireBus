@@ -161,7 +161,7 @@ public class TestGestionDesserte {
                             + "---------------------------------------------------");
         // 
         for (int i = 0; i < NB_TEST; i++) {
-            desserte = GestionDesserte.saisirDesserte();
+            desserte = GestionDesserte.saisirDesserte(); // incrémentation du tableau
         }
         continuer();
     }

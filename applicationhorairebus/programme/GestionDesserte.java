@@ -58,7 +58,6 @@ public class GestionDesserte {
     char convertir = 0;
     int compteur = 0;
     do {
-        convertir = ligneLue.charAt(0);
         convertir = OutilSaisie.lireMajuscule("Entrez la lettre de la ligne : ");
         ligneLue = String.valueOf(convertir); 
 
@@ -84,9 +83,7 @@ public class GestionDesserte {
 
         desserte[0] = lireArret();
         desserte[1] = lireLigne();
-        for (int i = 0; i < desserte.length; i++) {
-            System.out.print(desserte[i]);
-        }
+
         return desserte;         
     }
     
