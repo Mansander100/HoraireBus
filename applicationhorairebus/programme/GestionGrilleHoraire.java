@@ -99,8 +99,41 @@ public class GestionGrilleHoraire {
     
     /*    Méthodes pour ajouter ou supprimer des horaires de la grille horaire    */
     /* ************************************************************************** */
+
+    /**
+     * Ajoute à la grille horaire les horaires situés dans le tableau horaire.
+     * Les horaires sont ajoutés sur la première colonne significative.
+     * TODO : compléter
+     * @param grille         grille contenant les horaies en minutes
+     * @return un booléen égal à vrai ssi le tableau est plein 
+     */
     
-  
+    public static boolean tableauHorairesDessertePlein(int[][] grille) {
+    
+     // TODO Afficher la grille pour que l'on voit si elle est pleine ou pas visuellement 
+      //  afficherGrille(grille[][])
+        int colonne = 0;
+        int ligne = 0;
+
+        /* boucle permettant d'afficher les horaires de la |grille| */
+        for( ligne = 0; ligne < grille.length && grille[ligne][colonne] > -1 ; ligne++) { // parcourir les lignes
+    
+            /* parcourir les colonnes et si une valeur = -1 on arrête et passe à la ligne suivante */
+            for(  colonne = 0; colonne < 10 && grille[ligne][colonne] > -1; colonne++ ) ;
+            
+        }
+        if ( ligne < grille.length || colonne < 10) {
+
+            System.out.print("La grille n'est pas remplie !");
+            return false;
+        } else {
+
+            System.out.print("La grille est remplie... ");
+            return true;
+        }       
+    
+    }
+    
     
     /**
      * Ajoute à la grille horaire les horaires situés dans le tableau horaire.
@@ -111,7 +144,27 @@ public class GestionGrilleHoraire {
      * @return un booléen égal à vrai ssi les horaires ont pu être ajoutés
      */
     public static boolean ajouterHoraire(int [][] grille, int[] horaire) {
-        return false;
+
+// TODO afficher ancienne grille 
+
+        int colonne,
+            ligne; 
+        if( !(tableauHorairesDessertePlein(grille[][]) ) ) { 
+
+            /* Cette boucle donne l'indice de la colonne */
+            for ( colonne = 0,ligne = 0 ; grille[ligne][colonne] > -1; colonne++);
+
+            /* Cette boucle affecte les valeurs du tableau en argument à la grille */
+            for (ligne = 0; ligne < horaire.length; ligne++) {
+                grille[ligne][colonne] = horaire[ligne];
+            }
+            // TODO afficher nouvelle grille 
+            System.out.printf("La desserte a ete ajoutee a la colonne %d",colonne);
+            return true;
+        } else {
+            System.out.print("La desserte n'a pas ete ajoutee ");
+            return false; 
+        }
     }
     
     
@@ -126,6 +179,27 @@ public class GestionGrilleHoraire {
      * @return un booléen égal à vrai ssi la supression a pu être effectuée
      */
     public static boolean supprimerHoraire(int [][] grille, int colonne) {
+        int ligne;
+        /* Il s'agit du cas où il n'y a pas de décalage à faire */
+        // TODO Afficher grille totale 
+        if (grille[ligne][colonne+1]==-1) {
+            for(ligne = 0 ; ligne < grille.length ; ligne++) {
+                grille[ligne][colonne]=-1;
+            }
+        // Il s'agit du cas où il y a un décalage à faire 
+        } else {
+
+            /* Boucle qui répète le décalage jusqu'à tomber sur -1 */
+            for(int n = 1 ; grille[ligne][colonne+n] < grille[ligne].length ; n++) {
+
+                /* Boucle qui affecte à la colonne supprimé la colonne suivante */
+                for(ligne=0 ; ligne < grille.length ; ligne++) {
+                    grille[ligne][colonne]=grille[ligne][colonne+1];
+                }
+            }
+
+        }
+
         return false;
     }
     
