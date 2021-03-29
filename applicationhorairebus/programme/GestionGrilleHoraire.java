@@ -58,7 +58,7 @@ public class GestionGrilleHoraire {
              *  Les horaires doivent être affichés dans le format cchcc
              */
 
-            /* boucle permettant afficher les horaires de la |colonne| et si valeur = -1 on arrête */
+            /* permet d'afficher les horaires de la |colonne| et si valeur = -1 on arrête */
             for(int ligne = 0; ligne < horaire.length && horaire[ligne][colonne] > -1; ligne++) {
                 System.out.printf("Horaire ligne %d :  %s \n",
                                   ligne, OutilHoraire.convertir(horaire[ligne][colonne]));
@@ -84,7 +84,7 @@ public class GestionGrilleHoraire {
         */
         
 
-        /* boucle permettant d'afficher les horaires de la |grille| */
+        /* permet d'afficher les horaires de la |grille| */
         for(int ligne = 0; ligne < grille.length; ligne++) { // parcourir les lignes
             /* parcourir les colonnes et si une valeur = -1 on arrête et passe à la ligne suivante */
             for(int colonne = 0; colonne < 10 && grille[ligne][colonne] > -1; colonne++ ) { 
@@ -99,19 +99,74 @@ public class GestionGrilleHoraire {
     
     /*    Méthodes pour ajouter ou supprimer des horaires de la grille horaire    */
     /* ************************************************************************** */
+
+    /**
+     * Ajoute à la grille horaire les horaires situés dans le tableau horaire.
+     * Les horaires sont ajoutés sur la première colonne significative.
+     * 
+     * @param grille         grille contenant les horaies en minutes
+     * @return un booléen égal à vrai ssi le tableau est plein 
+     */
     
-  
+    public static boolean tableauHorairesDessertePlein(int[][] grille) {
+    
+
+        afficherGrille(grille);
+        int colonne = 0;
+        int ligne = 0;
+
+        /* permet d'afficher les horaires de la |grille| */
+        for( ligne = 0; ligne < grille.length && grille[ligne][colonne] > -1 ; ligne++) { // parcourir les lignes
+    
+            /* parcourir les colonnes et si une valeur = -1 on arrête et passe à la ligne suivante */
+            for(  colonne = 0; colonne < 10 && grille[ligne][colonne] > -1; colonne++ ) ;
+            
+        }
+        if ( ligne < grille.length || colonne < 10) {
+
+            System.out.println("\n La grille n'est pas remplie !");
+            return false;
+        } else {
+
+            System.out.println("\n La grille est remplie... ");
+            return true;
+        }       
+    
+    }
+    
     
     /**
      * Ajoute à la grille horaire les horaires situés dans le tableau horaire.
      * Les horaires sont ajoutés sur la première colonne significative.
-     * TODO : compléter
+     * 
      * @param grille         grille contenant les horaies en minutes
      * @param horaire        tableau contenant les horaires à ajouter en minutes
      * @return un booléen égal à vrai ssi les horaires ont pu être ajoutés
      */
     public static boolean ajouterHoraire(int [][] grille, int[] horaire) {
-        return false;
+
+ 
+
+        int colonne,
+            ligne; 
+        // si le tableau n'est pas plein 
+        if( !tableauHorairesDessertePlein( grille ) ) { 
+
+            /* donne l'indice de la colonne */
+            for ( colonne = 0,ligne = 0 ; grille[ligne][colonne] > -1; colonne++);
+
+            /* affecte les valeurs du tableau en argument à la grille */
+            for (ligne = 0; ligne < horaire.length; ligne++) {
+                grille[ligne][colonne] = horaire[ligne];
+            }
+ 
+            System.out.printf("La desserte a ete ajoutee a la colonne %d \n",colonne);
+            afficherGrille(grille); // Affiche la grille après ajout 
+            return true;
+        } else {
+            System.out.print("La desserte n'a pas ete ajoutee \n");
+            return false; 
+        }
     }
     
     
@@ -119,14 +174,35 @@ public class GestionGrilleHoraire {
     /**
      * Supprime de la grille horaire d'une colonne précise
      * (un décalage de colonne sera effectué)
-     * TODO : compléter
+     * 
      * @param grille         grille contenant les horaies en minutes
      * @param colonne        numéro de la colonne dont les horaires doivent être 
      *                       supprimés
      * @return un booléen égal à vrai ssi la supression a pu être effectuée
      */
     public static boolean supprimerHoraire(int [][] grille, int colonne) {
-        return false;
+        afficherGrille(grille); 
+        int ligne = 0;
+        /* Cas où la colonne suivante est vide  */
+        if ( grille[ligne][colonne +1 ] <= -1 || colonne == 9) {
+            for (ligne = 0 ; ligne < grille.length ; ligne++) {
+                grille[ligne][colonne]= -1;
+            } 
+            System.out.print("La colonne a bien été supprimée \n");
+            afficherGrille(grille);
+
+        } else { // Cas où un décalage est nécéssaire 
+            /* permet de passer à la colonne suivante  */
+            for (int n = 0; colonne + n < 9; n++) {
+                /* affecte à la colonne la colonne suivante  */
+                for (ligne = 0 ; ligne < grille.length ; ligne++) {
+                    grille[ligne][colonne + n] = grille[ligne][colonne + n + 1];
+                }
+            }
+            System.out.print("La colonne a bien été supprimée \n");
+            afficherGrille(grille); // Affiche la grille après supression 
+        }
+        return true;
     }
     
     
@@ -143,31 +219,49 @@ public class GestionGrilleHoraire {
      * L'horaire de ce passage est le résultat renvoyé par la méthode
      * @param grille        grille contenant les horaies en minutes
      * @param colonne       numéro de la colonne dans laquelle rechercher
-     * @param horaire       horaie de la recherche
+     * @param horaire       horaire de la recherche
      * @return l'horaire du premier passage postérieur à l'horaire argument
      *          ou bien la valeur -1 si aucun passage postérieur
      */
     public static int rechercherProchainPassage(int [][] grille, int colonne, 
                                                 int horaire) {
         int ligne;
-        int v = -1;
+        int passagePosterieur = -1;
+
         /* on parcourt chaque |colonne| à la recherche de horaireGrille > |horaire| */
-        for(ligne = 0; ligne < grille.length && grille[ligne][colonne] < horaire; ligne++) {
-        // TODO à finir, problème de détection passage de bus supérieur à l'horaire argument
-        
-            if (ligne == grille.length) {
-                v = -1;
-            } else {
-                v = grille[ligne+1][colonne];
-            }
-        }    
-        return v;
+        for(ligne = 0; 
+            ligne < grille[ligne].length && grille[ligne][colonne] <= horaire; 
+            ligne++); // corps vide
+
+        passagePosterieur = grille[ligne][colonne];
+
+        return passagePosterieur;
     }
     
-    //TODO : compléter
-    
-    
-    
+
+    /**
+     * Recherche dans la colonne argument de la grille horaire argument, les
+     * horaires situés sur la colonne argument et compris entre borneInf et borneSup
+     * Le tableau contenant ces horaires est le résultat renvoyé par la méthode
+     * @param grille        grille contenant les horaies en minutes
+     * @param colonne       numéro de la colonne dans laquelle rechercher
+     * @param borneInf      borne inférieure du tableau
+     * @param borneSup      borne supérieure du tableau
+     * @return le tableau compris dans la |colonne| et les bornes
+     */
+    public static int[] rechercherHoraire(int[][] grille, int colonne, 
+                                            int borneInf, int borneSup) {
+
+        int tableResultat[] = new int[borneSup-borneInf];
+
+        /* on parcourt chaque |colonne| à la recherche de horaireGrille > |horaire| */
+        for(int i = 0, ligne = borneInf; ligne < borneSup; ligne++, i++) {
+            tableResultat[i] = grille[ligne][colonne];
+        }
+
+        return tableResultat;
+    }
+
     
     /*        Méthodes pour analyser le contenu des fichiers textes               */
     /*               contenant les horaires à intégrer à l'application            */
