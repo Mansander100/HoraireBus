@@ -331,7 +331,7 @@ public class TestGestionDesserte {
     public static void testAjouterDesserte(String[][] table) {
         String[] desserte;        // desserte saisie et à ajouter
         int resultatAjout;        // résultat de l'appel à ajouterDesserte
-        System.out.println("Ajout de dessertes à la table :");
+        System.out.println("Ajout de dessertes a la table :");
         GestionDesserte.afficherDesserte(table);
         
         // plusieurs ajouts sont effectués
@@ -344,9 +344,9 @@ public class TestGestionDesserte {
             // on affiche le résultat de l'ajout
             System.out.print("RESULTAT =>   ");
             if (resultatAjout == -1) {
-                System.out.println("La desserte n'a pas été ajoutée.");
+                System.out.println("La desserte n'a pas ete ajoutee.");
             } else {
-                System.out.println("La desserte a été ajoutée en colonne "
+                System.out.println("La desserte a ete ajoutee en colonne "
                                    + resultatAjout);
             }
             System.out.println("              Après l'opération, la table obtenue est : ");
@@ -370,6 +370,59 @@ public class TestGestionDesserte {
         testAjouterDesserte(TOUTES_LES_DESSERTES);
     }
     
+
+
+
+
+    /**
+     * Test de la méthode supprimerDesserte (test visuel)
+     * @table table de desserte à laquelle la desserte sera supprimee
+     */
+    public static void testSupprimerDesserte(String[][] table) {
+        String[] desserte;       // desserte saisie et à supprimer
+        int resultatSuppression ;        // résultat de l'appel à supprimerDesserte
+        System.out.println("Supprimer une desserte de la table :");
+        GestionDesserte.afficherDesserte(table);
+        
+        // plusieurs suppréssions effectués
+        for (int i = 1; i <= NB_TEST; i++) {
+            System.out.println("\n\nTEST NUMERO " + i + "\n");
+            desserte = GestionDesserte.saisirDesserte();  
+            for (int j = 0; j < desserte.length; j++) {
+                System.out.print(desserte[j]);
+            }
+            resultatSuppression = 
+                    GestionDesserte.supprimerDesserte(table, desserte[0], desserte[1]);
+            
+            // on affiche le résultat de la soustraction
+            System.out.print("RESULTAT =>   ");
+            if (resultatSuppression  == -1) {
+                System.out.println("La desserte n'a pas ete supprimee.");
+            } else {
+                System.out.println("La desserte a ete supprimee "
+                                   + resultatSuppression );
+            }
+            System.out.println("             Apres l'operation "
+                                + "la table obtenue est : ");
+            GestionDesserte.afficherDesserte(table);
+            
+        }
+        continuer();        
+    }
+    
+    /**
+     * Test de la méthode supprimerDesserte (test visuel)
+     */
+    public static void testSupprimerDesserte() {
+        System.out.println ("TEST : méthode supprimerDesserte (test interactif "
+                + "recommencé " + NB_TEST + " fois pour chaque table)\n"
+                + "---------------------------------"
+                + "---------------------------------------------------");
+        testSupprimerDesserte(EXEMPLE_DESSERTE);
+        testSupprimerDesserte(UNE_SEULE_DESSERTE);
+        testSupprimerDesserte(AUCUNE_DESSERTE);
+        testSupprimerDesserte(TOUTES_LES_DESSERTES);
+    }
     
    
     
@@ -382,10 +435,11 @@ public class TestGestionDesserte {
         System.out.println("TESTS DES METHODES DE LA CLASSE GESTION DESSERTE\n\n");
         
         // testAfficherDesserte();
-        testSaisirDesserte();   
+        // testSaisirDesserte();   
         // testDessertValide();     
         // testRechercherDesserte();
         // testAjouterDesserte();
+        testSupprimerDesserte();
     }
 
 }

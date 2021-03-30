@@ -187,16 +187,15 @@ public class GestionDesserte {
     public static int ajouterDesserte(String[][] table, 
                                       String arret, String ligne) {
         int indiceAjout;        // indice de l'ajout de la desserte
-        int i;
+        int compteur; // nombre d'itérations
         indiceAjout = -1;
         
-        // TODO : écrire le code
         if (desserteValide(arret, ligne)) {
-            for (i = 0; i < table[0].length && table[0][i] != null; i++); // corps vide
-            if (i != table[0].length) {
-                table[0][i] = arret;
-                table[1][i] = ligne;
-                indiceAjout = i;
+            for (compteur = 0; compteur < table[0].length && table[0][compteur] != null; compteur++); // corps vide
+            if (compteur != table[0].length) {
+                table[0][compteur] = arret;
+                table[1][compteur] = ligne;
+                indiceAjout = compteur;
             }
         }
         return indiceAjout;
@@ -215,10 +214,20 @@ public class GestionDesserte {
     public static int supprimerDesserte(String[][] table, 
                                       String arret, String ligne) {
         int indiceSuppression;        // indice de suppression de la desserte
+        int compteur = 0;
         indiceSuppression = -1;
         
-        // TODO compléter le code
-        
+        if (desserteValide(arret, ligne)) {
+            for (compteur = 0; compteur < table[0].length 
+                    && !(table[0][compteur].equals(arret) && table[1][compteur].equals(ligne)); 
+                compteur++); // corps vide
+
+            if (compteur != table[0].length) {
+                table[0][compteur] = "";
+                table[1][compteur] = null;
+                indiceSuppression = compteur;
+            }
+        }
         return indiceSuppression;
     }
     
