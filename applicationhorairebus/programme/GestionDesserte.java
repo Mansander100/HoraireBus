@@ -219,11 +219,11 @@ public class GestionDesserte {
         
         if (desserteValide(arret, ligne)) {
             for (compteur = 0; compteur < table[0].length 
-                    && !(table[0][compteur].equals(arret) && table[1][compteur].equals(ligne)); 
+                    && !(arret.equals(table[0][compteur]) && ligne.equals(table[1][compteur])); 
                 compteur++); // corps vide
 
             if (compteur != table[0].length) {
-                table[0][compteur] = "";
+                table[0][compteur] = null;
                 table[1][compteur] = null;
                 indiceSuppression = compteur;
             }
