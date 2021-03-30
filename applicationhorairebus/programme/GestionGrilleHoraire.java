@@ -269,11 +269,18 @@ public class GestionGrilleHoraire {
     /* ************************************************************************** */
    
 
-    //TODO javadoc
+    /**
+     * Vérifie si le tableau argument contient des horaires cchcc valides
+     * Pour cela on utilise la méthode estValide de la classe OutilHoraire
+     * @param aVerifier       grille contenant les horaies sous forme cchcc
+     * @return true si le tableau contient des horaires valides,
+     *         false sinon
+     */
     public static boolean tableauHoraireCorrect(String [] aVerifier) {
         boolean resultat = false;
         int i;
 
+        /* on s'arrête lorsqu'une heure n'est pas valide */
         for(i = 0; i < aVerifier.length && OutilHoraire.estValide(aVerifier[i]); i++); // empty body
 
         if (i == aVerifier.length) {
@@ -282,6 +289,26 @@ public class GestionGrilleHoraire {
             System.out.println(aVerifier[i] + " n'est pas valide");
             return false;
         }
+    }
 
+
+    /**
+     * Convertit un tableau argument avec des horaires cchcc sous la forme 
+     * d'un tableau d'entier.
+     * Pour cela on utilise la méthode convertir de la classe OutilHoraire
+     * @param aVerifier       grille contenant les horaies sous forme cchcc
+     * @return true si le tableau contient des horaires valides,
+     *         false sinon
+     */
+    public static int[] convertirTableauHoraire(String [] aConvertir) {
+
+        int[] tableConvertie = new int[aConvertir.length];
+
+        if(tableauHoraireCorrect(aConvertir)) {
+            for(int i = 0; i < aConvertir.length; i++) {
+                tableConvertie[i] = OutilHoraire.convertir(aConvertir[i]);
+            } 
+        }
+        return tableConvertie;
     }
 }

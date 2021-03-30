@@ -216,7 +216,6 @@ public class OutilHoraire {
         int heure,      // heure de l'horaire
             minute;     // minute après conversion en heure et minute
         
-        // TODO
         // on vérifie d'abord que l'argument horaire est valide (donc compris entre
         // 0 et ?)
         if (horaire < 0 || horaire > 1439) {
@@ -266,7 +265,6 @@ public class OutilHoraire {
 			
 		boolean resultat;           // vai ssi l'horaire à tester est valide
         
-        // TODO
         // on vérifie d'abord que l'horaire argument est valide
 		resultat = estValide(horaire);
         
@@ -310,7 +308,7 @@ public class OutilHoraire {
         
         heure = 0;
         minute = 0;
-        // TODO
+
         // indication : consulter la documentation Java.
         heure = calendrier.get(Calendar.HOUR_OF_DAY);
         minute = calendrier.get(Calendar.MINUTE);

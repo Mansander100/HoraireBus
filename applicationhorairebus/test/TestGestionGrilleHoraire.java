@@ -10,12 +10,7 @@ import applicationhorairebus.programme.GestionGrilleHoraire;
 
 
 /**
- * Classe qui contient une fonction main permettant de tester les différentes
- * méthodes de la classe GestionGrilleHoraire :
- *    - TODO : faire la liste
  *    
- * Plusieurs jeux de données sont définis. Parmi eux, 5 tableaux contenant
- * des horaires de passage en minutes
  *    
  * TODO : compléter
  * 
@@ -28,11 +23,6 @@ public class TestGestionGrilleHoraire {
     
     /** Objet Scanner pour effectuer les saisies au clavier */
     private static Scanner entree = new Scanner(System.in);
-    
-    /**
-    * Nombre de répétitions des tests réalisés plusieurs fois
-    */
-   private static int NB_TEST = 3;
    
     
     /** Premier tableau avec des horaires de passages */
@@ -45,7 +35,7 @@ public class TestGestionGrilleHoraire {
     
     /** deuxième tableau avec des horaires de passages */
     private static final int[] DESSERTE1 =
-        {449, 483, 520, 563, 603, 643, 683, 723, 763, 803, 
+        {449, 483, 523/*520*/, 563, 603, 643, 683, 723, 763, 803, 
                 843, 883, 923, 964, 1004, 1044, 1083, 1123, 1163};
     
     
@@ -56,22 +46,19 @@ public class TestGestionGrilleHoraire {
     
     /** quatrième tableau avec des horaires de passages */
     private static final int[] DESSERTE3 =
-        {441, 501, 541, 581, 621, 661, 701, 741, 781, 821, 
+        {471/*441*/, 501, 541, 581, 621, 661, 701, 741, 781,/*,821*/
                 861, 901, 941, 981, 1021, 1061, 1101, 1141, 1181};
     
     /** cinquième tableau avec des horaires de passages */
     private static final int[] DESSERTE4 =
-        {362, 477, 612, 737, 867, 1062};
+        {363/*362*/, 478/*477*/, 613/*612*/, 738/*737*/, 868/*867*/,
+        1063/*1062*/, 1143/*null*/};
     
     /** tableau d'horaire inférieur à tester */
     private static final int[] HORAIRE_A_TESTER =
         {435, 185, 611, 47, 737, 999, 45, 87, 1172, 1200};
 
-    /** tableau de chaines valides */
-    private static final String[] VALIDES_4 =
-        {"06h03", "07h58", "10h13", "12h18", "14h28",
-        "17h43", "19h03"
-        }; 
+
         
     /** tableau de chaines invalides */
     private static final String[][] INVALIDES =
@@ -344,8 +331,6 @@ public class TestGestionGrilleHoraire {
                 System.out.print((GestionGrilleHoraire.rechercherHoraire(HORAIRE_EXEMPLE, i, borneInf, borneSup))[j] + " ");
                 } 
             System.out.println();
-            
-
             continuer();
         }     
     }
@@ -400,6 +385,68 @@ public class TestGestionGrilleHoraire {
             continuer();
         }  
     }
+
+
+    /**
+     * Test de conversion d'un tableau d'horaire cchcc vers entier
+     */
+    private static final void testConvertirTableauHoraire() {        
+
+        System.out.println ("TEST : méthode convertirTableauHoraire(test visuel)\n "                
+                + "---------------------------------------------------\n"); 
+
+
+        /* balaye la tableau VALIDES */
+        for (int i = 0; i < VALIDES.length ; i++) {      
+            
+            /* affichage de la ligne du tableau VALIDES */
+            for(int j=0; j < VALIDES[i].length; j++) {  
+                System.out.print(VALIDES[i][j] + " ");
+            } 
+            System.out.println();
+
+            /* affiche la conversion */
+            for(int j=0; j < VALIDES[i].length; j++) {  
+                System.out.print(GestionGrilleHoraire.convertirTableauHoraire(VALIDES[i])[j] + " ");
+
+                /* vérification que les horaires converties sont bien égales aux horaire int des tableaux DESSERTE|i|*/
+                switch( i ) {
+                    case 0 -> { if(GestionGrilleHoraire.convertirTableauHoraire(VALIDES[i])[j] != DESSERTE0[j]) {
+                                    throw new IllegalArgumentException("Erreur ! " + VALIDES[i][j]
+                                                                       + " != " + DESSERTE0[i]);
+                                }
+                              }
+                            
+                   case 1 -> { if(GestionGrilleHoraire.convertirTableauHoraire(VALIDES[i])[j] != DESSERTE1[j]) {
+                                    throw new IllegalArgumentException("Erreur ! " + VALIDES[i][j]
+                                                                   + " != " + DESSERTE1[j]);
+                                }
+                              }
+                              
+                    case 2 -> { if(GestionGrilleHoraire.convertirTableauHoraire(VALIDES[i])[j] != DESSERTE2[j]) {
+                                    throw new IllegalArgumentException("Erreur ! " + VALIDES[i][j]
+                                                                   + " != " + DESSERTE2[j]);
+                                }
+                              }
+
+                    case 3 -> { if(GestionGrilleHoraire.convertirTableauHoraire(VALIDES[i])[j] != DESSERTE3[j]) {
+                                    throw new IllegalArgumentException("Erreur ! " + VALIDES[i][j]
+                                                                   + " != " + DESSERTE3[j]);
+                                }
+                              }
+
+                    case 4 -> { if(GestionGrilleHoraire.convertirTableauHoraire(VALIDES[i])[j] != DESSERTE4[j]) {
+                                    throw new IllegalArgumentException("Erreur ! " + VALIDES[i][j]
+                                                                   + " != " + DESSERTE4[j]);
+                                }
+                              }
+                }
+            } 
+            System.out.println();
+            System.out.println("Test de DESSERTE" + i + " réussi");
+            continuer();
+        }  
+    }
     
     
     /*              programme principal pour lancer les  tests             */
@@ -408,14 +455,15 @@ public class TestGestionGrilleHoraire {
     
     
     public static void main(String[] args) {        
-        //testAfficherHoraireDesserte();
-        //testAfficherGrille();
-        // testTableauHorairesDessertePlein()
-        // testAjouterHoraire();
-        // testSupprimerHoraire(); 
-        // testRechercheProchainPassage();
-        // testRechercheHoraire();
+        testAfficherHoraireDesserte();
+        testAfficherGrille();
+        testTableauHorairesDessertePlein();
+        testAjouterHoraire();
+        testSupprimerHoraire(); 
+        testRechercheProchainPassage();
+        testRechercheHoraire();
         testTableauHoraireCorrecte();
+        testConvertirTableauHoraire();
     }
     
 
