@@ -145,7 +145,7 @@ public class OutilHoraire {
 		int heure,
 			minute;
         
-        // TODO 
+
         // on peut vérifier d'abord si l'horaire contient bien 5 caractères
         if (aTester.length() == 5) {
             resultat = true;

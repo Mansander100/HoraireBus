@@ -66,6 +66,68 @@ public class TestGestionGrilleHoraire {
     /** tableau d'horaire inférieur à tester */
     private static final int[] HORAIRE_A_TESTER =
         {435, 185, 611, 47, 737, 999, 45, 87, 1172, 1200};
+
+    /** tableau de chaines valides */
+    private static final String[] VALIDES_4 =
+        {"06h03", "07h58", "10h13", "12h18", "14h28",
+        "17h43", "19h03"
+        }; 
+        
+    /** tableau de chaines invalides */
+    private static final String[][] INVALIDES =
+        {
+        /* cas caractère min en trop */
+        {"08h30", "08h52A", "08h35"},
+        /* cas caractère heure en trop */
+        {"08h30", "08h35", "A08h52"},
+        /* cas heure avec un seul chiffre */
+        {"8h30", "08h35", "08h40"},
+        /* cas min avec un seul chiffre */
+        {"08h6", "08h35", "08h40"},
+        /* cas heure > 23 */
+        {"08h30", "25h35", "08h45"},
+        /* cas heure < 0 et 3 caractères */
+        {"08h30", "-10h35", "08h45"},
+        /* cas heure < 0 et 2 caractères */
+        {"08h30", "08h45", "-1h35"},
+        /* cas min > 59 */
+        {"08h68", "08h45", "08h35"},
+        /* cas min < 0 et 3 caractères */
+        {"08h-30", "10h35", "08h45"},
+        /* cas heure < 0 et 2 caractères */
+        {"08h30", "10h35", "08h-5"}
+        };     
+
+
+    /** tableau de chaines invalides */
+    private static final String[][] VALIDES =
+        {
+        /* desserte_ABuanton */
+        {"07h10", "07h25", "07h40", "07h55", "08h10", "08h25", "08h40", 
+         "08h55", "09h10", "09h25", "09h40", "09h55", "10h10", "10h25",
+         "10h40", "10h55", "11h10", "11h25", "11h40", "11h55", "12h10",
+         "12h25", "12h40", "12h55", "13h10", "13h25", "13h40", "13h55",
+         "14h10", "14h25", "14h40", "14h55"
+        },
+        /* desserte_CVallon */
+        {"07h29", "08h03", "08h43", "09h23", "10h03", "10h43", "11h23",
+         "12h03", "12h43", "13h23", "14h03", "14h43", "15h23", "16h04",
+         "16h44", "17h24", "18h03", "18h43", "19h23"
+        },
+        /* desserte_CCentre */
+        {"07h14", "08h03", "08h35", "09h15", "09h55", "10h35", "11h15",
+         "11h55", "12h35", "13h15", "13h55", "14h35", "15h15", "15h55",
+         "16h35", "17h15", "17h55", "18h35", "19h15"
+        },
+
+        /* desserte_DMarechal */
+        {"07h51", "08h21", "09h01", "09h41", "10h21", "11h01", "11h41",
+         "12h21", "13h01", "14h21", "15h01", "15h41", "16h21", "17h01",
+         "17h41", "18h21", "19h01", "19h41"
+        },
+        /* desserte_FMarechal */
+        {"06h03", "07h58", "10h13", "12h18", "14h28", "17h43", "19h03"}
+        }; 
     
     
     /* ****************   2 méthodes outils pour gérer les tests   ************** */
@@ -141,6 +203,9 @@ public class TestGestionGrilleHoraire {
         return grille;  
               
     }
+
+
+
     
     
     /*    méthodes permettant de tester les méthodes ajoutées à la classe       */
@@ -267,8 +332,7 @@ public class TestGestionGrilleHoraire {
                 + "---------------------------------------------------\n"); 
 
         int borneInf = 2,
-            borneSup = 5;
-
+            borneSup = 10;
 
         for (int i = 0; i < HORAIRE_A_TESTER.length; i++) {            
             System.out.println("Horaires comprises dans [" 
@@ -285,6 +349,57 @@ public class TestGestionGrilleHoraire {
             continuer();
         }     
     }
+
+
+
+
+    /**
+     * Test d'horaire valides dans un tableau de String
+     */
+    private static final void testTableauHoraireCorrecte() {        
+
+        System.out.println ("TEST : méthode tableauHoraireCorrecte(test visuel)\n "                
+                + "---------------------------------------------------\n"); 
+
+
+        System.out.println ("TEST : chaines invalides(test visuel)\n"); 
+        /* balaye la tableau INVALIDES */
+        for (int i = 0; i < INVALIDES.length ; i++) {      
+            
+            /* affichage de la ligne du tableau INVALIDES */
+            for(int j=0; j < INVALIDES[i].length; j++) {  
+                System.out.print(INVALIDES[i][j] + " ");
+            } 
+            System.out.println();
+
+            /* lorsqu'une horaire est valide */
+            if (GestionGrilleHoraire.tableauHoraireCorrect(INVALIDES[i])) {
+                System.out.println("Erreur ! La ligne a été considérée comme valide");
+            } else {
+                System.out.println("Test réussi");
+            }
+            continuer();
+        }  
+
+        System.out.println ("TEST : chaines valides(test visuel)\n"); 
+        /* balaye la tableau VALIDES */
+        for (int i = 0; i < VALIDES.length ; i++) {      
+        
+            /* affichage de la ligne du tableau VALIDES */
+            for(int j=0; j < VALIDES[i].length; j++) {  
+                System.out.print(VALIDES[i][j] + " ");
+            } 
+            System.out.println();
+
+            /* lorsqu'une horaire est invalide */
+            if (!GestionGrilleHoraire.tableauHoraireCorrect(VALIDES[i])) {
+                System.out.println("Erreur ! La ligne a été considérée comme invalide");
+            } else {
+                System.out.println("Test réussi");
+            }
+            continuer();
+        }  
+    }
     
     
     /*              programme principal pour lancer les  tests             */
@@ -299,7 +414,8 @@ public class TestGestionGrilleHoraire {
         // testAjouterHoraire();
         // testSupprimerHoraire(); 
         // testRechercheProchainPassage();
-         testRechercheHoraire();
+        // testRechercheHoraire();
+        testTableauHoraireCorrecte();
     }
     
 

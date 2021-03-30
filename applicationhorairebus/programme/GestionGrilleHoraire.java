@@ -4,6 +4,8 @@
  */
 package applicationhorairebus.programme;
 
+
+
 /**
  * Classe permettant de gérer la grille des horaires de bus. Les horaires de passage
  * des bus sont stockés en minutes. 
@@ -254,11 +256,10 @@ public class GestionGrilleHoraire {
 
         int tableResultat[] = new int[borneSup-borneInf];
 
-        /* on parcourt chaque |colonne| à la recherche de horaireGrille > |horaire| */
+        /* on parcourt les bornes de la |colonne| à la recherche des horaires */
         for(int i = 0, ligne = borneInf; ligne < borneSup; ligne++, i++) {
             tableResultat[i] = grille[ligne][colonne];
         }
-
         return tableResultat;
     }
 
@@ -267,10 +268,20 @@ public class GestionGrilleHoraire {
     /*               contenant les horaires à intégrer à l'application            */
     /* ************************************************************************** */
    
-    
-    // TODO
-    
-    
-    
 
+    //TODO javadoc
+    public static boolean tableauHoraireCorrect(String [] aVerifier) {
+        boolean resultat = false;
+        int i;
+
+        for(i = 0; i < aVerifier.length && OutilHoraire.estValide(aVerifier[i]); i++); // empty body
+
+        if (i == aVerifier.length) {
+            return true;
+        } else { 
+            System.out.println(aVerifier[i] + " n'est pas valide");
+            return false;
+        }
+
+    }
 }
