@@ -217,6 +217,33 @@ public class TestGestionDesserte {
         GestionDesserte.afficherDesserte(AUCUNE_DESSERTE);
         
     }
+
+
+    /* ********   Méthode de test pour la méthode    afficherDessertePrecise    ******** */
+    /* ************************************************************************** */
+    
+    
+    /**
+     * Test de la méthode qui affiche une desserte precise
+     */
+    private static void testAfficherDessertePrecise() {
+        System.out.println("TEST DE LA METHODE afficherDesserte (test visuel) "
+                            + "sur le tableau EXEMPLE_DESSERTE\n"
+                           + "-----------------------------------------------------"
+                           + "----------------------------\n");
+        System.out.println("Desserte d'indice 4 : ");
+        GestionDesserte.afficherDessertePrecise(EXEMPLE_DESSERTE, 4);
+        
+        System.out.println("\nDesserte d'indice 0 : ");
+        GestionDesserte.afficherDessertePrecise(EXEMPLE_DESSERTE, 0);
+        
+        System.out.println("\nDesserte d'indice 5 : ");
+        GestionDesserte.afficherDessertePrecise(EXEMPLE_DESSERTE, 5);
+       
+        System.out.println("\nDesserte d'indice 7 : ");
+        GestionDesserte.afficherDessertePrecise(EXEMPLE_DESSERTE, 7);
+        
+    }
     
     
     /* *****   Méthodes de tests pour la méthode    rechercherDesserte    ******* */
@@ -435,11 +462,12 @@ public class TestGestionDesserte {
         System.out.println("TESTS DES METHODES DE LA CLASSE GESTION DESSERTE\n\n");
         
         // testAfficherDesserte();
+        testAfficherDessertePrecise();
         // testSaisirDesserte();   
         // testDessertValide();     
         // testRechercherDesserte();
         // testAjouterDesserte();
-        testSupprimerDesserte();
+        // testSupprimerDesserte();
     }
 
 }

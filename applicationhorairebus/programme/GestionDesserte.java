@@ -123,8 +123,18 @@ public class GestionDesserte {
      * @param indice  numéro de la colonne à afficher (l'affichage n'est réalisé que 
      *                si la colonne est valide et contient bien une desserte)
      */
-    public static void afficherDesserte(String[][] table, int indice) {
-        // TODO : écrire le code
+    public static void afficherDessertePrecise(String[][] table, int indice) {
+        int compteur;
+        for (compteur = 0; 
+                compteur < table[0].length 
+                && indice != compteur
+            ; compteur++); // corps vide
+
+        if (compteur != table[0].length && table[0][compteur] != null) {
+            System.out.print(table[0][compteur] + " " + table[1][compteur]);
+        } else { 
+            System.out.print("La desserte n'existe pas.");
+        }
     }
     
     
