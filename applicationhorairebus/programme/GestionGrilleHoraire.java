@@ -25,7 +25,6 @@ package applicationhorairebus.programme;
 public class GestionGrilleHoraire {
     
     
-    
     /*       Méthodes destinées à réaliser des affichages de la grille horaire    */
     /*           (affichages utiles pour tester les autres méthodes)              */
     /* ************************************************************************** */

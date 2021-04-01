@@ -32,6 +32,7 @@ public class GestionDesserte {
                                                  "Marechal Joffre"};
 
     private static final String[] LIGNE = {"A", "C", "D", "F"};
+
     
    public static String lireArret() {
 
