@@ -88,7 +88,7 @@ public class GestionGrilleHoraire {
         /* permet d'afficher les horaires de la |grille| */
         for(int ligne = 0; ligne < grille.length; ligne++) { // parcourir les lignes
             /* parcourir les colonnes et si une valeur = -1 on arrête et passe à la ligne suivante */
-            for(int colonne = 0; colonne < 10 && grille[ligne][colonne] > -1; colonne++ ) { 
+            for(int colonne = 0; colonne < grille[ligne].length && grille[ligne][colonne] > -1; colonne++ ) { 
                 /* affiche les valeurs par ligne */
                 System.out.print(OutilHoraire.convertir(grille[ligne][colonne]) + "\t");
             }

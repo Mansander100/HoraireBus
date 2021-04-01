@@ -5,6 +5,11 @@
 package applicationhorairebus.programme;
 
 import  applicationhorairebus.programme.OutilFichier;
+import applicationhorairebus.test.TestGestionGrilleHoraire;
+import applicationhorairebus.programme.GestionGrilleHoraire;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Cette classe contiendra la fonction main permettant de lancer l’application 
@@ -25,6 +30,22 @@ public class ApplicationBus {
      */
     public static void main (String[] args) {
 
+
+        String[][] desserte = OutilFichier.restaurerDesserte();
+        int[][] horaire = OutilFichier.restaurerHoraireBus();
+
+        switch (GestionInterface.saisirOptionMenuPrincipal()) {
+            case 'v' -> { GestionInterface.afficherMenuVoyageur(); }
+
+            case 'a' -> { GestionInterface.afficherAideAdministrateur();}
+                
+
+            case '?' -> GestionInterface.afficherAidePrincipal();
+                
+
+            case 'q' -> System.exit(0);
+                
+        }
 
 
     }

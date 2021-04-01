@@ -53,6 +53,8 @@ public class TestGestionGrilleHoraire {
     private static final int[] DESSERTE4 =
         {363/*362*/, 478/*477*/, 613/*612*/, 738/*737*/, 868/*867*/,
         1063/*1062*/, 1143/*null*/};
+        
+
     
     /** tableau d'horaire inférieur à tester */
     private static final int[] HORAIRE_A_TESTER =

@@ -2,9 +2,9 @@
  * Classe contenant des méthodes outils pour gérer l'interface utilisateur
  * GestionInterface.java                                            01/21
  */
-package coo.applicationhorairebus.programme;
+package applicationhorairebus.programme;
 
-import coo.applicationhorairebus.programme.OutilSaisie;
+import applicationhorairebus.programme.OutilSaisie;
 
 import java.util.Scanner;
 
@@ -51,14 +51,15 @@ public class GestionInterface {
     /**
      * Liste des options possibles pour le menu principal
      */
-    private static final char[] OPTION_MENU_PRINCIPAL = { 'c', 'a', '?', 'q'};   
+    private static final char[] OPTION_MENU_PRINCIPAL = { 'v', 'a', '?', 'q'};  
+    private static final char[] OPTION_AIDE_PRINCIPAL = { 'c', 'a', '?', 'q'};  
     
     /**
      * Liste des libellés associés à chacune des options du menu principal
      */
     private static final String[] LIBELLE_MENU_PRINCIPAL = {
-                "consulter des horaires et les dessertes",
-                "afficher les lignes et arrêts",
+                "afficher menu voyageur",
+                "afficher menu administrateur",
                 "obtenir de l'aide sur l'application",
                 "quitter l'application"};
     
@@ -99,6 +100,27 @@ public class GestionInterface {
      * @return un caractère contenant le choix de l'utilisateur
      */
     public static char saisirOptionMenuPrincipal() {
+        String reponse;       // utilisé pour la lecture de la réponse de l'utilisateur
+        
+        // affiche le menu et saisit le choix, répété jusqu'à obtenir un choix valide
+        do {            
+            afficherMenuPrincipal();
+            reponse = entree.nextLine();
+            if (! reponseValide(reponse, OPTION_MENU_PRINCIPAL)) {
+                System.out.println("\n       ==> Ce choix n'est pas valide."
+                                   + " Recommencez.\n\n");
+            }
+        } while (! reponseValide(reponse, OPTION_MENU_PRINCIPAL));     
+        System.out.println();
+        return reponse.charAt(0);
+    }
+
+        /**
+     * Affiche le menu principal pour l'utilisateur et saisit son choix.
+     * L'action est répétée jusqu'à obtenir un choix valide
+     * @return un caractère contenant le choix de l'utilisateur
+     */
+    public static char saisirOptionAidePrincipal() {
         String reponse;       // utilisé pour la lecture de la réponse de l'utilisateur
         
         // affiche le menu et saisit le choix, répété jusqu'à obtenir un choix valide

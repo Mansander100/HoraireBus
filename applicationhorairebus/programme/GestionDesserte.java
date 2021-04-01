@@ -100,12 +100,11 @@ public class GestionDesserte {
      */
     public static void afficherDesserte(String[][] table) {
        
-        // 
         int compteur;
         compteur = 0; // intialisation du compteur
-        for (int i = 0; i < NB_MAX_DESSERTE; i++) {
-            if (table[0][i] != null) {
-                System.out.println(table[0][i] + " " + table[1][i]);
+        for (int i = 0; i < table[0].length; i++) {
+            if (!table[0][i].equals(null)) {
+                System.out.print("\n" + table[0][i] + " " + table[1][i]);
                 compteur++;
             } 
         }
@@ -113,6 +112,7 @@ public class GestionDesserte {
             System.out.print("Aucune desserte n est geree actuellement par "
                              + "l application");
         }
+        
     }
 
 
@@ -179,9 +179,6 @@ public class GestionDesserte {
         } else{
             return false;
         }
-        
-        
-
         
     }
     
