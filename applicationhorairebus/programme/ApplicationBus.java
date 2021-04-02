@@ -31,18 +31,51 @@ public class ApplicationBus {
     public static void main (String[] args) {
 
 
-        String[][] desserte = OutilFichier.restaurerDesserte();
+        String[][] desserte_initiale = OutilFichier.restaurerDesserte();
         int[][] horaire = OutilFichier.restaurerHoraireBus();
 
+        String[] desserte;
+
         switch (GestionInterface.saisirOptionMenuPrincipal()) {
-            case 'v' -> { GestionInterface.afficherMenuVoyageur(); }
+            case 'v' -> { GestionInterface.afficherMenuVoyageur();
+                            switch (GestionInterface.saisirOptionMenuVoyageur()) {
+                                case 'c' -> {}
 
-            case 'a' -> { GestionInterface.afficherAideAdministrateur();}
+                                case 'a' -> {}
+
+                                case 'm' -> {}
+
+                                case 'i' -> {}
+
+                                case '?' -> {GestionInterface.afficherAideVoyageur();}
+
+                                case 'r' -> {GestionInterface.afficherMenuPrincipal();}
+                                    
+                            } 
+                        }
+
+            case 'a' -> { GestionInterface.afficherAideAdministrateur();
+                            GestionInterface.afficherMenuAdministrateur();
+                            switch (GestionInterface.saisirOptionMenuAdministrateur()) {
+                                case 'm' -> {}
+
+                                case '+' -> {desserte = GestionDesserte.saisirDesserte(); GestionDesserte.ajouterDesserte(desserte_initiale , desserte[0], desserte[1]);
+                                            for (int i = 0; i < desserte_initiale [0].length; i++) {
+                                                System.out.print(desserte_initiale[0][i] + " " + desserte_initiale[1][i]);
+                                            }                
+                                }
+
+                                case 's' -> {}
+
+                                case 'a' -> {}
+
+                                case 'r' -> {GestionInterface.afficherMenuPrincipal();}
+                                    
+                            }
+                        }
                 
-
             case '?' -> GestionInterface.afficherAidePrincipal();
                 
-
             case 'q' -> System.exit(0);
                 
         }
