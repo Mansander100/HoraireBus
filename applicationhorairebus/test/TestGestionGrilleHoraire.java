@@ -10,9 +10,29 @@ import applicationhorairebus.programme.GestionGrilleHoraire;
 
 
 /**
+ * Differente tableaux sont definis pour les jeux de données 
+ *     - DESSERTE Ces tableaux sont là pour tester les cas correct d'horaires 
+ *     - HORAIRE_A_TESTER est utilisée pour les cas ou un autre tableau est 
+ *       necessaire en argument comme par exemple le methode d'ajout 
+ *     - TABLEAU_PLEIN est utilisee pour l'unique cas d'un tableau entierement remplie 
+ *       le contenu importe peu 
+ *     - VALIDE est utilise pour les cas ou les chaîne sont valides format cchcc
+ *     - INVALIDE est les chaines sont invalides chaque cas d'erreur est explique
+ *     - COLONNE_EXEMPLE est utilise dans le cas ou une colonnne est demandee en argument 
+ *     - BORNE_XXX_EXEMPLE sont les bornes utilisee pour les methodes les necessitant 
+ *
+ * Ce programme teste les methodes de GestionGrilleHoraire suivante : 
+ *    afficherHoraireDesserte
+ *    afficherGrille
+ *    tableauHoraireDessertePlein
+ *    ajouterHoraire
+ *    suppromerHoraire
+ *    rechercheProchainPassage
+ *    rechercheHoraire
+ *    tableauHoraireCorrect
+ *    convertirTableauHoraire
  *    
- *    
- * TODO : compléter
+ * 
  * 
  * @author Serieys, Simon
  * @version 1.0
@@ -56,9 +76,11 @@ public class TestGestionGrilleHoraire {
         
 
     
-    /** tableau d'horaire inférieur à tester */
+    /** tableau d'horaire inférieur à tester pour les ajouts par exemple */
     private static final int[] HORAIRE_A_TESTER =
         {435, 185, 611, 47, 737, 999, 45, 87, 1172, 1200};
+
+
 
 
         
@@ -88,7 +110,7 @@ public class TestGestionGrilleHoraire {
         };     
 
 
-    /** tableau de chaines invalides */
+    /** tableau de chaines valides */
     private static final String[][] VALIDES =
         {
         /* desserte_ABuanton */
@@ -117,6 +139,12 @@ public class TestGestionGrilleHoraire {
         /* desserte_FMarechal */
         {"06h03", "07h58", "10h13", "12h18", "14h28", "17h43", "19h03"}
         }; 
+
+        /* Pour les methodes qui demande un numéro de colonne en argument  */
+        private static final int COLONNE_EXEMPLE = 2;
+        /* Exemple borne pour la methode de test */
+        private final static int BORNE_INF_EXEMPLE = 2;
+        private final static int BORNE_SUP_EXEMPLE = 10;
     
     
     /* ****************   2 méthodes outils pour gérer les tests   ************** */
@@ -193,6 +221,34 @@ public class TestGestionGrilleHoraire {
               
     }
 
+    /* On cree une grille pleine l'important n'est pas son contenu 
+     * mais elle permet de voir ce que fait la methode tableauDessertePlein
+     * s'il rencontre le cas d'une grille pleine
+     */ 
+
+        public static int[][] preparerGrillePleine() {
+        int[][] grille = new int[50][10];
+        
+    /* on initialise toutes les cases avec la valeur non significative -1 */
+        for (int i = 0; i < grille.length; i++) {
+            for (int j = 0; j < 10; j++) {
+                grille[i][j] = -1;                
+            }
+        }
+        
+        // on recopie chacun des tableaux d'horaires
+        recopierUneDesserte(grille, 0, DESSERTE0);
+        recopierUneDesserte(grille, 1, DESSERTE4);
+        recopierUneDesserte(grille, 2, DESSERTE0);
+        recopierUneDesserte(grille, 3, DESSERTE0);
+        recopierUneDesserte(grille, 4, DESSERTE0);
+        recopierUneDesserte(grille, 5, DESSERTE0);
+        recopierUneDesserte(grille, 6, DESSERTE0);
+        recopierUneDesserte(grille, 7, DESSERTE0);
+        recopierUneDesserte(grille, 8, DESSERTE0);
+        recopierUneDesserte(grille, 9, DESSERTE0);
+        return grille;  
+    }
 
 
     
@@ -216,8 +272,9 @@ public class TestGestionGrilleHoraire {
                 + "---------------------------------------------------\n");
         for (int i = 0; i < 10; i++) {            
             System.out.println("Horaires de la desserte située en colonne " + i);
+            /* on affiche les dessertes une par une */
             GestionGrilleHoraire.afficherHoraireDesserte(HORAIRE_EXEMPLE, i);
-            continuer();
+            continuer(); // le programmeur doit appuyer sur entrer pour continuer le test 
         }        
     }
     
@@ -229,11 +286,13 @@ public class TestGestionGrilleHoraire {
          *  création d'une grille horaire exemple à partir de laquelle les tests 
          *  des autres méthodes pourront être réalisés 
          */
-        final int[][] HORAIRE_EXEMPLE = preparerGrilleExemple();
+        final int[][] HORAIRE_TEST = preparerGrilleExemple();
+        final int[][] TABLEAU_PLEIN = preparerGrillePleine();
+
         
         System.out.println ("TEST : méthode afficherGrille (test visuel)\n "                
                 + "---------------------------------------------------\n");           
-        GestionGrilleHoraire.afficherGrille(HORAIRE_EXEMPLE);
+        GestionGrilleHoraire.afficherGrille(TABLEAU_PLEIN);
     }
 
     /**
@@ -246,10 +305,19 @@ public class TestGestionGrilleHoraire {
          *   
          */
         final int[][] HORAIRE_EXEMPLE = preparerGrilleExemple();
+        final int[][] TABLEAU_PLEIN = preparerGrillePleine();
+        
         
         System.out.println ("TEST : méthode tableauHorairesDessertePlein (test visuel)\n "                
                 + "---------------------------------------------------\n");           
-        GestionGrilleHoraire.tableauHorairesDessertePlein(HORAIRE_EXEMPLE);
+
+        GestionGrilleHoraire.afficherGrille(TABLEAU_PLEIN); 
+
+        if (GestionGrilleHoraire.tableauHorairesDessertePlein(TABLEAU_PLEIN)) {
+            System.out.print("\n La grille est pleine  \n");
+        } else {
+            System.out.print("\n La grille n'est pas pleine \n");
+        }
     }
 
     /**
@@ -265,8 +333,14 @@ public class TestGestionGrilleHoraire {
         final int[] AJOUT_EXEMPLE = HORAIRE_A_TESTER;
         
         System.out.println ("TEST : méthode ajouterHoraire (test visuel)\n "                
-                + "---------------------------------------------------\n");           
+                + "---------------------------------------------------\n"
+                + "\n Grille avant ajout : ");  
+        GestionGrilleHoraire.afficherGrille(HORAIRE_EXEMPLE);  
+           
         GestionGrilleHoraire.ajouterHoraire(HORAIRE_EXEMPLE,AJOUT_EXEMPLE);
+
+        System.out.print("\n Grille apres ajout : \n");
+        GestionGrilleHoraire.afficherGrille(HORAIRE_EXEMPLE); 
     }
 
 
@@ -283,8 +357,20 @@ public class TestGestionGrilleHoraire {
 
         
         System.out.println ("TEST : méthode supprimerHoraire (test visuel)\n "                
-                + "---------------------------------------------------\n");           
-        GestionGrilleHoraire.supprimerHoraire(HORAIRE_EXEMPLE, 4 );
+                + "---------------------------------------------------\n"
+                + " Grille avant suppression :  \n"); 
+        // On affiche une première fois la grille 
+        GestionGrilleHoraire.afficherGrille(HORAIRE_EXEMPLE);   
+
+        GestionGrilleHoraire.supprimerHoraire(HORAIRE_EXEMPLE, COLONNE_EXEMPLE );
+
+        /* 
+         * On affiche la grille apres suppression pour constater si elle 
+         * a bien ete effectuee 
+         */
+
+        System.out.println(" \n Grille apres suppression : \n ");
+        GestionGrilleHoraire.afficherGrille(HORAIRE_EXEMPLE);  
     }
 
 
@@ -320,8 +406,8 @@ public class TestGestionGrilleHoraire {
         System.out.println ("TEST : méthode rechercheHoraire (test visuel)\n "                
                 + "---------------------------------------------------\n"); 
 
-        int borneInf = 2,
-            borneSup = 10;
+        int borneInf = BORNE_INF_EXEMPLE,
+            borneSup = BORNE_SUP_EXEMPLE;
 
         for (int i = 0; i < HORAIRE_A_TESTER.length; i++) {            
             System.out.println("Horaires comprises dans [" 
@@ -457,15 +543,15 @@ public class TestGestionGrilleHoraire {
     
     
     public static void main(String[] args) {        
-        testAfficherHoraireDesserte();
+ //       testAfficherHoraireDesserte();
         testAfficherGrille();
-        testTableauHorairesDessertePlein();
-        testAjouterHoraire();
-        testSupprimerHoraire(); 
-        testRechercheProchainPassage();
-        testRechercheHoraire();
-        testTableauHoraireCorrecte();
-        testConvertirTableauHoraire();
+ //         testTableauHorairesDessertePlein();
+ //         testAjouterHoraire();
+  //        testSupprimerHoraire(); 
+//        testRechercheProchainPassage();
+//        testRechercheHoraire();
+//        testTableauHoraireCorrecte();
+//        testConvertirTableauHoraire();
     }
     
 

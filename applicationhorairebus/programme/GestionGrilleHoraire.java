@@ -16,7 +16,29 @@ package applicationhorairebus.programme;
  *      colonne i du tableau des dessertes)
  *   - 50 lignes car pour une desserte donnée, il y a au plus 50 passages de bus
  * Les cases non significatives de la grille seront égales à -1.
- * 
+ *
+ *
+ * Cette classe contient des methodes permettant de : 
+ *     - Indiquer si une colonne est significative c'est-à-dire retourne un booleen 
+ *       si celle-ci contient -1 ou non 
+ *     - Afficher la colonne d'une grille, les deux étant donnés en argument 
+ *     - Afficher une grille, celle-ci est donnée en argument
+ *     - Indiquer si une grille est pleine ou non, cette derniere 
+ *       étant donné en argument
+ *     - Ajouter une horaire dans une desserte, le tableau et la colonne sont 
+ *       donné en argument retourne un booleen si l'action a été réalisée ou non 
+ *     - Supprimer une colonne, celle si est donnée en argument et éffectue 
+ *       un décalage si les colonnes suivantes sont pleines 
+ *     - Rechercher un horaire postérieur à l'horaire de le colonne de la grille 
+ *       tous trois donnés en argument 
+ *     - Rechercher dans la colonne argument de la grille horaire argument, les
+ *       horaires situés sur la colonne argument et compris entre borneInf et borneSup
+ *       Le tableau contenant ces horaires est le résultat renvoyé par la méthode
+ *     - Vérifier si le tableau argument contient des horaires cchcc valides
+ *       Pour cela on utilise la méthode estValide de la classe OutilHoraire
+ *     - Convertit un tableau argument avec des horaires cchcc sous la forme 
+ *       d'un tableau d'entier.
+ *
  * 
  * @author Serieys, Simon
  * @version 1.0
@@ -34,7 +56,7 @@ public class GestionGrilleHoraire {
      * Détermine si une colonne est significative dans la grille horaire
      * La colonne doit exister et la valeur de sa première ligne doit être
      * différente de -1
-     * @param horaire   grille contenant les horaies en minutes
+     * @param grille   grille contenant les horaies en minutes
      * @param colonne   colonne à tester
      * @return  un booléen égal à vrai ssi la colonne est significative
      */
@@ -85,15 +107,18 @@ public class GestionGrilleHoraire {
         */
         
 
-        /* permet d'afficher les horaires de la |grille| */
-        for(int ligne = 0; ligne < grille.length; ligne++) { // parcourir les lignes
-            /* parcourir les colonnes et si une valeur = -1 on arrête et passe à la ligne suivante */
-            for(int colonne = 0; colonne < grille[ligne].length && grille[ligne][colonne] > -1; colonne++ ) { 
-                /* affiche les valeurs par ligne */
-                System.out.print(OutilHoraire.convertir(grille[ligne][colonne]) + "\t");
+
+        for (int ligne = 0 ; ligne < grille.length ; ligne++) {
+            for ( int colonne = 0 ; colonne < 10 ; colonne++ ) {
+                if ( grille[ligne][colonne] > -1 ) {
+                    System.out.print("  " + OutilHoraire.convertir(grille[ligne][colonne]) + "  ");
+                } else {
+                    System.out.print("  " + "     " + "  ");
+                }
             }
             System.out.print("\n");
         }
+        
     }
     
     
@@ -102,8 +127,8 @@ public class GestionGrilleHoraire {
     /* ************************************************************************** */
 
     /**
-     * Ajoute à la grille horaire les horaires situés dans le tableau horaire.
-     * Les horaires sont ajoutés sur la première colonne significative.
+     * Indique si le taleau est plein ou pas 
+     * 
      * 
      * @param grille         grille contenant les horaies en minutes
      * @return un booléen égal à vrai ssi le tableau est plein 
@@ -111,27 +136,9 @@ public class GestionGrilleHoraire {
     
     public static boolean tableauHorairesDessertePlein(int[][] grille) {
     
-
-        afficherGrille(grille);
-        int colonne = 0;
-        int ligne = 0;
-
-        /* permet d'afficher les horaires de la |grille| */
-        for( ligne = 0; ligne < grille.length && grille[ligne][colonne] > -1 ; ligne++) { // parcourir les lignes
-    
-            /* parcourir les colonnes et si une valeur = -1 on arrête et passe à la ligne suivante */
-            for(  colonne = 0; colonne < 10 && grille[ligne][colonne] > -1; colonne++ ) ;
-            
-        }
-        if ( ligne < grille.length || colonne < 10) {
-
-            System.out.println("\n La grille n'est pas remplie !");
-            return false;
-        } else {
-
-            System.out.println("\n La grille est remplie... ");
-            return true;
-        }       
+        int i; 
+        for (i=0; i < 10 && colonneSignificative(grille,i);i++ ); // corps vide
+        return i == 10;  
     
     }
     
@@ -162,10 +169,10 @@ public class GestionGrilleHoraire {
             }
  
             System.out.printf("La desserte a ete ajoutee a la colonne %d \n",colonne);
-            afficherGrille(grille); // Affiche la grille après ajout 
+            // Affiche la grille après ajout 
             return true;
         } else {
-            System.out.print("La desserte n'a pas ete ajoutee \n");
+            System.out.print("La desserte n'a pas ete ajoutee le tableau est deja plein  \n");
             return false; 
         }
     }
@@ -182,26 +189,33 @@ public class GestionGrilleHoraire {
      * @return un booléen égal à vrai ssi la supression a pu être effectuée
      */
     public static boolean supprimerHoraire(int [][] grille, int colonne) {
-        afficherGrille(grille); 
-        int ligne = 0;
-        /* Cas où la colonne suivante est vide  */
-        if ( grille[ligne][colonne +1 ] <= -1 || colonne == 9) {
-            for (ligne = 0 ; ligne < grille.length ; ligne++) {
+
+                
+        /* Cas où la colonne suivante est vide 
+         * On utilise la methode colonneSignificative 
+         * Si la colonne est la dernier (9) ou si la colonne 
+         * qui suit celle en argument alors inutile de faire un decalage
+         */
+        if (   colonne == 9 || !colonneSignificative(grille,colonne+1)) {
+            for ( int ligne = 0 ; ligne < grille.length ; ligne++) {
                 grille[ligne][colonne]= -1;
             } 
-            System.out.print("La colonne a bien été supprimée \n");
-            afficherGrille(grille);
+            System.out.printf("\nLa colonne %d a bien etre supprimee \n"
+                            + "\n (la premiere colonne commence a 0)",colonne);
+
 
         } else { // Cas où un décalage est nécéssaire 
             /* permet de passer à la colonne suivante  */
             for (int n = 0; colonne + n < 9; n++) {
                 /* affecte à la colonne la colonne suivante  */
-                for (ligne = 0 ; ligne < grille.length ; ligne++) {
+                for ( int ligne = 0 ; ligne < grille.length ; ligne++) {
                     grille[ligne][colonne + n] = grille[ligne][colonne + n + 1];
                 }
             }
-            System.out.print("La colonne a bien été supprimée \n");
-            afficherGrille(grille); // Affiche la grille après supression 
+            System.out.printf("\nLa colonne %d a bien ete supprimee et le decalage a pu "
+                               +"etre realise \n (la premiere colonne commence à 0)"
+                               + "\n",colonne);
+            // Affiche la grille après supression 
         }
         return true;
     }
