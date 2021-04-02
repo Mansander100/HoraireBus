@@ -336,7 +336,7 @@ public class TestOutilHoraire {
                 + "-------------------------------------------------\n"
                 + "Vous devez vérifier visuellement que l'heure affichée est bien "
                 + "l'heure courante de l'ordinateur.\n");
-        System.out.println("Heure courante en secondes : "
+        System.out.println("Heure courante en minutes : "
                            + OutilHoraire.heureCourante() + "\n"
                            + "Heure courante : " 
                            + OutilHoraire.convertir(OutilHoraire.heureCourante()));
