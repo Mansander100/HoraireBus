@@ -2,10 +2,10 @@
  * Classe de test des méthodes de la classe OutilHoraire
  * TestOutilHoraire.java                                               01/19
  */
-package coo.applicationhorairebus.test;
+package applicationhorairebus.test;
 
 import java.util.Scanner;
-import coo.applicationhorairebus.programme.OutilHoraire;
+import applicationhorairebus.programme.OutilHoraire;
 
 /**
  * Classe de tests unitaires qui contient les méthodes de test 
