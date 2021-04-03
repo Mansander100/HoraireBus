@@ -1,0 +1,146 @@
+-----------------------------------------------
+     TESTS DE LA CLASSE  OUTIL HORAIRE
+-----------------------------------------------
+
+
+Test de la mÃ©thode de saisie d'un entier
+------------------------------------------
+Vous allez saisir 3 entiers supposÃ©s Ãªtre dans l'intervalle 0 - 59
+Vous devez vÃ©rfier visuellement que la mÃ©thode  gÃ¨re correctement les cas d'erreur
+N'hÃ©sitez pas Ã  commettre des erreurs de saisie.
+
+Saisie numÃ©ro 1 :
+Entrez un entier compris entre 0 et 59 : 30
+
+Vous avez saisi 30
+
+Saisie numÃ©ro 2 :
+Entrez un entier compris entre 0 et 59 : 59
+
+Vous avez saisi 59
+
+Saisie numÃ©ro 3 :
+Entrez un entier compris entre 0 et 59 : 0
+
+Vous avez saisi 0
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  OUTIL HORAIRE
+-----------------------------------------------
+
+
+Test de la mÃ©thode de saisie d'un horaire
+--------------------------------------------
+Vous allez saisir 3 horaires et vÃ©rifier visuellement que la mÃ©thode effectue correctement la saisie.
+N'hÃ©sitez pas Ã  commettre des erreurs de saisie.
+
+Saisie numÃ©ro 1 :
+Veuillez saisir le nombre d'heures : 0
+Veuillez saisir le nombre de minutes : 0
+L'horaire saisi est 0 minutes
+
+Saisie numÃ©ro 2 :
+Veuillez saisir le nombre d'heures : 23
+Veuillez saisir le nombre de minutes : 59
+L'horaire saisi est 1439 minutes
+
+Saisie numÃ©ro 3 :
+Veuillez saisir le nombre d'heures : 12
+Veuillez saisir le nombre de minutes : 0
+L'horaire saisi est 720 minutes
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  OUTIL HORAIRE
+-----------------------------------------------
+
+
+Test de la mÃ©thode de saisie de 2 horaires ordonnÃ©es
+--------------------------------------------
+Vous allez saisir 3 horaires et vÃ©rifier visuellement que la mÃ©thode effectue correctement la saisie.
+N'hÃ©sitez pas Ã  commettre des erreurs de saisie.
+
+Saisie numÃ©ro 1 :
+Veuillez saisir le nombre d'heures : 23
+Veuillez saisir le nombre de minutes : 23
+Veuillez saisir le nombre d'heures : 23
+Veuillez saisir le nombre de minutes : 23
+Horaire 1 : 1403
+Horaire 2 : 1403
+
+Saisie numÃ©ro 2 :
+Veuillez saisir le nombre d'heures : 2
+Veuillez saisir le nombre de minutes : 4
+Veuillez saisir le nombre d'heures : 14
+Veuillez saisir le nombre de minutes : 4
+Horaire 1 : 124
+Horaire 2 : 844
+
+Saisie numÃ©ro 3 :
+Veuillez saisir le nombre d'heures : 13
+Veuillez saisir le nombre de minutes : 23
+Veuillez saisir le nombre d'heures : 13
+Veuillez saisir le nombre de minutes : 24
+Horaire 1 : 803
+Horaire 2 : 804
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  OUTIL HORAIRE
+-----------------------------------------------
+
+
+Test de la mÃ©thode estChiffre
+------------------------------
+    ==> a) Tests avec des chiffres : 10 test(s) ont rÃ©ussi sur un total de 10 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+
+    ==> b) Tests autres caractÃ¨res : 10 test(s) ont rÃ©ussi sur un total de 10 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  OUTIL HORAIRE
+-----------------------------------------------
+
+
+Test de la mÃ©thode de estValide
+--------------------------------
+
+Test avec des chaÃ®nes valides : 10 test(s) ont rÃ©ussi sur un total de 10 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+Test avec des chaÃ®nes invalides : 15 test(s) ont rÃ©ussi sur un total de 15 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  OUTIL HORAIRE
+-----------------------------------------------
+
+
+Test de la mÃ©thode convertir (entier en chaÃ®ne)
+-------------------------------------------------
+
+RÃ©sultat global du test : 10 test(s) ont rÃ©ussi sur un total de 10 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  OUTIL HORAIRE
+-----------------------------------------------
+
+
+Test de la mÃ©thode convertir (chaÃ®ne en entier)
+-------------------------------------------------
+
+RÃ©sultat global du test : 10 test(s) ont rÃ©ussi sur un total de 10 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  OUTIL HORAIRE
+-----------------------------------------------
+
+
+Test de la mÃ©thode heureCourante (chaÃ®ne en entier)
+-------------------------------------------------
+Vous devez vÃ©rifier visuellement que l'heure affichÃ©e est bien l'heure courante de l'ordinateur.
+
+Heure courante en minutes : 1321
+Heure courante : 22h01

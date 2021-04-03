@@ -352,18 +352,18 @@ public class TestOutilHoraire {
         System.out.println("-----------------------------------------------\n"
                            + "     TESTS DE LA CLASSE  OUTIL HORAIRE \n"
                            + "-----------------------------------------------\n");
-         testSaisirEntierIntervalle();
-         testSaisirHoraire();
-         testSaisir2HorairesOrdonnes();
-         testEstChiffre();
-         continuer();
-         testEstValide(); 
-         continuer();
-         testConvertirEnChaine(); 
-         continuer();
-         testConvertirEnEntier();  
-         continuer();
-         testHeureCourante();
+        //testSaisirEntierIntervalle();
+        //testSaisirHoraire();
+        //testSaisir2HorairesOrdonnes();
+        //testEstChiffre();
+        //continuer();
+        //testEstValide(); 
+        //continuer();
+        //testConvertirEnChaine(); 
+        //continuer();
+        //testConvertirEnEntier();  
+        //continuer();
+        //testHeureCourante();
     }
 
 }
