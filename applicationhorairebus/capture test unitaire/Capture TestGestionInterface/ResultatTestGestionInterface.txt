@@ -1,0 +1,255 @@
+---------------------------------------------------------------------------
+|                             AIDE EN LIGNE                               |
+---------------------------------------------------------------------------
+
+ Bienvenue sur l'aide en ligne du menu principal. Voici les fonctionnalitÃ©s
+   -> accÃ©der aux fonctionnalitÃ©s du mode voyageur
+
+   -> accÃ©der aux fonctionnalitÃ©s du mode administrateur
+
+   -> afficher l'aide en ligne (vous y Ãªtes dÃ©jÃ )
+
+   -> quitter le programme
+
+
+------------------------------------------------------------------
+|                      MENU PRINCIPAL                            |
+------------------------------------------------------------------
+
+   => v - afficher menu voyageur
+   => a - afficher menu administrateur
+   => ? - obtenir de l'aide sur l'application
+   => q - quitter l'application
+
+       ====>
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode reponseValide (test automatique)
+-----------------------------------------------
+========> Etape 1/2 - Tests avec des valeurs correctes
+
+14 test(s) ont rÃ©ussi sur un total de 14 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+
+========> Etape 2/2 - Tests avec des valeurs incorrectes
+
+15 test(s) ont rÃ©ussi sur un total de 15 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode saisirOptionMenuPrincipal (test interactif recommencÃ© 3 fois)
+--------------------------------------------------------------------------
+TEST NUMERO 1
+
+------------------------------------------------------------------
+|                      MENU PRINCIPAL                            |
+------------------------------------------------------------------
+
+   => v - afficher menu voyageur
+   => a - afficher menu administrateur
+   => ? - obtenir de l'aide sur l'application
+   => q - quitter l'application
+
+       ====> v
+
+
+
+POUR LE TEST NUMERO 1 C'EST L'OPTION v QUI A ETE CHOISIE.
+
+
+TEST NUMERO 2
+
+------------------------------------------------------------------
+|                      MENU PRINCIPAL                            |
+------------------------------------------------------------------
+
+   => v - afficher menu voyageur
+   => a - afficher menu administrateur
+   => ? - obtenir de l'aide sur l'application
+   => q - quitter l'application
+
+       ====> a
+
+
+
+POUR LE TEST NUMERO 2 C'EST L'OPTION a QUI A ETE CHOISIE.
+
+
+TEST NUMERO 3
+
+------------------------------------------------------------------
+|                      MENU PRINCIPAL                            |
+------------------------------------------------------------------
+
+   => v - afficher menu voyageur
+   => a - afficher menu administrateur
+   => ? - obtenir de l'aide sur l'application
+   => q - quitter l'application
+
+       ====> c
+
+       ==> Ce choix n'est pas valide. Recommencez.
+
+
+------------------------------------------------------------------
+|                      MENU PRINCIPAL                            |
+------------------------------------------------------------------
+
+   => v - afficher menu voyageur
+   => a - afficher menu administrateur
+   => ? - obtenir de l'aide sur l'application
+   => q - quitter l'application
+
+       ====> ?
+
+
+
+POUR LE TEST NUMERO 3 C'EST L'OPTION ? QUI A ETE CHOISIE.
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode afficherAideVoyageur (test visuel)
+-----------------------------------------
+
+--------------------------------------------------------------------------
+|                             AIDE EN LIGNE                              |
+--------------------------------------------------------------------------
+
+ Bienvenue sur l'aide en ligne du menu voyageur. Voici les fonctionnalitÃ©s
+   -> consulter toutes les dessertes possibles
+
+   -> rechercher des horaires de passage des bus (3 maniÃ¨res) :
+
+         Saisir un horaire, et lâ??application affichera tous les bus
+         accessibles dans les 30 minutes qui suivent cet horaire.
+
+         Ne saisir aucun horaire, et la recherche
+         prÃ©cÃ©dente sâ??effectuera Ã  partir de lâ??heure courante.
+
+         Saisir un intervalle de deux horaires, et lâ??application
+         affichera tous les bus accessibles et dont l'horaire de passage
+         est inclus dans l'intervalle des deux horaires
+         (ces 2 horaires compris dans la recherche)
+
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode reponseValide (test automatique)
+-----------------------------------------------
+========> Etape 1/2 - Tests avec des valeurs correctes
+
+6 test(s) ont rÃ©ussi sur un total de 6 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+
+========> Etape 2/2 - Tests avec des valeurs incorrectes
+
+15 test(s) ont rÃ©ussi sur un total de 15 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode saisirOptionMenuVoyageur (test interactif recommencÃ© 3 fois)
+--------------------------------------------------------------------------
+TEST NUMERO 1
+
+------------------------------------------------------------------
+|                      MENU VOYAGEUR                             |
+------------------------------------------------------------------
+
+   => c - Consulter toutes les dessertes possibles
+   => a - Afficher les bus accessibles 30min aprÃ¨s une horaire donnÃ©e
+   => m - Bus accessibles dans le demi-heure
+   => i - Afficher les bus accessibles selon un intervalle donnÃ©e
+   => ? - Consultation de l'aide
+   => r - Retour en arriÃ¨re
+
+       ====> c
+
+
+
+POUR LE TEST NUMERO 1 C'EST L'OPTION c QUI A ETE CHOISIE.
+
+
+TEST NUMERO 2
+
+------------------------------------------------------------------
+|                      MENU VOYAGEUR                             |
+------------------------------------------------------------------
+
+   => c - Consulter toutes les dessertes possibles
+   => a - Afficher les bus accessibles 30min aprÃ¨s une horaire donnÃ©e
+   => m - Bus accessibles dans le demi-heure
+   => i - Afficher les bus accessibles selon un intervalle donnÃ©e
+   => ? - Consultation de l'aide
+   => r - Retour en arriÃ¨re
+
+       ====> a
+
+
+
+POUR LE TEST NUMERO 2 C'EST L'OPTION a QUI A ETE CHOISIE.
+
+
+TEST NUMERO 3
+
+------------------------------------------------------------------
+|                      MENU VOYAGEUR                             |
+------------------------------------------------------------------
+
+   => c - Consulter toutes les dessertes possibles
+   => a - Afficher les bus accessibles 30min aprÃ¨s une horaire donnÃ©e
+   => m - Bus accessibles dans le demi-heure
+   => i - Afficher les bus accessibles selon un intervalle donnÃ©e
+   => ? - Consultation de l'aide
+   => r - Retour en arriÃ¨re
+
+       ====> m
+
+
+
+POUR LE TEST NUMERO 3 C'EST L'OPTION m QUI A ETE CHOISIE.
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode afficherAideAdministrateur (test visuel)
+-----------------------------------------
+
+--------------------------------------------------------------------------------
+|                             AIDE EN LIGNE                                    |
+--------------------------------------------------------------------------------
+
+ Bienvenue sur l'aide en ligne du menu administrateur. Voici les fonctionnalitÃ©s
+   -> Modifier le mot de passe. Toute chaÃ®ne non vide sera acceptÃ©e.
+
+   -> Ajouter une nouvelle desserte. Si lâ??utilisateur entre un nom dâ??arrÃªt
+      comportant plus de 25 caractÃ¨res, il sera informÃ© de son erreur. Seuls les
+      25 premiers caractÃ¨res seront pris en compte.
+
+   -> Supprimer une desserte existante et les horaires qui lui sont associÃ©s.
+      Une confirmation sera demandÃ©e Ã  lâ??administrateur.
+
+   -> Associer des horaires de passage Ã  une desserte. Cette opÃ©ration
+      sâ??effectuera via un fichier texte, ceci dans le but de faciliter la saisie
+      des horaires. Plus prÃ©cisÃ©ment, lâ??administrateur prÃ©parera en dehors de
+      lâ??application, un fichier texte contenant les horaires de bus. Pour
+      associer des horaires Ã  une desserte prÃ©cise, il saisira le nom du fichier
+      texte contenant les horaires.
+
+
+

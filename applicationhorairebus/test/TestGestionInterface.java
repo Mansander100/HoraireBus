@@ -3,10 +3,10 @@
  * TestGestionInterface.java                                        01/21
  * 
  */
-package coo.applicationhorairebus.test;
+package applicationhorairebus.test;
 
-import coo.applicationhorairebus.programme.GestionInterface;
-import coo.applicationhorairebus.programme.OutilHoraire;
+import applicationhorairebus.programme.GestionInterface;
+import applicationhorairebus.programme.OutilHoraire;
 
 import java.util.Scanner;
 
@@ -450,21 +450,22 @@ public class TestGestionInterface {
         
         
         
-        testAfficherAidePrincipal();
-        testAfficherMenuPrincipal();
-        testReponseValide();
-        testSaisirOptionMenuPrincipal();
+        //testAfficherAidePrincipal();
+        //testAfficherMenuPrincipal();
+        //testReponseValide();
+        //testSaisirOptionMenuPrincipal();
 
-        testAfficherAideVoyageur();
-        testAfficherMenuVoyageur();
-        testSaisirOptionMenuVoyageur();
+        //testAfficherAideVoyageur();
+        //testAfficherMenuVoyageur();
+        //testSaisirOptionMenuVoyageur();
 
-        testAfficherAideAdministrateur();
-        testAfficherMenuAdministrateur();
-        testSaisirOptionMenuAdministrateur();
+        //testAfficherAideAdministrateur();
+        // Prochaine capture à faire
+        //testAfficherMenuAdministrateur();
+        //testSaisirOptionMenuAdministrateur();
 
-        testSaisirMotDePasse(); 
-        testSaisirNomArret();
-        testSaisirNomLigne();
+        //testSaisirMotDePasse(); 
+        //testSaisirNomArret();
+        //testSaisirNomLigne();
     }
 }
