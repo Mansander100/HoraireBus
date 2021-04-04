@@ -461,11 +461,11 @@ public class TestGestionInterface {
 
         //testAfficherAideAdministrateur();
         // Prochaine capture à faire
-        //testAfficherMenuAdministrateur();
+        /* testAfficherMenuAdministrateur(); à revoir, le code de cette methode est celui de reponse valide */
         //testSaisirOptionMenuAdministrateur();
 
         //testSaisirMotDePasse(); 
         //testSaisirNomArret();
-        //testSaisirNomLigne();
+        /* testSaisirNomLigne(); erreur si on saisi B alors qu'il demande A il considère que le test est correct   */
     }
 }

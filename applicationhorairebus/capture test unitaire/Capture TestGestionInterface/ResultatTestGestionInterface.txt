@@ -251,5 +251,130 @@ TEST : mÃ©thode afficherAideAdministrateur (test visuel)
       associer des horaires Ã  une desserte prÃ©cise, il saisira le nom du fichier
       texte contenant les horaires.
 
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode reponseValide (test automatique)
+-----------------------------------------------
+========> Etape 1/2 - Tests avec des valeurs correctes
+
+5 test(s) ont rÃ©ussi sur un total de 5 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+
+========> Etape 2/2 - Tests avec des valeurs incorrectes
+
+15 test(s) ont rÃ©ussi sur un total de 15 tests rÃ©alisÃ©s.
+   ==>  Tous les tests sont OK
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode saisirOptionMenuAdministrateur (test interactif recommencÃ© 3 fois)
+--------------------------------------------------------------------------
+TEST NUMERO 1
+
+   => m - Modifier votre mot de passe
+   => + - Ajouter une nouvelle desserte
+   => s - Supprimer une desserte existante
+   => a - Associer des horaires de passage Ã  une desserte
+   => r - Retour en arriÃ¨re
+
+       ====> a
+
+
+
+POUR LE TEST NUMERO 1 C'EST L'OPTION a QUI A ETE CHOISIE.
+
+
+TEST NUMERO 2
+
+   => m - Modifier votre mot de passe
+   => + - Ajouter une nouvelle desserte
+   => s - Supprimer une desserte existante
+   => a - Associer des horaires de passage Ã  une desserte
+   => r - Retour en arriÃ¨re
+
+       ====> m
+
+
+
+POUR LE TEST NUMERO 2 C'EST L'OPTION m QUI A ETE CHOISIE.
+
+
+TEST NUMERO 3
+
+   => m - Modifier votre mot de passe
+   => + - Ajouter une nouvelle desserte
+   => s - Supprimer une desserte existante
+   => a - Associer des horaires de passage Ã  une desserte
+   => r - Retour en arriÃ¨re
+
+       ====> s
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode saisirMotDePasse (test visuel)
+---------------------------------------------
+Vous allez saisir 3 fois un mot et vÃ©rifier visuellement que la mÃ©thode effectue correctement la saisie.
+N'hÃ©sitez pas Ã  commettre des erreurs de saisie.
+
+Saisie numÃ©ro 1. Le mot de passe correct est iutbus0 :
+Iutbus0
+iutbus0
+
+Le mot de passe a Ã©tÃ© correctement saisi.
+
+Saisie numÃ©ro 2. Le mot de passe correct est iutbus1 :
+iutbus2
+iutbuserreur
+iutbuserreur
+iut
+iut
+
+Au bout de 5 tentatives le mot de passe n'a pas Ã©tÃ© saisi correctement
+
+Saisie numÃ©ro 3. Le mot de passe correct est iutbus2 :
+iutbus2
+
+Le mot de passe a Ã©tÃ© correctement saisi.
+
+-----------------------------------------------
+     TESTS DE LA CLASSE  GESTION INTERFACE
+-----------------------------------------------
+
+TEST : mÃ©thode saisirNomArret (test visuel)
+---------------------------------------------
+Vous allez saisir 5 fois un mot et vÃ©rifier visuellement que la mÃ©thode effectue correctement la saisie.
+N'hÃ©sitez pas Ã  commettre des erreurs de saisie.
+
+Saisie numÃ©ro 1. La saisi correcte est : Buanton
+Veuillez entrer un nom d'arrÃªt : b
+
+L'arrÃªt n'a pas Ã©tÃ© saisi correctement.
+
+Saisie numÃ©ro 2. La saisi correcte est : Vallon
+Veuillez entrer un nom d'arrÃªt : Vallon
+
+L'arrÃªt a Ã©tÃ© correctement saisi.
+
+Saisie numÃ©ro 3. La saisi correcte est : Centre de secours
+Veuillez entrer un nom d'arrÃªt : centre de secours
+
+L'arrÃªt n'a pas Ã©tÃ© saisi correctement.
+
+Saisie numÃ©ro 4. La saisi correcte est : Marechal Joffre
+Veuillez entrer un nom d'arrÃªt : Marechal Joffre
+
+L'arrÃªt a Ã©tÃ© correctement saisi.
+
+Saisie numÃ©ro 5. La saisi correcte est : Je suis effectivement tro
+Veuillez entrer un nom d'arrÃªt : Je suis effectivement tro
+
+L'arrÃªt a Ã©tÃ© correctement saisi.
 
 
