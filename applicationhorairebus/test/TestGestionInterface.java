@@ -6,8 +6,6 @@
 package applicationhorairebus.test;
 
 import applicationhorairebus.programme.GestionInterface;
-import applicationhorairebus.programme.OutilHoraire;
-
 import java.util.Scanner;
 
 
@@ -167,50 +165,11 @@ public class TestGestionInterface {
     /* *********************   méthodes de tests unitaires   ********************** */
     /*                            pour le menu voyageur                             */
      
-   public static void testAfficherMenuVoyageur() {        
-        // listes des options valides
-        final char[] OPTION_VALIDE = { 'c', 'a', 'm', 'i', '?', 'r'};
-        
-        // liste de réponses incorrectes que l'utilisateur pourrait donner
-        final String[] VALEUR_INCORRECTE = {"b",  "B", "h",  "H", "", "Ajouter", "A A",
-                                           " a", "help", "t+", "*" , "ee", " e", "e ",
-                                           " M"};
-        
-        // liste de toutes les réponses correctes
-        final String[] VALEUR_CORRECTE = {"c", "a", "m", "i","?", "r"};
-                
-        int nbTestCorrect;    // nombre de tests réussis
-        
-        System.out.println ("TEST : méthode reponseValide (test automatique)\n"
-                + "-----------------------------------------------");
-        
-        // Etape 1 : test avec des valeurs correctes
-        System.out.println("========> Etape 1/2 - Tests avec des valeurs correctes \n");
-        nbTestCorrect = 0;
-        for(int i = 0; i < VALEUR_CORRECTE.length; i++) {
-            if (! GestionInterface.reponseValide(VALEUR_CORRECTE[i], OPTION_VALIDE)) {
-                System.out.println("Erreur - L'option " + VALEUR_CORRECTE[i] 
-                                   + " a été considérée comme invalide.");
-            } else {
-                nbTestCorrect++;
-            }
-           
-        }
-        afficherResultatTest(VALEUR_CORRECTE.length, nbTestCorrect);
-                    
-        // Etape 2 : test avec des valeurs incorrectes
-        System.out.println("\n========> Etape 2/2 - Tests avec des valeurs incorrectes \n");
-        nbTestCorrect = 0;
-        for(int i = 0; i < VALEUR_INCORRECTE.length; i++) {
-            if ( GestionInterface.reponseValide(VALEUR_INCORRECTE[i], OPTION_VALIDE)) {
-                System.out.println("Erreur - L'option " + VALEUR_INCORRECTE[i] 
-                                   + " a été considérée comme valide.");
-            } else {
-                nbTestCorrect++;
-            }            
-        }
-        afficherResultatTest(VALEUR_INCORRECTE.length, nbTestCorrect);        
-        continuer();    
+    public static void testAfficherMenuVoyageur() {        
+        System.out.println ("TEST : méthode afficherMenuVoyageur (test visuel)\n"
+        + "-------------------------------------------------\n");
+        GestionInterface.afficherMenuVoyageur();
+        continuer();  
     }    
     
 
@@ -249,49 +208,10 @@ public class TestGestionInterface {
     /*                         pour le menu administrateur                          */
      
     public static void testAfficherMenuAdministrateur() {        
-        // listes des options valides
-        final char[] OPTION_VALIDE = { 'm', '+', 's', 'a','r'};
-        
-        // liste de réponses incorrectes que l'utilisateur pourrait donner
-        final String[] VALEUR_INCORRECTE = {"b",  "B", "h",  "H", "", "Ajouter", "A A",
-                                           " a", "help", "t+", "*" , "ee", " e", "e ",
-                                           " M"};
-        
-        // liste de toutes les réponses correctes
-        final String[] VALEUR_CORRECTE = {"m", "+", "s", "a", "r"};
-                
-        int nbTestCorrect;    // nombre de tests réussis
-        
-        System.out.println ("TEST : méthode reponseValide (test automatique)\n"
-                + "-----------------------------------------------");
-        
-        // Etape 1 : test avec des valeurs correctes
-        System.out.println("========> Etape 1/2 - Tests avec des valeurs correctes \n");
-        nbTestCorrect = 0;
-        for(int i = 0; i < VALEUR_CORRECTE.length; i++) {
-            if (! GestionInterface.reponseValide(VALEUR_CORRECTE[i], OPTION_VALIDE)) {
-                System.out.println("Erreur - L'option " + VALEUR_CORRECTE[i] 
-                                   + " a été considérée comme invalide.");
-            } else {
-                nbTestCorrect++;
-            }
-           
-        }
-        afficherResultatTest(VALEUR_CORRECTE.length, nbTestCorrect);
-                    
-        // Etape 2 : test avec des valeurs incorrectes
-        System.out.println("\n========> Etape 2/2 - Tests avec des valeurs incorrectes \n");
-        nbTestCorrect = 0;
-        for(int i = 0; i < VALEUR_INCORRECTE.length; i++) {
-            if ( GestionInterface.reponseValide(VALEUR_INCORRECTE[i], OPTION_VALIDE)) {
-                System.out.println("Erreur - L'option " + VALEUR_INCORRECTE[i] 
-                                   + " a été considérée comme valide.");
-            } else {
-                nbTestCorrect++;
-            }            
-        }
-        afficherResultatTest(VALEUR_INCORRECTE.length, nbTestCorrect);        
-        continuer();    
+        System.out.println ("TEST : méthode afficherMenuAdministrateur (test visuel)\n"
+                + "-------------------------------------------------\n");
+        GestionInterface.afficherMenuAdministrateur();
+        continuer();
     } 
     
     
@@ -409,8 +329,7 @@ public class TestGestionInterface {
         final String[] LIGNE_VALIDE = { "A", "B", "C", "D"}; 
                                             
         String ligne;
-        int compteur,
-            NB_TEST_LIGNE;
+        int NB_TEST_LIGNE;
 
         NB_TEST_LIGNE = LIGNE_VALIDE.length;
 
@@ -426,10 +345,8 @@ public class TestGestionInterface {
                                + ". La saisi correcte est : " + LIGNE_VALIDE[i]);
             ligne = GestionInterface.saisirNomLigne();
 
-            for (compteur = 0 ; compteur < LIGNE_VALIDE.length-1 && ! ligne.equals(LIGNE_VALIDE[compteur]); compteur++ );
-            // empty body
 
-            if (ligne.equals(LIGNE_VALIDE[compteur])) {
+            if (ligne.equals(LIGNE_VALIDE[i])) {
                 System.out.println("\nLa ligne a été correctement saisie.");
             } else {
                 System.out.println("\nLa ligne n'a pas été saisie correctement."); 
@@ -460,12 +377,11 @@ public class TestGestionInterface {
         //testSaisirOptionMenuVoyageur();
 
         //testAfficherAideAdministrateur();
-        // Prochaine capture à faire
-        /* testAfficherMenuAdministrateur(); à revoir, le code de cette methode est celui de reponse valide */
+        //testAfficherMenuAdministrateur(); 
         //testSaisirOptionMenuAdministrateur();
 
         //testSaisirMotDePasse(); 
         //testSaisirNomArret();
-        /* testSaisirNomLigne(); erreur si on saisi B alors qu'il demande A il considère que le test est correct   */
+        //testSaisirNomLigne(); 
     }
 }

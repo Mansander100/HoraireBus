@@ -290,7 +290,6 @@ public class GestionGrilleHoraire {
      *         false sinon
      */
     public static boolean tableauHoraireCorrect(String [] aVerifier) {
-        boolean resultat = false;
         int i;
 
         /* on s'arrête lorsqu'une heure n'est pas valide */

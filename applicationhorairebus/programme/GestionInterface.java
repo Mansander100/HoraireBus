@@ -233,7 +233,7 @@ public class GestionInterface {
      * Affiche l'aide en ligne 
      */
     public static void afficherAideVoyageur() {
-        System.out.println(TEXTE_AIDE_MENU_VOYAGEUR); // à compléter
+        System.out.println(TEXTE_AIDE_MENU_VOYAGEUR); 
     }
 
 
@@ -292,7 +292,7 @@ public class GestionInterface {
     
     public static void afficherMenuAdministrateur() {
         
-
+        System.out.println(TITRE_MENU_ADMINISTRATEUR); 
                     
         // on affiche toutes les options et les libellés
         for(int i = 0; i < OPTION_MENU_ADMINISTRATEUR.length; i++) {
