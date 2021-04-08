@@ -231,6 +231,9 @@ public class TestGestionDesserte {
                             + "sur le tableau EXEMPLE_DESSERTE\n"
                            + "-----------------------------------------------------"
                            + "----------------------------\n");
+
+        GestionDesserte.afficherDesserte(EXEMPLE_DESSERTE);
+        System.out.println("\n");
         System.out.println("Desserte d'indice 4 : ");
         GestionDesserte.afficherDessertePrecise(EXEMPLE_DESSERTE, 4);
         
@@ -459,9 +462,12 @@ public class TestGestionDesserte {
       
     
     public static void main(String[] args) {
-        System.out.println("TESTS DES METHODES DE LA CLASSE GESTION DESSERTE\n\n");
+
+        System.out.println("------------------------------------------------------------------------\n"
+                         + "         TESTS DES METHODES DE LA CLASSE GESTION DESSERTE             \n"
+                         + "------------------------------------------------------------------------\n");
         
-        // testAfficherDesserte();
+        //testAfficherDesserte();
         testAfficherDessertePrecise();
         // testSaisirDesserte();   
         // testDessertValide();     

@@ -121,7 +121,7 @@ public class TestOutilHoraire {
                            + "------------------------------------------\n"
                            + "Vous allez saisir " + QUANTITE + " entiers supposés"
                            + " être dans l'intervalle 0 - 59\n"
-                           + "Vous devez vérfier visuellement que la méthode "
+                           + "Vous devez vérifier visuellement que la méthode "
                            + " gère correctement les cas d'erreur\n"
                            + "N'hésitez pas à commettre des erreurs de saisie.");
         
@@ -353,16 +353,23 @@ public class TestOutilHoraire {
                            + "     TESTS DE LA CLASSE  OUTIL HORAIRE \n"
                            + "-----------------------------------------------\n");
         //testSaisirEntierIntervalle();
+
         //testSaisirHoraire();
+
         //testSaisir2HorairesOrdonnes();
+
         //testEstChiffre();
         //continuer();
+
         //testEstValide(); 
         //continuer();
+
         //testConvertirEnChaine(); 
         //continuer();
+
         //testConvertirEnEntier();  
         //continuer();
+
         //testHeureCourante();
     }
 

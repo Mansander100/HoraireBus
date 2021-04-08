@@ -100,17 +100,27 @@ public class GestionDesserte {
      */
     public static void afficherDesserte(String[][] table) {
        
-        int compteur;
-        compteur = 0; // intialisation du compteur
-        for (int i = 0; i < table[0].length; i++) {
-            if (!table[0][i].equals(null)) {
-                System.out.print("\n" + table[0][i] + " " + table[1][i]);
-                compteur++;
-            } 
-        }
-        if (compteur == 0) {
-            System.out.print("Aucune desserte n est geree actuellement par "
-                             + "l application");
+//        int compteur;
+  //      compteur = 0; // intialisation du compteur
+    //    for (int i = 0; i < table[0].length; i++) {
+      //      if (!table[0][i].equals(null)) {
+        //        System.out.print("\n" + table[0][i] + " " + table[1][i]);
+          //      compteur++;
+            //} 
+        //}
+        //if (compteur == 0) {
+        //    System.out.print("Aucune desserte n est geree actuellement par "
+        //                     + "l application");
+        //}
+        for (int desserte = 0 ; desserte < 10 ; desserte++) {
+            if (!null.equals(table[0][desserte])) {
+                System.out.printf(" %25s %s \n",table[0][desserte],table[1][desserte]);
+                
+            } else {
+                System.out.print("                           \n");
+            }
+            
+            
         }
         
     }
@@ -134,7 +144,7 @@ public class GestionDesserte {
         if (compteur != table[0].length && table[0][compteur] != null) {
             System.out.print(table[0][compteur] + " " + table[1][compteur]);
         } else { 
-            System.out.print("La desserte n'existe pas.");
+            System.out.print("La desserte n'existe pas.\n");
         }
     }
     

@@ -543,15 +543,15 @@ public class TestGestionGrilleHoraire {
     
     
     public static void main(String[] args) {        
- //       testAfficherHoraireDesserte();
-        testAfficherGrille();
- //         testTableauHorairesDessertePlein();
- //         testAjouterHoraire();
-  //        testSupprimerHoraire(); 
-//        testRechercheProchainPassage();
-//        testRechercheHoraire();
-//        testTableauHoraireCorrecte();
-//        testConvertirTableauHoraire();
+        //testAfficherHoraireDesserte();
+        //testAfficherGrille();
+        //testTableauHorairesDessertePlein();
+        //testAjouterHoraire();
+        //testSupprimerHoraire(); 
+        //testRechercheProchainPassage();
+        //testRechercheHoraire();
+        //testTableauHoraireCorrecte();
+        //testConvertirTableauHoraire();
     }
     
 

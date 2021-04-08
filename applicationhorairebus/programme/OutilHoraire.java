@@ -112,7 +112,7 @@ public class OutilHoraire {
 
             // verification horaires valides
             if (lesHoraires[0] > lesHoraires[1]) {
-                System.out.print("Erreur les horaires ne sont pas valides."
+                System.out.println("Erreur les horaires ne sont pas valides."
                                  + " La 1ere horaire doit être inférieure ou égale à la 2eme horaire.");
                             
             }
