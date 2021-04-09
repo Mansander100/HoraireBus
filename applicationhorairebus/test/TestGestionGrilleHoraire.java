@@ -292,7 +292,7 @@ public class TestGestionGrilleHoraire {
         
         System.out.println ("TEST : méthode afficherGrille (test visuel)\n "                
                 + "---------------------------------------------------\n");           
-        GestionGrilleHoraire.afficherGrille(TABLEAU_PLEIN);
+        GestionGrilleHoraire.afficherGrille(HORAIRE_TEST);
     }
 
     /**
@@ -311,9 +311,9 @@ public class TestGestionGrilleHoraire {
         System.out.println ("TEST : méthode tableauHorairesDessertePlein (test visuel)\n "                
                 + "---------------------------------------------------\n");           
 
-        GestionGrilleHoraire.afficherGrille(TABLEAU_PLEIN); 
+        GestionGrilleHoraire.afficherGrille(HORAIRE_EXEMPLE); 
 
-        if (GestionGrilleHoraire.tableauHorairesDessertePlein(TABLEAU_PLEIN)) {
+        if (GestionGrilleHoraire.tableauHorairesDessertePlein(HORAIRE_EXEMPLE)) {
             System.out.print("\n La grille est pleine  \n");
         } else {
             System.out.print("\n La grille n'est pas pleine \n");
@@ -551,7 +551,7 @@ public class TestGestionGrilleHoraire {
         //testRechercheProchainPassage();
         //testRechercheHoraire();
         //testTableauHoraireCorrecte();
-        //testConvertirTableauHoraire();
+        testConvertirTableauHoraire();
     }
     
 
