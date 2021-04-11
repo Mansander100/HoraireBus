@@ -5,7 +5,6 @@
 package applicationhorairebus.programme;
 
 
-
 /**
  * Classe permettant de gérer la grille des horaires de bus. Les horaires de passage
  * des bus sont stockés en minutes. 
