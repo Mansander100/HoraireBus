@@ -549,9 +549,9 @@ public class TestGestionGrilleHoraire {
         //testAjouterHoraire();
         //testSupprimerHoraire(); 
         //testRechercheProchainPassage();
-        //testRechercheHoraire();
+        testRechercheHoraire();
         //testTableauHoraireCorrecte();
-        testConvertirTableauHoraire();
+        //testConvertirTableauHoraire();
     }
     
 

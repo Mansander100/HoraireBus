@@ -5,8 +5,6 @@
  */
 package applicationhorairebus.programme;
 
-import java.util.Objects;
-
 
 /**
  * Classe permettant de gérer les arrêts de bus, ainsi que les noms des lignes de bus
@@ -37,20 +35,21 @@ public class GestionDesserte {
     
    public static String lireArret() {
 
-        String arretLue;
+        String arretLu = "";
         int compteur = 0;
 
+
         do {
-            arretLue = OutilSaisie.lireChaineNonVide("Entrez le nom de l'arret : ");
+            arretLu = OutilSaisie.lireChaineNonVide("Entrez le nom de l'arret : ");
+
             for (int i = 0; i < ARRET.length; i++) {
-                if (arretLue.equals(ARRET[i])) {
+                if (arretLu.equals(ARRET[i])) {
                     compteur++;
                 } 
             }
-
         } while (compteur == 0);
 
-        return arretLue;
+        return arretLu;
    }
 
 
@@ -58,17 +57,13 @@ public class GestionDesserte {
 
     String ligneLue = "";
     char convertir = 0;
-    int compteur = 0;
+    int i; // indice du tableau parcouru
+
     do {
         convertir = OutilSaisie.lireMajuscule("Entrez la lettre de la ligne : ");
         ligneLue = String.valueOf(convertir); 
 
-        for (int i = 0; i < LIGNE.length; i++) {
-            if (ligneLue.equals(LIGNE[i])) {
-                compteur++;
-            } 
-        }
-    } while (compteur == 0);
+    } while (ligneLue.equals(""));
 
     return ligneLue;
 }
@@ -103,16 +98,13 @@ public class GestionDesserte {
        
 
         for (int desserte = 0 ; desserte < 10 ; desserte++) {
-            if (Objects.nonNull(table[0][desserte])) {
+            if ((table[0][desserte]) != null) {
                 System.out.printf(" %25s %s \n",table[0][desserte],table[1][desserte]);
                 
             } else {
                 System.out.print("                           \n");
             }
-            
-            
-        }
-        
+        } 
     }
 
 
@@ -134,7 +126,7 @@ public class GestionDesserte {
         if (compteur != table[0].length && table[0][compteur] != null) {
             System.out.print(table[0][compteur] + " " + table[1][compteur]);
         } else { 
-            System.out.print("La desserte n'existe pas.\n");
+            System.out.print("La desserte n'existe pas.");
         }
     }
     
@@ -179,7 +171,6 @@ public class GestionDesserte {
         } else{
             return false;
         }
-        
     }
     
     
@@ -195,12 +186,26 @@ public class GestionDesserte {
     public static int ajouterDesserte(String[][] table, 
                                       String arret, String ligne) {
         int indiceAjout;        // indice de l'ajout de la desserte
-        int compteur; // nombre d'itérations
+        int compteur, // nombre d'itérations
+            i;        // indice de parcous du tableau
         indiceAjout = -1;
+        boolean estEgal = false;
         
         if (desserteValide(arret, ligne)) {
+
+            /* vérification que la desserte entrée n'existe pas déjà */
+            for (i = 0; i < table[0].length; i++) {
+                if (arret.equals(table[0][i]) && ligne.equals(table[1][i])) {
+                    estEgal = true;
+                }
+            }
+
+            /* vérification d'une desserte nulle */
             for (compteur = 0; compteur < table[0].length && table[0][compteur] != null; compteur++); // corps vide
-            if (compteur != table[0].length) {
+            
+            
+            /* s'il y a de la place dans le tableau et que la desserte n'existe déjà pas, on l'ajoute */
+            if (compteur != table[0].length && !estEgal) {
                 table[0][compteur] = arret;
                 table[1][compteur] = ligne;
                 indiceAjout = compteur;
@@ -238,7 +243,4 @@ public class GestionDesserte {
         }
         return indiceSuppression;
     }
-    
-   
-   
 }

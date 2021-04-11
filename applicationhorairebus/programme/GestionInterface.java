@@ -169,7 +169,7 @@ public class GestionInterface {
     private static final String[] LIBELLE_MENU_VOYAGEUR = {
             "Consulter toutes les dessertes possibles",
             "Afficher les bus accessibles 30min après une horaire donnée",
-            "Bus accessibles dans le demi-heure",
+            "Bus accessibles dans la demi-heure",
             "Afficher les bus accessibles selon un intervalle donnée",
             "Consultation de l'aide",
             "Retour en arrière"};

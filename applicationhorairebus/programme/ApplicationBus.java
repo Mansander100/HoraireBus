@@ -4,7 +4,8 @@
  */
 package applicationhorairebus.programme;
 
-
+import applicationhorairebus.test.TestGestionDesserte;
+import applicationhorairebus.programme.GestionDesserte;
 
 /**
  * Cette classe contiendra la fonction main permettant de lancer l’application 
@@ -25,16 +26,19 @@ public class ApplicationBus {
      */
     public static void main (String[] args) {
 
+        boolean nonRepeter = false;
+
+        //OutilFichier.enregistrerDesserte(TestGestionDesserte.EXEMPLE_DESSERTE);
 
         String[][] desserte_initiale = OutilFichier.restaurerDesserte();
         int[][] horaire = OutilFichier.restaurerHoraireBus();
 
         String[] desserte;
 
-        switch (GestionInterface.saisirOptionMenuPrincipal()) {
-            case 'v' -> { GestionInterface.afficherMenuVoyageur();
-                            switch (GestionInterface.saisirOptionMenuVoyageur()) {
-                                case 'c' -> {}
+        do {
+            switch (GestionInterface.saisirOptionMenuPrincipal()) {
+                case 'v' -> { switch (GestionInterface.saisirOptionMenuVoyageur()) {
+                                case 'c' -> GestionDesserte.afficherDesserte(desserte_initiale);
 
                                 case 'a' -> {}
 
@@ -42,39 +46,50 @@ public class ApplicationBus {
 
                                 case 'i' -> {}
 
-                                case '?' -> {GestionInterface.afficherAideVoyageur();}
+                                case '?' -> {GestionInterface.afficherAideVoyageur();
+                                            /* quitte l'appli */
+                                            nonRepeter = true;
+                                            }
 
-                                case 'r' -> {GestionInterface.afficherMenuPrincipal();}
-                                    
-                            } 
-                        }
-
-            case 'a' -> { GestionInterface.afficherAideAdministrateur();
-                            GestionInterface.afficherMenuAdministrateur();
-                            switch (GestionInterface.saisirOptionMenuAdministrateur()) {
-                                case 'm' -> {}
-
-                                case '+' -> {desserte = GestionDesserte.saisirDesserte(); GestionDesserte.ajouterDesserte(desserte_initiale , desserte[0], desserte[1]);
-                                            for (int i = 0; i < desserte_initiale [0].length; i++) {
-                                                System.out.print(desserte_initiale[0][i] + " " + desserte_initiale[1][i]);
-                                            }                
-                                }
-                                
-                                case 's' -> {}
-
-                                case 'a' -> {}
-
-                                case 'r' -> {GestionInterface.afficherMenuPrincipal();}
-                                    
+                                case 'r' -> {}
+                                        
+                                } 
                             }
-                        }
-                
-            case '?' -> GestionInterface.afficherAidePrincipal();
-                
-            case 'q' -> System.exit(0);
-                
-        }
 
+                case 'a' -> { switch (GestionInterface.saisirOptionMenuAdministrateur()) {
+                                case 'm' -> {System.out.println("Fonction non disponible dans la version 1.0");} 
+                                            // TODO modifier le mdp
+
+
+                                case '+' -> {desserte = GestionDesserte.saisirDesserte(); 
+                                             GestionDesserte.ajouterDesserte(desserte_initiale, 
+                                                                            desserte[0], 
+                                                                            desserte[1]);
+                                             GestionDesserte.afficherDesserte(desserte_initiale);
+                                             OutilFichier.enregistrerDesserte(desserte_initiale);              
+                                            }
+                                    
+                                case 's' -> {desserte = GestionDesserte.saisirDesserte(); 
+                                             GestionDesserte.supprimerDesserte(desserte_initiale, 
+                                                                    desserte[0], 
+                                                                    desserte[1]);
+                                             GestionDesserte.afficherDesserte(desserte_initiale);
+                                             OutilFichier.enregistrerDesserte(desserte_initiale);
+                                            }
+
+                                case 'a' -> {System.out.println("Fonction non disponible dans la version 1.0");} 
+                                            // TODO associer horaire à une desserte
+
+                                case 'r' -> {}
+                                }
+                            }
+                    
+                case '?' -> GestionInterface.afficherAidePrincipal();
+                    
+                case 'q' -> System.exit(0);
+                    
+            }
+        } while (nonRepeter == false);
 
     }
 }

@@ -157,7 +157,7 @@ public class GestionGrilleHoraire {
         int colonne,
             ligne; 
         // si le tableau n'est pas plein 
-        if( !tableauHorairesDessertePlein( grille ) ) { 
+        if (!tableauHorairesDessertePlein(grille)) { 
 
             /* donne l'indice de la colonne */
             for ( colonne = 0,ligne = 0 ; grille[ligne][colonne] > -1; colonne++);

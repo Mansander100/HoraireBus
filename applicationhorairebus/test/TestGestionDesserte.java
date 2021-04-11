@@ -84,7 +84,7 @@ public class TestGestionDesserte {
      * Ensemble des dessertes données en exemple dans le cahier des 
      * charges
      */
-    private static final String[][] EXEMPLE_DESSERTE = 
+    public static final String[][] EXEMPLE_DESSERTE = 
         { {"Buanton", "Vallon", "Centre de secours", "Marechal Joffre",
         "Marechal Joffre", null, null, null, null, null},
         {"A", "C", "C", "D", "F", null, null, null, null, null} };
@@ -468,11 +468,11 @@ public class TestGestionDesserte {
                          + "------------------------------------------------------------------------\n");
         
         //testAfficherDesserte();
-        testAfficherDessertePrecise();
+        //testAfficherDessertePrecise();
         // testSaisirDesserte();   
         // testDessertValide();     
         // testRechercherDesserte();
-        // testAjouterDesserte();
+         testAjouterDesserte();
         // testSupprimerDesserte();
     }
 
