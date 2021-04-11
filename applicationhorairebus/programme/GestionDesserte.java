@@ -5,7 +5,8 @@
  */
 package applicationhorairebus.programme;
 
-import  applicationhorairebus.programme.OutilSaisie;
+import java.util.Objects;
+
 
 /**
  * Classe permettant de gérer les arrêts de bus, ainsi que les noms des lignes de bus
@@ -100,20 +101,9 @@ public class GestionDesserte {
      */
     public static void afficherDesserte(String[][] table) {
        
-//        int compteur;
-  //      compteur = 0; // intialisation du compteur
-    //    for (int i = 0; i < table[0].length; i++) {
-      //      if (!table[0][i].equals(null)) {
-        //        System.out.print("\n" + table[0][i] + " " + table[1][i]);
-          //      compteur++;
-            //} 
-        //}
-        //if (compteur == 0) {
-        //    System.out.print("Aucune desserte n est geree actuellement par "
-        //                     + "l application");
-        //}
+
         for (int desserte = 0 ; desserte < 10 ; desserte++) {
-            if (!null.equals(table[0][desserte])) {
+            if (Objects.nonNull(table[0][desserte])) {
                 System.out.printf(" %25s %s \n",table[0][desserte],table[1][desserte]);
                 
             } else {

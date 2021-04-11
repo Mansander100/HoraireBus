@@ -4,12 +4,7 @@
  */
 package applicationhorairebus.programme;
 
-import  applicationhorairebus.programme.OutilFichier;
-import applicationhorairebus.test.TestGestionGrilleHoraire;
-import applicationhorairebus.programme.GestionGrilleHoraire;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Cette classe contiendra la fonction main permettant de lancer l’application 
@@ -64,7 +59,7 @@ public class ApplicationBus {
                                                 System.out.print(desserte_initiale[0][i] + " " + desserte_initiale[1][i]);
                                             }                
                                 }
-
+                                
                                 case 's' -> {}
 
                                 case 'a' -> {}
