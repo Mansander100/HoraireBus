@@ -51,10 +51,10 @@ public class GestionInterface {
      * Liste des libellés associés à chacune des options du menu principal
      */
     private static final String[] LIBELLE_MENU_PRINCIPAL = {
-                "afficher menu voyageur",
-                "afficher menu administrateur",
-                "obtenir de l'aide sur l'application",
-                "quitter l'application"};
+                "Afficher menu voyageur",
+                "Afficher menu administrateur",
+                "Obtenir de l'aide sur l'application",
+                "Quitter l'application"};
     
     /** Texte affiché pour l'aide en ligne */
     public static final String TEXTE_AIDE_MENU_PRINCIPAL = 
@@ -173,8 +173,8 @@ public class GestionInterface {
             + "|                             AIDE EN LIGNE                              |\n"
             + "--------------------------------------------------------------------------\n\n"
             + " Bienvenue sur l'aide en ligne du menu voyageur. Voici les fonctionnalites\n"
-            + "   -> consulter toutes les dessertes possibles                            \n\n"
-            + "   -> rechercher des horaires de passage des bus (3 manieres) :           \n\n"
+            + "   -> Consulter toutes les dessertes possibles                            \n\n"
+            + "   -> Rechercher des horaires de passage des bus (3 manieres) :           \n\n"
             + "         Saisir un horaire, et l'application affichera tous les bus       \n"
             + "         accessibles dans les 30 minutes qui suivent cet horaire.         \n\n"
             + "         Ne saisir aucun horaire, et la recherche                         \n"
