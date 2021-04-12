@@ -4,8 +4,8 @@
  */
 package applicationhorairebus.programme;
 
-import applicationhorairebus.test.TestGestionGrilleHoraire;
-import applicationhorairebus.test.TestGestionDesserte;
+//import applicationhorairebus.test.TestGestionGrilleHoraire;
+//import applicationhorairebus.test.TestGestionDesserte;
 
 
 /**
@@ -28,8 +28,8 @@ public class ApplicationBus {
     public static void main (String[] args) {
 
         /* permet de créer les fichiers.bin au tout premier démarrage */
-        OutilFichier.enregistrerDesserte(TestGestionDesserte.EXEMPLE_DESSERTE);
-        OutilFichier.enregistrerHoraireBus(TestGestionGrilleHoraire.preparerGrilleExemple());
+        //OutilFichier.enregistrerDesserte(TestGestionDesserte.EXEMPLE_DESSERTE);
+        //OutilFichier.enregistrerHoraireBus(TestGestionGrilleHoraire.preparerGrilleExemple());
 
         boolean quitter = false;    // permet de quitter l'appli en appuyant sur 'q' uniquement
 
