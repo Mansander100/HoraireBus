@@ -188,7 +188,7 @@ public class OutilHoraire {
      */
     public static String convertir(int horaire) {
         /* constante égale à la chaîne renvoyée en cas d'erreur de format */
-        final String RESULTAT_ERREUR = "";
+        final String RESULTAT_ERREUR = "-1";
         
         /* résultat de la conversion qui sera renvoyé */
         String resultatConvertir;

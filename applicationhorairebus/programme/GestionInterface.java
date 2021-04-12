@@ -45,7 +45,7 @@ public class GestionInterface {
     /**
      * Liste des options possibles pour le menu principal
      */
-    private static final char[] OPTION_MENU_PRINCIPAL = { 'v', 'a', '?', 'q'};   
+    private static final char[] OPTION_MENU_PRINCIPAL = { 'v', 'a', '?', 'c', 'q'};   
     
     /**
      * Liste des libellés associés à chacune des options du menu principal
@@ -54,6 +54,7 @@ public class GestionInterface {
                 "Afficher menu voyageur",
                 "Afficher menu administrateur",
                 "Obtenir de l'aide sur l'application",
+                "Credits",
                 "Quitter l'application"};
     
     /** Texte affiché pour l'aide en ligne */
@@ -65,7 +66,30 @@ public class GestionInterface {
         + "   -> Acceder aux fonctionnalites du mode voyageur                         \n\n"
         + "   -> Acceder aux fonctionnalites du mode administrateur                   \n\n"
         + "   -> Afficher l'aide en ligne (vous y etes deja)                          \n\n"
+        + "   -> Afficher les credits                                                 \n\n"
         + "   -> Quitter le programme                                                 \n\n";
+
+
+        
+    /** Texte affiché pour les crédits */
+    public static final String TEXTE_CREDITS = 
+    "---------------------------------------------------------------------------\n"
+    + "|                             CREDITS                                     |\n"
+    + "---------------------------------------------------------------------------\n\n"
+    + " Application realisee par Lucas Serieys, Mehdi Sahari, Valentin Simon et   \n\n"
+    + " Clement Pauline dans le cadre de notre apprentissage en 1ere annee        \n\n"
+    + " d'informatique a l'IUT de Rodez.                                          \n\n"
+    + "                                                                           \n\n"
+    + " Sous la tutelle de Mme Servières, afin d'apprendre la programmation OO    \n\n"
+    + " INFO1 2020-2021 IUT Rodez.                                                 \n\n";
+
+
+    /**
+     * Affiche les credits de l'application
+     */
+    public static void afficherCredits() {
+        System.out.println(TEXTE_CREDITS);
+    }
     
     
     /* **************************************************************************** */

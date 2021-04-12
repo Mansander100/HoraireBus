@@ -136,6 +136,9 @@ public class ApplicationBus {
                 
                 /* afficher aide principal */
                 case '?' -> GestionInterface.afficherAidePrincipal();
+
+                /* afficher les credits */
+                case 'c' -> GestionInterface.afficherCredits();
                     
                 /* quitter l'application */
                 case 'q' -> quitter = true;
