@@ -4,8 +4,6 @@
  */
 package applicationhorairebus.programme;
 
-import applicationhorairebus.programme.OutilSaisie;
-
 import java.util.Scanner;
 
 /**
@@ -18,21 +16,17 @@ import java.util.Scanner;
  *    - saisie du nom d'un arrêt
  *    - saisie d'une ligne de bus
  *    
- * @author INFO1 Semestre 2
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  *
  */
 public class GestionInterface {
     
-    /**
-     * Objet Scanner pour les saisies au clavier
-     */
+    /** Objet Scanner pour les saisies au clavier */
     private static Scanner entree = new Scanner(System.in);
  
     
-    /**
-     * Nombre maximum de caractères pour le nom d'un arrêt
-     */
+    /** Nombre maximum de caractères pour le nom d'un arrêt */
     private static final int LG_MAX_ARRET = 25;
         
     
@@ -51,8 +45,7 @@ public class GestionInterface {
     /**
      * Liste des options possibles pour le menu principal
      */
-    private static final char[] OPTION_MENU_PRINCIPAL = { 'v', 'a', '?', 'q'};  
-    private static final char[] OPTION_AIDE_PRINCIPAL = { 'c', 'a', '?', 'q'};  
+    private static final char[] OPTION_MENU_PRINCIPAL = { 'v', 'a', '?', 'q'};   
     
     /**
      * Liste des libellés associés à chacune des options du menu principal
@@ -115,7 +108,7 @@ public class GestionInterface {
         return reponse.charAt(0);
     }
 
-        /**
+    /**
      * Affiche le menu principal pour l'utilisateur et saisit son choix.
      * L'action est répétée jusqu'à obtenir un choix valide
      * @return un caractère contenant le choix de l'utilisateur
@@ -388,6 +381,7 @@ public class GestionInterface {
         String mdpSaisie = "";
 
         for (int i = 0; i < NB_VERIF && saisieOk == false; i++){
+            System.out.print("Saisir le mot de passe administrateur : ");
             mdpSaisie = entree.nextLine();
             if (mdpSaisie.equals(motDePasseCorrect)) {
                 saisieOk =  true; 
@@ -415,9 +409,9 @@ public class GestionInterface {
         nomArret = OutilSaisie.lireChaineNonVide("Veuillez entrer un nom d'arrêt : "); 
         if (nomArret.length() > LG_MAX_ARRET) {     // algo de tronquage
             nomArret = nomArret.substring(0,25); 
-            System.out.print("Votre nom d'arret à été tronqué ! " + nomArret);
+            System.out.println("Votre nom d'arret à été tronqué ! " + nomArret);
         }
-        return nomArret;
+        return nomArret.trim();
     }
 
     

@@ -39,7 +39,7 @@ package applicationhorairebus.programme;
  *       d'un tableau d'entier.
  *
  * 
- * @author Serieys, Simon
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  *
  */
@@ -100,10 +100,12 @@ public class GestionGrilleHoraire {
      */
     public static void afficherGrille(int[][] grille) {
 
-
+        /* parcourt la grille */
         for (int ligne = 0 ; ligne < grille.length ; ligne++) {
-            for ( int colonne = 0 ; colonne < 10 ; colonne++ ) {
-                if ( grille[ligne][colonne] > -1 ) {
+            /* parcourt la colonne */
+            for (int colonne = 0; colonne < grille[0].length ; colonne++) {
+                /* s'il trouve des -1, affiche chaines vides */
+                if (grille[ligne][colonne] > -1) {
                     System.out.print("  " + OutilHoraire.convertir(grille[ligne][colonne]) + "  ");
                 } else {
                     System.out.print("  " + "     " + "  ");
@@ -151,8 +153,10 @@ public class GestionGrilleHoraire {
     public static boolean tableauHorairesDessertePlein(int[][] grille) {
     
         int i; 
-        for (i=0; i < 10 && colonneSignificative(grille,i);i++ ); // corps vide
-        return i == 10;  
+
+        /* s'arrete quand une colonne n'est pas significative */
+        for (i=0; i < grille[0].length && colonneSignificative(grille,i);i++ ); // corps vide
+        return i == grille[0].length;  
     
     }
     
@@ -175,7 +179,7 @@ public class GestionGrilleHoraire {
         if (!tableauHorairesDessertePlein(grille)) { 
 
             /* donne l'indice de la colonne */
-            for ( colonne = 0,ligne = 0 ; grille[ligne][colonne] > -1; colonne++);
+            for (colonne = 0,ligne = 0 ; grille[ligne][colonne] > -1; colonne++);
 
             /* affecte les valeurs du tableau en argument à la grille */
             for (ligne = 0; ligne < horaire.length; ligne++) {
@@ -183,7 +187,6 @@ public class GestionGrilleHoraire {
             }
  
             System.out.printf("La desserte a ete ajoutee a la colonne %d \n",colonne);
-            // Affiche la grille après ajout 
             return true;
         } else {
             System.out.print("La desserte n'a pas ete ajoutee le tableau est deja plein  \n");
@@ -210,8 +213,8 @@ public class GestionGrilleHoraire {
          * Si la colonne est la dernier (9) ou si la colonne 
          * qui suit celle en argument alors inutile de faire un decalage
          */
-        if (   colonne == 9 || !colonneSignificative(grille,colonne+1)) {
-            for ( int ligne = 0 ; ligne < grille.length ; ligne++) {
+        if (colonne == grille[0].length-1 || !colonneSignificative(grille,colonne+1)) {
+            for (int ligne = 0 ; ligne < grille.length ; ligne++) {
                 grille[ligne][colonne]= -1;
             } 
             System.out.printf("\nLa colonne %d a bien etre supprimee \n"
@@ -220,7 +223,7 @@ public class GestionGrilleHoraire {
 
         } else { // Cas où un décalage est nécéssaire 
             /* permet de passer à la colonne suivante  */
-            for (int n = 0; colonne + n < 9; n++) {
+            for (int n = 0; colonne + n < grille[0].length-1; n++) {
                 /* affecte à la colonne la colonne suivante  */
                 for ( int ligne = 0 ; ligne < grille.length ; ligne++) {
                     grille[ligne][colonne + n] = grille[ligne][colonne + n + 1];
@@ -258,10 +261,11 @@ public class GestionGrilleHoraire {
         int indiceProchainPassage = -1;
 
         /* on parcourt la |colonne| à la recherche de horaireGrille > |horaire| */
-        for(ligne = 0; ligne < grille.length 
-                       && grille[ligne][colonne] <= horaire 
-                       && grille[ligne][colonne] > -1; 
-                            ligne++) {
+        for(ligne = 0; 
+             ligne < grille.length 
+                    && grille[ligne][colonne] <= horaire 
+                    && grille[ligne][colonne] > -1; 
+            ligne++) {
 
             indiceProchainPassage = ligne+1;
         } 
@@ -308,8 +312,9 @@ public class GestionGrilleHoraire {
         int i;
 
         /* on s'arrête lorsqu'une heure n'est pas valide */
-        for(i = 0; i < aVerifier.length && OutilHoraire.estValide(aVerifier[i]); i++); // empty body
+        for(i = 0; i < aVerifier.length && OutilHoraire.estValide(aVerifier[i]); i++); // corps vide
 
+        /* si on ne trouve pas une horaire non valide */
         if (i == aVerifier.length) {
             return true;
         } else { 
@@ -330,6 +335,7 @@ public class GestionGrilleHoraire {
 
         int[] tableConvertie = new int[aConvertir.length];
 
+        /* permet de convertir le tableau */
         if(tableauHoraireCorrect(aConvertir)) {
             for(int i = 0; i < aConvertir.length; i++) {
                 tableConvertie[i] = OutilHoraire.convertir(aConvertir[i]);

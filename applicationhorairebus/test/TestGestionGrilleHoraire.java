@@ -32,9 +32,7 @@ import applicationhorairebus.programme.GestionGrilleHoraire;
  *    tableauHoraireCorrect
  *    convertirTableauHoraire
  *    
- * 
- * 
- * @author Serieys, Simon
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  *
  */
@@ -414,7 +412,7 @@ public class TestGestionGrilleHoraire {
                                + borneInf
                                + ";" + borneSup + "[ de la colonne " + i + " est : ");
             
-            GestionGrilleHoraire.afficherTableau(GestionGrilleHoraire.rechercherHoraire(HORAIRE_EXEMPLE, i, borneInf, borneSup));
+            GestionGrilleHoraire.afficherTableauConverti(GestionGrilleHoraire.rechercherHoraire(HORAIRE_EXEMPLE, i, borneInf, borneSup));
             continuer();
         }     
     }
@@ -538,15 +536,15 @@ public class TestGestionGrilleHoraire {
     
     
     public static void main(String[] args) {        
-        //testAfficherHoraireDesserte();
-        //testAfficherGrille();
-        //testTableauHorairesDessertePlein();
-        //testAjouterHoraire();
-        //testSupprimerHoraire(); 
+        testAfficherHoraireDesserte();
+        testAfficherGrille();
+        testTableauHorairesDessertePlein();
+        testAjouterHoraire();
+        testSupprimerHoraire(); 
         testRechercheProchainPassage();
-        //testRechercheHoraire();
-        //testTableauHoraireCorrecte();
-        //testConvertirTableauHoraire();
+        testRechercheHoraire();
+        testTableauHoraireCorrecte();
+        testConvertirTableauHoraire();
     }
     
 

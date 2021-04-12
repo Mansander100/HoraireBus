@@ -16,7 +16,7 @@ import java.util.Scanner;
  *    - saisie du mot de passe
  *    - saisie du nom d'un arrêt de bus
  *    - saisie du nom d'une ligne de bus
- * @author INFO1 Semestre 2
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  *
  */
@@ -367,21 +367,21 @@ public class TestGestionInterface {
         
         
         
-        //testAfficherAidePrincipal();
-        //testAfficherMenuPrincipal();
-        //testReponseValide();
-        //testSaisirOptionMenuPrincipal();
+        testAfficherAidePrincipal();
+        testAfficherMenuPrincipal();
+        testReponseValide();
+        testSaisirOptionMenuPrincipal();
 
-        //testAfficherAideVoyageur();
-        //testAfficherMenuVoyageur();
-        //testSaisirOptionMenuVoyageur();
+        testAfficherAideVoyageur();
+        testAfficherMenuVoyageur();
+        testSaisirOptionMenuVoyageur();
 
-        //testAfficherAideAdministrateur();
-        //testAfficherMenuAdministrateur(); 
-        //testSaisirOptionMenuAdministrateur();
+        testAfficherAideAdministrateur();
+        testAfficherMenuAdministrateur(); 
+        testSaisirOptionMenuAdministrateur();
 
-        //testSaisirMotDePasse(); 
-        //testSaisirNomArret();
-        //testSaisirNomLigne(); 
+        testSaisirMotDePasse(); 
+        testSaisirNomArret();
+        testSaisirNomLigne(); 
     }
 }

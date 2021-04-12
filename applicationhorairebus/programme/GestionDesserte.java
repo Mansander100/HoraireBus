@@ -17,7 +17,7 @@ package applicationhorairebus.programme;
  *     - sur la ligne 0, on trouve les noms des arrêts
  *     - sur la ligne 1, on trouve les identifiants des lignes de bus
  * 
- * @author INFO1
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  *
  */
@@ -26,44 +26,47 @@ public class GestionDesserte {
     /** Nombre maximum de dessertes gérées par les méthodes */
     private static final int NB_MAX_DESSERTE = 10;
 
-
+    /** exemple d'arrets valides */
     private static final String[] ARRET = {"Buanton", "Vallon", "Centre de secours",
                                                  "Marechal Joffre"};
 
+    /** exemple de lignes valides */
     private static final String[] LIGNE = {"A", "C", "D", "F"};
 
-    
+   /**
+    * Méthode permettant la saisie d'un arret valide
+    * @return arretLu l'arret s'il est valide
+    */ 
    public static String lireArret() {
 
         String arretLu = "";
         int compteur = 0;
 
-
         do {
-            arretLu = OutilSaisie.lireChaineNonVide("Entrez le nom de l'arret : ");
+            arretLu = GestionInterface.saisirNomArret();
 
-            for (int i = 0; i < ARRET.length; i++) {
-                if (arretLu.equals(ARRET[i])) {
+            /* parcourir la chaine afin de voir si elle ne contient pas de chiffres */
+            for (int i = 0; i < arretLu.length(); i++) {
+                if (!Character.isDigit(arretLu.charAt(i))) {
                     compteur++;
                 } 
             }
-        } while (compteur == 0);
+        } while (compteur != arretLu.length());
 
         return arretLu;
    }
 
 
+   /**
+    * Méthode permettant la saisie d'une ligne valide 
+    * @return ligneLue la ligne si elle est valide
+    */
    public static String lireLigne() {
 
     String ligneLue = "";
-    char convertir = 0;
-    int i; // indice du tableau parcouru
 
-    do {
-        convertir = OutilSaisie.lireMajuscule("Entrez la lettre de la ligne : ");
-        ligneLue = String.valueOf(convertir); 
-
-    } while (ligneLue.equals(""));
+    /* saisie nom de ligne et vérifie si la ligne est une lettre majuscule */
+    ligneLue = GestionInterface.saisirNomLigne(); 
 
     return ligneLue;
 }
@@ -96,13 +99,13 @@ public class GestionDesserte {
      */
     public static void afficherDesserte(String[][] table) {
        
-
-        for (int desserte = 0 ; desserte < 10 ; desserte++) {
+        /* on affiche les dessertes tant qu'elles ne sont pas null */
+        for (int desserte = 0 ; desserte < table[0].length ; desserte++) {
             if ((table[0][desserte]) != null) {
                 System.out.printf(" %25s %s \n",table[0][desserte],table[1][desserte]);
                 
             } else {
-                System.out.print("                           \n");
+                System.out.print("\n");
             }
         } 
     }
@@ -118,11 +121,13 @@ public class GestionDesserte {
      */
     public static void afficherDessertePrecise(String[][] table, int indice) {
         int compteur;
-        for (compteur = 0; 
-                compteur < table[0].length 
-                && indice != compteur
-            ; compteur++); // corps vide
 
+        /* on s'arrête quand on trouve le numéro de la colonne à afficher */
+        for (compteur = 0; 
+             compteur < table[0].length && indice != compteur;
+             compteur++); // corps vide
+
+        /* quand on trouve une colonne remplie */
         if (compteur != table[0].length && table[0][compteur] != null) {
             System.out.print(table[0][compteur] + " " + table[1][compteur]);
         } else { 
@@ -141,9 +146,13 @@ public class GestionDesserte {
      */
     public static int rechercherDesserte(String[][] table, 
                                          String arret, String ligne) {
-        int indiceDesserte = -1;        // indice de colonne de la desserte
+
+        int indiceDesserte = -1;    // indice de colonne de la desserte
         int compteur = 0;
+
+        /* tant que la recherche n'a pas aboutie */
         do {
+            /* lorsque la recherche aboutie */
             if (table[0][compteur] == arret && table[1][compteur] == ligne) {
                 indiceDesserte = compteur;
             }
@@ -166,6 +175,7 @@ public class GestionDesserte {
      */
     public static boolean desserteValide(String arret, String ligne) {
         
+        /* si desserte est valide */ 
         if (arret != null && Character.isUpperCase(ligne.charAt(0)) && ligne.length() == 1 && ligne != null) {
             return true;
         } else{
@@ -231,10 +241,15 @@ public class GestionDesserte {
         indiceSuppression = -1;
         
         if (desserteValide(arret, ligne)) {
-            for (compteur = 0; compteur < table[0].length 
-                    && !(arret.equals(table[0][compteur]) && ligne.equals(table[1][compteur])); 
+
+            /* s'arrete si l'arret existe deja */
+            for (compteur = 0; 
+                 compteur < table[0].length 
+                          && !(arret.equals(table[0][compteur]) 
+                          && ligne.equals(table[1][compteur])); 
                 compteur++); // corps vide
 
+            /* vérifie et on supprime l'arret qui existe déjà */
             if (compteur != table[0].length) {
                 table[0][compteur] = null;
                 table[1][compteur] = null;

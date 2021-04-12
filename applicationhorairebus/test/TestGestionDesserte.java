@@ -29,7 +29,7 @@ import applicationhorairebus.programme.GestionDesserte;
  * rechercherDesserte est supposée renvoyer lorsqu'elle est appliquée aux
  * différents tableaux de dessertes
  * 
- * @author INFO1 Semestre 2
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  *
  */
@@ -467,13 +467,13 @@ public class TestGestionDesserte {
                          + "         TESTS DES METHODES DE LA CLASSE GESTION DESSERTE             \n"
                          + "------------------------------------------------------------------------\n");
         
-        //testAfficherDesserte();
-        //testAfficherDessertePrecise();
-        // testSaisirDesserte();   
-        // testDessertValide();     
-        // testRechercherDesserte();
-         testAjouterDesserte();
-        // testSupprimerDesserte();
+        testAfficherDesserte();
+        testAfficherDessertePrecise();
+        testSaisirDesserte();   
+        testDessertValide();     
+        testRechercherDesserte();
+        testAjouterDesserte();
+        testSupprimerDesserte();
     }
 
 }

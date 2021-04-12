@@ -20,14 +20,13 @@ import java.util.Scanner;
  * La classe contient aussi des méthodes outils, méthodes privées : 
  *    - une méthode outil pour saisir un entier compris dans un intervalle précis   
  *    - une méthode qui détermine si un caractère est un chiffre
- * @author INFO1
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  */
 public class OutilHoraire {
 
     /** Objet Scanner pour effecuer les saisies */
     private static Scanner entree = new Scanner(System.in); 
-    
     
     
      /**
@@ -43,6 +42,7 @@ public class OutilHoraire {
       */
      public static int saisirEntierIntervalle(int min, int max, String message) {
          int entierSaisi = min - 1;   // entier qui sera renvoyé à l'appelant
+
          do {
              System.out.print(message);             
              if (entree.hasNextInt()) {     // l'utilisateur a tapé un entier
@@ -71,17 +71,16 @@ public class OutilHoraire {
         int heure;      // heure saisie
         int minute;     // minute saisie
         
-        // saisie des heures (en appelant la méthode saisirEntierIntervalle)
-        // TODO : compléter  => appeler saisirEntierIntervalle
+        /* saisie des heures (en appelant la méthode saisirEntierIntervalle) */
         heure = saisirEntierIntervalle(0, 23, "Veuillez saisir le nombre d'heures : ");
 
 
-        // saisie des minutes (en appelant la méthode saisirEntierIntervalle)
-        // TODO : compléter   => appeler saisirEntierIntervalle
+        /* saisie des minutes (en appelant la méthode saisirEntierIntervalle) */
         minute = saisirEntierIntervalle(0, 59, "Veuillez saisir le nombre de minutes : ");
 
-        return heure * 60 + minute;           // TODO : modifier la valeur de retour 
-                            // remplacer 0 par l'expression adéquate
+        /* renvoie les heures/minutes en minutes */
+        return heure * 60 + minute; 
+
     }
  
     
@@ -95,22 +94,16 @@ public class OutilHoraire {
         int[] lesHoraires = new int[2];     // les 2 horaires saisis en minutes
         
 
-        // TODO : recommencer la saisie jusqu'à obtenir 2 horaires ordonnées ou égaux
-        // donc dans une boucle (do... while ? ,  while ?,  ou for ?), il faut
-        // appeler 2 fois la méthode saisirHoraire :
-        //   - une première fois pour saisir le 1er horaire qui sera stocké dans la case
-        //         d'indice 0 du tableau lesHoraires
-        //   - une deuxième fois pour saisir le 2ème horaire qui sera stocké dans la case
-        //         d'indice 1 du tableau lesHoraires
+        /* recommence la saisie jusqu'à obtenir 2 horaires ordonnées ou égaux */
         do { 
 			
-            // saisi de la première horaire
+            /* saisi de la première horaire */
             lesHoraires[0] = saisirHoraire();
 
-            // saisi de la deuxieme horaire
+            /* saisi de la deuxieme horaire */
             lesHoraires[1] = saisirHoraire();
 
-            // verification horaires valides
+            /* verification horaires valides */
             if (lesHoraires[0] > lesHoraires[1]) {
                 System.out.println("Erreur les horaires ne sont pas valides."
                                  + " La 1ere horaire doit être inférieure ou égale à la 2eme horaire.");
@@ -140,12 +133,9 @@ public class OutilHoraire {
      * @return un booléen égal à vrai ssi l'horaire testé est valide
      */
     public static boolean estValide(String aTester) {
+
         boolean resultat = false;           // vai ssi l'horaire à tester est valide
 		
-		int heure,
-			minute;
-        
-
         // on peut vérifier d'abord si l'horaire contient bien 5 caractères
         if (aTester.length() == 5) {
             resultat = true;
@@ -183,14 +173,12 @@ public class OutilHoraire {
                 resultat = false;
             }
         }
-
         
         return resultat;
     }
     
     
     /**
-     * QUESTION 7
      * Convertit l'horaire arguement en chaîne. L'horaire argument doit être valide,
      * donc compris entre 0 et 1439 (horaire de la journée entre 0 et 23h59).
      * La chaîne renvoyée est dans le format cchcc, où c est un chiffre
@@ -199,41 +187,36 @@ public class OutilHoraire {
      *         l'horaire argument n'est pas valide
      */
     public static String convertir(int horaire) {
-         // constante égale à la chaîne renvoyée en cas d'erreur de format
-        final String RESULTAT_ERREUR = "erreur";
+        /* constante égale à la chaîne renvoyée en cas d'erreur de format */
+        final String RESULTAT_ERREUR = "";
         
-        // résultat de la conversion qui sera renvoyé
+        /* résultat de la conversion qui sera renvoyé */
         String resultatConvertir;
         
-        /*
-         * REMARQUE : si vous ne connaissez pas le type StringBuilder,
-         * modifiez la déclaration ci-dessous afin de déclarer conversion
-         * de type String (cette 2ème option sera aussi correcte) =>
-         * String conversion = ""; 
-         */
+        /* déclarer conversion */
         StringBuilder conversion = new StringBuilder(""); 
        
         int heure,      // heure de l'horaire
             minute;     // minute après conversion en heure et minute
         
-        // on vérifie d'abord que l'argument horaire est valide (donc compris entre
-        // 0 et 1439)
+        /* on vérifie que l'argument horaire est valide (entre 0 et 1439) */
         if (horaire < 0 || horaire > 1439) {
             resultatConvertir = RESULTAT_ERREUR;
         } else {
             heure = horaire / 60;
             minute = horaire % 60;
 			
-			// ajout du zéro devant les chiffres < 10
+			/* ajout du zéro devant les chiffres < 10 */
 			if (heure < 10) {
 				conversion.append("0");
 			}
 			conversion.append(heure);
             conversion.append("h");
-			// ajout du zéro devant les chiffres < 10
+			/* ajout du zéro devant les chiffres < 10 */
 			if (minute < 10) {
 				conversion.append("0");
 			}
+            /* ajout des minutes */
             conversion.append(minute);
             resultatConvertir = conversion.toString();
         }
@@ -242,7 +225,6 @@ public class OutilHoraire {
     
     
     /**
-     * QUESTION 8
      * Convertit l'horaire argument en entier (résultat en minutes)
      * Si l'horaire argument n'est pas valide, c'est l'entier -1 qui sera renvoyé
      * @param horaire  chaîne contenant l'horaire à convertir
@@ -257,7 +239,7 @@ public class OutilHoraire {
 			
 		boolean resultat;           // vai ssi l'horaire à tester est valide
         
-        // on vérifie d'abord que l'horaire argument est valide
+        /* on vérifie d'abord que l'horaire argument est valide */
 		resultat = estValide(horaire);
         
         heure = 0;
@@ -265,14 +247,14 @@ public class OutilHoraire {
 
 		if (resultat) {
 			
-			// on recupere les minutes 
+			/* on recupere les minutes */
             minute = Integer.parseInt(horaire.substring(3,5));
 
             
-            // on recupere les heures
+            /* on recupere les heures */
             heure = Integer.parseInt(horaire.substring(0,2));
 
-            
+            /* convertit les heures/minutes en minutes */
             conversion = (heure * 60) + minute;  
         }	
         return conversion;
@@ -281,25 +263,24 @@ public class OutilHoraire {
     
     /**
      * Renvoie l'heure courante convertie en minutes
-     * @return  un entier égal à l'heure courante convertie en minutes
+     * @return un entier égal à l'heure courante convertie en minutes
      */
     public static int heureCourante() {
         // on récupère une instance de type Calendar (elle répresente un calendrier)
         Calendar calendrier = Calendar.getInstance();
-        int heure;      // heure courante à renvoyer 
-        int minute;     // 
+        int heure,      // heure courante à renvoyer 
+            minute;     // minute courante 
         
         heure = 0;
         minute = 0;
 
-        // indication : consulter la documentation Java.
+        /* récupération de l'heure courante */
         heure = calendrier.get(Calendar.HOUR_OF_DAY);
         minute = calendrier.get(Calendar.MINUTE);
-        // Vous serez amené à utiliser la méthode get et les constantes
-        // Calendar.HOUR_OF_DAY et Calendar.MINUTE
-         
-        heure = (heure * 60) + minute;
 
-        return heure;
+        /* convertit les heures/minutes en minutes */ 
+        minute = (heure * 60) + minute;
+
+        return minute;
     } 
 }

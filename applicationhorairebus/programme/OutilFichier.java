@@ -27,7 +27,7 @@ import java.io.PrintWriter;
  *     - lire le contenu d'un fichier supposé contenir le tableau des horaires
  *       et renvoyer celui-ci sous la forme d'un tableau à 2 dimensions 
  *       contenant des entiers
- * @author INFO1
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  */
 public class OutilFichier {

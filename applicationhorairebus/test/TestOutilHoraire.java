@@ -41,7 +41,7 @@ import applicationhorairebus.programme.OutilHoraire;
  *    - convertir en chaîne
  *    - heureCourante
  *              
- * @author INFO1
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  */
 public class TestOutilHoraire {
@@ -352,25 +352,25 @@ public class TestOutilHoraire {
         System.out.println("-----------------------------------------------\n"
                            + "     TESTS DE LA CLASSE  OUTIL HORAIRE \n"
                            + "-----------------------------------------------\n");
-        //testSaisirEntierIntervalle();
+        testSaisirEntierIntervalle();
 
-        //testSaisirHoraire();
+        testSaisirHoraire();
 
-        //testSaisir2HorairesOrdonnes();
+        testSaisir2HorairesOrdonnes();
 
-        //testEstChiffre();
-        //continuer();
+        testEstChiffre();
+        continuer();
 
-        //testEstValide(); 
-        //continuer();
+        testEstValide(); 
+        continuer();
 
-        //testConvertirEnChaine(); 
-        //continuer();
+        testConvertirEnChaine(); 
+        continuer();
 
-        //testConvertirEnEntier();  
-        //continuer();
+        testConvertirEnEntier();  
+        continuer();
 
-        //testHeureCourante();
+        testHeureCourante();
     }
 
 }

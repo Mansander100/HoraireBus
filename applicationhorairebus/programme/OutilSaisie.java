@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Cette classe contient des méthodes outils pour effectuer des saisies :
  *      - saisie d'une chaîne de caractères non vide
  *      - saisie d'une lettre majuscule
- * @author INFO1
+ * @author Lucas Serieys, Mehdi Sahari, Valentin Simon, Clément Pauline
  * @version 1.0
  *
  */
