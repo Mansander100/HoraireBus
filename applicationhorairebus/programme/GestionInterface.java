@@ -80,7 +80,7 @@ public class GestionInterface {
     + " Clement Pauline dans le cadre de notre apprentissage en 1ere annee        \n\n"
     + " d'informatique a l'IUT de Rodez.                                          \n\n"
     + "                                                                           \n\n"
-    + " Sous la tutelle de Mme Servières, afin d'apprendre la programmation OO    \n\n"
+    + " Sous la tutelle de Mme Servieres, afin d'apprendre la programmation OO    \n\n"
     + " INFO1 2020-2021 IUT Rodez.                                                 \n\n";
 
 
