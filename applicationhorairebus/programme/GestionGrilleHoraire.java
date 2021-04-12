@@ -100,12 +100,6 @@ public class GestionGrilleHoraire {
      */
     public static void afficherGrille(int[][] grille) {
 
-        /*
-        *  on affiche les horaires de la colonne argument
-        *  Les horaires doivent être affichés dans le format cchcc
-        */
-        
-
 
         for (int ligne = 0 ; ligne < grille.length ; ligne++) {
             for ( int colonne = 0 ; colonne < 10 ; colonne++ ) {
@@ -118,6 +112,27 @@ public class GestionGrilleHoraire {
             System.out.print("\n");
         }
         
+    }
+
+
+    /**
+     * Affiche le tableau passé en argument
+     * @param table   tableau des horaires à afficher
+     */
+    public static void afficherTableauConverti(int[] table) {
+
+        String[] tableConvertie = new String[table.length];
+
+        /* conversion des entier en cchcc */
+        for (int i = 0; i < table.length; i++) {
+            tableConvertie[i] = OutilHoraire.convertir(table[i]);
+        }
+
+        /* affichage du tableau qui est rétourné */
+        for(int j=0; j < tableConvertie.length; j++) {  
+            System.out.print(tableConvertie[j] + " ");
+        } 
+        System.out.println();
     }
     
     
@@ -234,22 +249,23 @@ public class GestionGrilleHoraire {
      * @param grille        grille contenant les horaies en minutes
      * @param colonne       numéro de la colonne dans laquelle rechercher
      * @param horaire       horaire de la recherche
-     * @return l'horaire du premier passage postérieur à l'horaire argument
-     *          ou bien la valeur -1 si aucun passage postérieur
+     * @return l’indice de la case contenant ce passage ou bien la valeur -1, si aucun passage ne répond au critère de
+               recherche
      */
     public static int rechercherProchainPassage(int [][] grille, int colonne, 
                                                 int horaire) {
         int ligne;
-        int passagePosterieur = -1;
+        int indiceProchainPassage = -1;
 
-        /* on parcourt chaque |colonne| à la recherche de horaireGrille > |horaire| */
-        for(ligne = 0; 
-            ligne < grille[ligne].length && grille[ligne][colonne] <= horaire; 
-            ligne++); // corps vide
+        /* on parcourt la |colonne| à la recherche de horaireGrille > |horaire| */
+        for(ligne = 0; ligne < grille.length 
+                       && grille[ligne][colonne] <= horaire 
+                       && grille[ligne][colonne] > -1; 
+                            ligne++) {
 
-        passagePosterieur = grille[ligne][colonne];
-
-        return passagePosterieur;
+            indiceProchainPassage = ligne+1;
+        } 
+        return indiceProchainPassage;
     }
     
 
@@ -308,8 +324,7 @@ public class GestionGrilleHoraire {
      * d'un tableau d'entier.
      * Pour cela on utilise la méthode convertir de la classe OutilHoraire
      * @param aVerifier       grille contenant les horaies sous forme cchcc
-     * @return true si le tableau contient des horaires valides,
-     *         false sinon
+     * @return le tableau d'entier convertit
      */
     public static int[] convertirTableauHoraire(String [] aConvertir) {
 

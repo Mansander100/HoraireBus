@@ -49,10 +49,10 @@ public class OutilHoraire {
                  entierSaisi = entree.nextInt();                 
                  if (entierSaisi < min || entierSaisi > max) {
                      System.out.println("Erreur. Il faut donner un entier compris entre "
-                                        + min + " et " + max + ".");
+                                        + min + " et " + max + ".\n");
                  }
              } else {
-                 System.out.println("Erreur. Il faut saisir un nombre entier.");                 
+                 System.out.println("Erreur. Il faut saisir un nombre entier.\n");                 
              }
              entree.nextLine();        // vider le tampon
          } while (entierSaisi < min || entierSaisi > max);
@@ -217,7 +217,7 @@ public class OutilHoraire {
             minute;     // minute après conversion en heure et minute
         
         // on vérifie d'abord que l'argument horaire est valide (donc compris entre
-        // 0 et ?)
+        // 0 et 1439)
         if (horaire < 0 || horaire > 1439) {
             resultatConvertir = RESULTAT_ERREUR;
         } else {
@@ -235,17 +235,9 @@ public class OutilHoraire {
 				conversion.append("0");
 			}
             conversion.append(minute);
-
+            resultatConvertir = conversion.toString();
         }
-        // si oui, on le convertit en heure et minutes (donc 2 entiers)
-        // puis on construit la chaîne (en utilisant append avec le type StringBuilder
-        // ou l'opérateur '+' de concaténation avec le type String)
-
-        
-        // si le nombre d'heures est égal à 3 par exemple, il faudra insérer dans la 
-        // chaîne d'abord le caractère '0', puis le nombre 3
-       
-        return conversion.toString();
+        return resultatConvertir;
     }
     
     
@@ -281,17 +273,8 @@ public class OutilHoraire {
             heure = Integer.parseInt(horaire.substring(0,2));
 
             
-            conversion = (heure * 60) + minute;
-            
+            conversion = (heure * 60) + minute;  
         }	
-        // ensuite, il sera nécessaire de transposer les chiffres qu'il contient 
-        // en entier. Indication : si on écrit par exemple '2' - '0', le résultat
-        // de la soustraction est 2. Autre exemple : '9' - '0' est égal à 9
-        // Vous serez donc amené à retrancher '0' aux caractères de la chaîne
-        // horaire pour les transformer en nombre entier
-        
-
-
         return conversion;
     }
     
@@ -318,6 +301,5 @@ public class OutilHoraire {
         heure = (heure * 60) + minute;
 
         return heure;
-    }
-    
+    } 
 }

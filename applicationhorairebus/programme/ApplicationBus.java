@@ -4,8 +4,12 @@
  */
 package applicationhorairebus.programme;
 
+import java.util.Scanner;
+
+import applicationhorairebus.test.TestGestionGrilleHoraire;
+
 import applicationhorairebus.test.TestGestionDesserte;
-import applicationhorairebus.programme.GestionDesserte;
+
 
 /**
  * Cette classe contiendra la fonction main permettant de lancer l’application 
@@ -26,30 +30,40 @@ public class ApplicationBus {
      */
     public static void main (String[] args) {
 
-        boolean nonRepeter = false;
+        /* Objet Scanner pour effectuer les saisies au clavier */
+        Scanner entree = new Scanner(System.in);
 
-        //OutilFichier.enregistrerDesserte(TestGestionDesserte.EXEMPLE_DESSERTE);
+        boolean quitter = false;
+
+        OutilFichier.enregistrerDesserte(TestGestionDesserte.EXEMPLE_DESSERTE);
+        OutilFichier.enregistrerHoraireBus(TestGestionGrilleHoraire.preparerGrilleExemple());
 
         String[][] desserte_initiale = OutilFichier.restaurerDesserte();
         int[][] horaire = OutilFichier.restaurerHoraireBus();
 
-        String[] desserte;
+        String[] desserteSaisie;
 
         do {
             switch (GestionInterface.saisirOptionMenuPrincipal()) {
                 case 'v' -> { switch (GestionInterface.saisirOptionMenuVoyageur()) {
-                                case 'c' -> GestionDesserte.afficherDesserte(desserte_initiale);
+                                case 'c' -> {GestionDesserte.afficherDesserte(desserte_initiale);
+                                             GestionGrilleHoraire.afficherGrille(horaire);
+                                            }
 
-                                case 'a' -> {}
+                                case 'a' -> {int colonne = OutilHoraire.saisirEntierIntervalle(0, 9, 
+                                                            "Entrez la colonne dans laquelle rechercher de 0 à 9 : ");
+                                             int horaireSaisie = OutilHoraire.saisirHoraire();
+                                             System.out.print("Prochains bus dispo dans les 30min : ");
+                                             GestionGrilleHoraire.afficherTableauConverti(GestionGrilleHoraire.rechercherHoraire(horaire, colonne, 
+                                                                GestionGrilleHoraire.rechercherProchainPassage(horaire, colonne, horaireSaisie),
+                                                                GestionGrilleHoraire.rechercherProchainPassage(horaire, colonne, horaireSaisie+30)));
+                                            }
 
                                 case 'm' -> {}
 
                                 case 'i' -> {}
 
-                                case '?' -> {GestionInterface.afficherAideVoyageur();
-                                            /* quitte l'appli */
-                                            nonRepeter = true;
-                                            }
+                                case '?' -> GestionInterface.afficherAideVoyageur();
 
                                 case 'r' -> {}
                                         
@@ -61,18 +75,18 @@ public class ApplicationBus {
                                             // TODO modifier le mdp
 
 
-                                case '+' -> {desserte = GestionDesserte.saisirDesserte(); 
+                                case '+' -> {desserteSaisie = GestionDesserte.saisirDesserte(); 
                                              GestionDesserte.ajouterDesserte(desserte_initiale, 
-                                                                            desserte[0], 
-                                                                            desserte[1]);
+                                                                                desserteSaisie[0], 
+                                                                                desserteSaisie[1]);
                                              GestionDesserte.afficherDesserte(desserte_initiale);
                                              OutilFichier.enregistrerDesserte(desserte_initiale);              
                                             }
                                     
-                                case 's' -> {desserte = GestionDesserte.saisirDesserte(); 
+                                case 's' -> {desserteSaisie = GestionDesserte.saisirDesserte(); 
                                              GestionDesserte.supprimerDesserte(desserte_initiale, 
-                                                                    desserte[0], 
-                                                                    desserte[1]);
+                                                                                desserteSaisie[0], 
+                                                                                desserteSaisie[1]);
                                              GestionDesserte.afficherDesserte(desserte_initiale);
                                              OutilFichier.enregistrerDesserte(desserte_initiale);
                                             }
@@ -80,16 +94,17 @@ public class ApplicationBus {
                                 case 'a' -> {System.out.println("Fonction non disponible dans la version 1.0");} 
                                             // TODO associer horaire à une desserte
 
+                                case '?' -> GestionInterface.afficherAideAdministrateur();
+
                                 case 'r' -> {}
                                 }
                             }
                     
                 case '?' -> GestionInterface.afficherAidePrincipal();
                     
-                case 'q' -> System.exit(0);
-                    
+                case 'q' -> quitter = true;
             }
-        } while (nonRepeter == false);
+        } while (quitter == false);
 
     }
 }

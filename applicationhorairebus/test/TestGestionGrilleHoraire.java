@@ -78,7 +78,7 @@ public class TestGestionGrilleHoraire {
     
     /** tableau d'horaire inférieur à tester pour les ajouts par exemple */
     private static final int[] HORAIRE_A_TESTER =
-        {435, 185, 611, 47, 737, 999, 45, 87, 1172, 1200};
+        {465, 185, 611, 47, 737, 999, 45, 87, 1172, 1200};
 
 
 
@@ -386,7 +386,7 @@ public class TestGestionGrilleHoraire {
                 + "---------------------------------------------------\n"); 
 
         for (int i = 0; i < HORAIRE_A_TESTER.length; i++) {            
-            System.out.println("Prochaine horaire après " 
+            System.out.println("Indice du prochain horaire après " 
                                + HORAIRE_A_TESTER[i] 
                                + " de la desserte située en colonne " + i + " est : ");
             System.out.println(GestionGrilleHoraire.rechercherProchainPassage(HORAIRE_EXEMPLE, i, HORAIRE_A_TESTER[i]));
@@ -414,15 +414,10 @@ public class TestGestionGrilleHoraire {
                                + borneInf
                                + ";" + borneSup + "[ de la colonne " + i + " est : ");
             
-            /* affichage du tableau qui est rétourné */
-            for(int j=0; j < (GestionGrilleHoraire.rechercherHoraire(HORAIRE_EXEMPLE, i, borneInf, borneSup)).length; j++) {  
-                System.out.print((GestionGrilleHoraire.rechercherHoraire(HORAIRE_EXEMPLE, i, borneInf, borneSup))[j] + " ");
-                } 
-            System.out.println();
+            GestionGrilleHoraire.afficherTableau(GestionGrilleHoraire.rechercherHoraire(HORAIRE_EXEMPLE, i, borneInf, borneSup));
             continuer();
         }     
     }
-
 
 
 
@@ -548,8 +543,8 @@ public class TestGestionGrilleHoraire {
         //testTableauHorairesDessertePlein();
         //testAjouterHoraire();
         //testSupprimerHoraire(); 
-        //testRechercheProchainPassage();
-        testRechercheHoraire();
+        testRechercheProchainPassage();
+        //testRechercheHoraire();
         //testTableauHoraireCorrecte();
         //testConvertirTableauHoraire();
     }

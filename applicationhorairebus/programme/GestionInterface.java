@@ -255,7 +255,7 @@ public class GestionInterface {
     /**
      * Liste des options possibles pour le menu voyageur
      */
-    private static final char[] OPTION_MENU_ADMINISTRATEUR = { 'm', '+', 's', 'a','r'};   
+    private static final char[] OPTION_MENU_ADMINISTRATEUR = { 'm', '+', 's', 'a', '?', 'r'};   
     
     /**
      * Liste des libellés associés à chacune des options du menu voyageur
@@ -265,6 +265,7 @@ public class GestionInterface {
             "Ajouter une nouvelle desserte",
             "Supprimer une desserte existante",
             "Associer des horaires de passage à une desserte",
+            "Consulter de l'aide",
             "Retour en arrière"};
     
     /** Texte affiché pour l'aide en ligne */
