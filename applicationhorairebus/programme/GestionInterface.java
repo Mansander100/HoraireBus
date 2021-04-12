@@ -62,10 +62,10 @@ public class GestionInterface {
         + "|                             AIDE EN LIGNE                               |\n"
         + "---------------------------------------------------------------------------\n\n"
         + " Bienvenue sur l'aide en ligne du menu principal. Voici les fonctionnalites\n"
-        + "   -> acceder aux fonctionnalites du mode voyageur                         \n\n"
-        + "   -> acceder aux fonctionnalites du mode administrateur                   \n\n"
-        + "   -> afficher l'aide en ligne (vous y etes deja)                          \n\n"
-        + "   -> quitter le programme                                                 \n\n";
+        + "   -> Acceder aux fonctionnalites du mode voyageur                         \n\n"
+        + "   -> Acceder aux fonctionnalites du mode administrateur                   \n\n"
+        + "   -> Afficher l'aide en ligne (vous y etes deja)                          \n\n"
+        + "   -> Quitter le programme                                                 \n\n";
     
     
     /* **************************************************************************** */
@@ -175,11 +175,11 @@ public class GestionInterface {
             + " Bienvenue sur l'aide en ligne du menu voyageur. Voici les fonctionnalites\n"
             + "   -> consulter toutes les dessertes possibles                            \n\n"
             + "   -> rechercher des horaires de passage des bus (3 manieres) :           \n\n"
-            + "         Saisir un horaire, et l’application affichera tous les bus       \n"
+            + "         Saisir un horaire, et l'application affichera tous les bus       \n"
             + "         accessibles dans les 30 minutes qui suivent cet horaire.         \n\n"
             + "         Ne saisir aucun horaire, et la recherche                         \n"
-            + "         precedente s’effectuera a partir de l’heure courante.            \n\n"
-            + "         Saisir un intervalle de deux horaires, et l’application          \n"
+            + "         precedente s'effectuera a partir de l'heure courante.            \n\n"
+            + "         Saisir un intervalle de deux horaires, et l'application          \n"
             + "         affichera tous les bus accessibles et dont l'horaire de passage  \n"
             + "         est inclus dans l'intervalle des deux horaires                   \n"
             + "         (ces 2 horaires compris dans la recherche)                       \n\n";
@@ -257,7 +257,7 @@ public class GestionInterface {
             "Modifier votre mot de passe",
             "Ajouter une nouvelle desserte",
             "Supprimer une desserte existante",
-            "Associer des horaires de passage à une desserte",
+            "Associer des horaires de passage a une desserte",
             "Consulter de l'aide",
             "Retour en arriere"};
     
@@ -268,15 +268,15 @@ public class GestionInterface {
         + "--------------------------------------------------------------------------------\n\n"
         + " Bienvenue sur l'aide en ligne du menu administrateur. Voici les fonctionnalites\n"
         + "   -> Modifier le mot de passe. Toute chaine non vide sera acceptee.            \n\n"
-        + "   -> Ajouter une nouvelle desserte. Si l’utilisateur entre un nom d’arret      \n"
-        + "      comportant plus de 25 caractères, il sera informe de son erreur. Seuls les\n" 
+        + "   -> Ajouter une nouvelle desserte. Si l'utilisateur entre un nom d'arret      \n"
+        + "      comportant plus de 25 caracteres, il sera informe de son erreur. Seuls les\n" 
         + "      25 premiers caracteres seront pris en compte.                             \n\n"
         + "   -> Supprimer une desserte existante et les horaires qui lui sont associes.   \n"
-        + "      Une confirmation sera demandee a l’administrateur.                        \n\n"
+        + "      Une confirmation sera demandee a l'administrateur.                        \n\n"
         + "   -> Associer des horaires de passage a une desserte. Cette operation          \n"
-        + "      s’effectuera via un fichier texte, ceci dans le but de faciliter la saisie\n"
-        + "      des horaires. Plus precisement, l’administrateur preparera en dehors de   \n"
-        + "      l’application, un fichier texte contenant les horaires de bus. Pour       \n"
+        + "      s'effectuera via un fichier texte, ceci dans le but de faciliter la saisie\n"
+        + "      des horaires. Plus precisement, l'administrateur preparera en dehors de   \n"
+        + "      l'application, un fichier texte contenant les horaires de bus. Pour       \n"
         + "      associer des horaires a une desserte precise, il saisira le nom du fichier\n"
         + "      texte contenant les horaires.                                             \n\n";
 
