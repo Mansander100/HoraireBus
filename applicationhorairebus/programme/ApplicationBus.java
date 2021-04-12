@@ -4,8 +4,8 @@
  */
 package applicationhorairebus.programme;
 
-//import applicationhorairebus.test.TestGestionGrilleHoraire;
-//import applicationhorairebus.test.TestGestionDesserte;
+import applicationhorairebus.test.TestGestionGrilleHoraire;
+import applicationhorairebus.test.TestGestionDesserte;
 
 
 /**
@@ -28,8 +28,8 @@ public class ApplicationBus {
     public static void main (String[] args) {
 
         /* permet de créer les fichiers.bin au tout premier démarrage */
-//        OutilFichier.enregistrerDesserte(TestGestionDesserte.EXEMPLE_DESSERTE);
-//        OutilFichier.enregistrerHoraireBus(TestGestionGrilleHoraire.preparerGrilleExemple());
+        OutilFichier.enregistrerDesserte(TestGestionDesserte.EXEMPLE_DESSERTE);
+        OutilFichier.enregistrerHoraireBus(TestGestionGrilleHoraire.preparerGrilleExemple());
 
         boolean quitter = false;    // permet de quitter l'appli en appuyant sur 'q' uniquement
 
@@ -55,9 +55,9 @@ public class ApplicationBus {
                                 
                                 /* permet d'afficher les horaires dispo dans les 30min après une horaire donnée */
                                 case 'a' -> {colonneSaisie = OutilHoraire.saisirEntierIntervalle(0, 9, 
-                                                            "Entrez la colonne dans laquelle rechercher de 0 à 9 : ");
+                                                            "Entrez la colonne dans laquelle rechercher de 0 a 9 : ");
                                              horaireSaisie = OutilHoraire.saisirHoraire();
-                                             System.out.print("\nProchains bus dispo dans les 30min après " 
+                                             System.out.print("\nProchains bus dispo dans les 30min apres " 
                                                               + OutilHoraire.convertir(horaireSaisie) + " : ");
                                              /* affiche le tableau contenant les horaires trouvées */
                                              GestionGrilleHoraire.afficherTableauConverti(GestionGrilleHoraire.rechercherHoraire(horaire_initiale, colonneSaisie, 
@@ -67,7 +67,7 @@ public class ApplicationBus {
 
                                 /* permet d'afficher les horaires dispo dans les 30min après une horaire donnée */
                                 case 'm' -> {colonneSaisie = OutilHoraire.saisirEntierIntervalle(0, 9, 
-                                             "Entrez la colonne dans laquelle rechercher de 0 à 9 : ");
+                                             "Entrez la colonne dans laquelle rechercher de 0 a 9 : ");
                                              horaireSaisie = OutilHoraire.heureCourante();
                                              System.out.print("\nProchains bus dispo dans la demi-heure : ");
                                              /* affiche le tableau contenant les horaires trouvées */
@@ -78,8 +78,8 @@ public class ApplicationBus {
 
                                 /* permet d'afficher les horaires dispo dans les 30min après une horaire donnée */
                                 case 'i' -> {colonneSaisie = OutilHoraire.saisirEntierIntervalle(0, 9, 
-                                             "Entrez la colonne dans laquelle rechercher de 0 à 9 : ");
-                                             System.out.println("\nSaisir l'heure qui débute l'intervalle");
+                                             "Entrez la colonne dans laquelle rechercher de 0 a 9 : ");
+                                             System.out.println("\nSaisir l'heure qui debute l'intervalle");
                                              borneInfHoraireSaisie = OutilHoraire.saisirHoraire();
                                              System.out.println("\nSaisir l'heure qui termine l'intervalle");
                                              borneSupHoraireSaisie = OutilHoraire.saisirHoraire();

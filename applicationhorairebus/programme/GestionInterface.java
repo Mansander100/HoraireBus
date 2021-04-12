@@ -61,10 +61,10 @@ public class GestionInterface {
         "---------------------------------------------------------------------------\n"
         + "|                             AIDE EN LIGNE                               |\n"
         + "---------------------------------------------------------------------------\n\n"
-        + " Bienvenue sur l'aide en ligne du menu principal. Voici les fonctionnalités\n"
-        + "   -> accéder aux fonctionnalités du mode voyageur                         \n\n"
-        + "   -> accéder aux fonctionnalités du mode administrateur                   \n\n"
-        + "   -> afficher l'aide en ligne (vous y êtes déjà)                          \n\n"
+        + " Bienvenue sur l'aide en ligne du menu principal. Voici les fonctionnalites\n"
+        + "   -> acceder aux fonctionnalites du mode voyageur                         \n\n"
+        + "   -> acceder aux fonctionnalites du mode administrateur                   \n\n"
+        + "   -> afficher l'aide en ligne (vous y etes deja)                          \n\n"
         + "   -> quitter le programme                                                 \n\n";
     
     
@@ -161,24 +161,24 @@ public class GestionInterface {
      */
     private static final String[] LIBELLE_MENU_VOYAGEUR = {
             "Consulter toutes les dessertes possibles",
-            "Afficher les bus accessibles 30min après une horaire donnée",
+            "Afficher les bus accessibles 30min apres une horaire donnee",
             "Bus accessibles dans la demi-heure",
-            "Afficher les bus accessibles selon un intervalle donnée",
+            "Afficher les bus accessibles selon un intervalle donnee",
             "Consultation de l'aide",
-            "Retour en arrière"};
+            "Retour en arriere"};
     
     /** Texte affiché pour l'aide en ligne */
     public static final String TEXTE_AIDE_MENU_VOYAGEUR = 
             "--------------------------------------------------------------------------\n"
             + "|                             AIDE EN LIGNE                              |\n"
             + "--------------------------------------------------------------------------\n\n"
-            + " Bienvenue sur l'aide en ligne du menu voyageur. Voici les fonctionnalités\n"
+            + " Bienvenue sur l'aide en ligne du menu voyageur. Voici les fonctionnalites\n"
             + "   -> consulter toutes les dessertes possibles                            \n\n"
-            + "   -> rechercher des horaires de passage des bus (3 manières) :           \n\n"
+            + "   -> rechercher des horaires de passage des bus (3 manieres) :           \n\n"
             + "         Saisir un horaire, et l’application affichera tous les bus       \n"
             + "         accessibles dans les 30 minutes qui suivent cet horaire.         \n\n"
             + "         Ne saisir aucun horaire, et la recherche                         \n"
-            + "         précédente s’effectuera à partir de l’heure courante.            \n\n"
+            + "         precedente s’effectuera a partir de l’heure courante.            \n\n"
             + "         Saisir un intervalle de deux horaires, et l’application          \n"
             + "         affichera tous les bus accessibles et dont l'horaire de passage  \n"
             + "         est inclus dans l'intervalle des deux horaires                   \n"
@@ -259,25 +259,25 @@ public class GestionInterface {
             "Supprimer une desserte existante",
             "Associer des horaires de passage à une desserte",
             "Consulter de l'aide",
-            "Retour en arrière"};
+            "Retour en arriere"};
     
     /** Texte affiché pour l'aide en ligne */
     public static final String TEXTE_AIDE_MENU_ADMINISTRATEUR = 
         "--------------------------------------------------------------------------------\n"
         + "|                             AIDE EN LIGNE                                    |\n"
         + "--------------------------------------------------------------------------------\n\n"
-        + " Bienvenue sur l'aide en ligne du menu administrateur. Voici les fonctionnalités\n"
-        + "   -> Modifier le mot de passe. Toute chaîne non vide sera acceptée.            \n\n"
-        + "   -> Ajouter une nouvelle desserte. Si l’utilisateur entre un nom d’arrêt      \n"
-        + "      comportant plus de 25 caractères, il sera informé de son erreur. Seuls les\n" 
-        + "      25 premiers caractères seront pris en compte.                             \n\n"
-        + "   -> Supprimer une desserte existante et les horaires qui lui sont associés.   \n"
-        + "      Une confirmation sera demandée à l’administrateur.                        \n\n"
-        + "   -> Associer des horaires de passage à une desserte. Cette opération          \n"
+        + " Bienvenue sur l'aide en ligne du menu administrateur. Voici les fonctionnalites\n"
+        + "   -> Modifier le mot de passe. Toute chaine non vide sera acceptee.            \n\n"
+        + "   -> Ajouter une nouvelle desserte. Si l’utilisateur entre un nom d’arret      \n"
+        + "      comportant plus de 25 caractères, il sera informe de son erreur. Seuls les\n" 
+        + "      25 premiers caracteres seront pris en compte.                             \n\n"
+        + "   -> Supprimer une desserte existante et les horaires qui lui sont associes.   \n"
+        + "      Une confirmation sera demandee a l’administrateur.                        \n\n"
+        + "   -> Associer des horaires de passage a une desserte. Cette operation          \n"
         + "      s’effectuera via un fichier texte, ceci dans le but de faciliter la saisie\n"
-        + "      des horaires. Plus précisément, l’administrateur préparera en dehors de   \n"
+        + "      des horaires. Plus precisement, l’administrateur preparera en dehors de   \n"
         + "      l’application, un fichier texte contenant les horaires de bus. Pour       \n"
-        + "      associer des horaires à une desserte précise, il saisira le nom du fichier\n"
+        + "      associer des horaires a une desserte precise, il saisira le nom du fichier\n"
         + "      texte contenant les horaires.                                             \n\n";
 
     /* **************************************************************************** */
@@ -406,10 +406,10 @@ public class GestionInterface {
         String nomArret = "";        // nom de l'arrêt saisi par l'utilisateur
 
         /* gestion d'erreur et redemmande si chaine vide */
-        nomArret = OutilSaisie.lireChaineNonVide("Veuillez entrer un nom d'arrêt : "); 
+        nomArret = OutilSaisie.lireChaineNonVide("Veuillez entrer un nom d'arret : "); 
         if (nomArret.length() > LG_MAX_ARRET) {     // algo de tronquage
             nomArret = nomArret.substring(0,25); 
-            System.out.println("Votre nom d'arret à été tronqué ! " + nomArret);
+            System.out.println("Votre nom d'arret a ete tronque ! " + nomArret);
         }
         return nomArret.trim();
     }
