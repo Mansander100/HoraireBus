@@ -187,7 +187,7 @@ public class GestionInterface {
             "Consulter toutes les dessertes possibles",
             "Afficher les bus accessibles 30min apres une horaire donnee",
             "Bus accessibles dans la demi-heure",
-            "Afficher les bus accessibles selon un intervalle donnee",
+            "Afficher les bus accessibles selon un intervalle donne",
             "Consultation de l'aide",
             "Retour en arriere"};
     
