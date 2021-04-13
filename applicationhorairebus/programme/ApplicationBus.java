@@ -113,13 +113,16 @@ public class ApplicationBus {
                                                 OutilFichier.enregistrerDesserte(desserte_initiale);              
                                                 }
                                         
-                                    /* supprimer une desserte du tableau en local et l'enregistre dans le .bin */
+                                    /* supprimer desserte/horaire des tableaux en local & enregistre dans le .bin */
                                     case 's' -> {desserteSaisie = GestionDesserte.saisirDesserte(); 
-                                                GestionDesserte.supprimerDesserte(desserte_initiale, 
-                                                                                    desserteSaisie[0], 
-                                                                                    desserteSaisie[1]);
+                                                ;
+                                                GestionGrilleHoraire.supprimerHoraire(horaire_initiale, 
+                                                                GestionDesserte.supprimerDesserte(desserte_initiale, 
+                                                                                                  desserteSaisie[0], 
+                                                                                                  desserteSaisie[1]));
                                                 GestionDesserte.afficherDesserte(desserte_initiale);
                                                 OutilFichier.enregistrerDesserte(desserte_initiale);
+                                                OutilFichier.enregistrerHoraireBus(horaire_initiale);
                                                 }
 
                                     /* associer des horaires à une desserte */
