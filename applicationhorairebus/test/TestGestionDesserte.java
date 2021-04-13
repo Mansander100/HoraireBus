@@ -418,9 +418,7 @@ public class TestGestionDesserte {
         for (int i = 1; i <= NB_TEST; i++) {
             System.out.println("\n\nTEST NUMERO " + i + "\n");
             desserte = GestionDesserte.saisirDesserte();  
-            for (int j = 0; j < desserte.length; j++) {
-                System.out.print(desserte[j]);
-            }
+
             resultatSuppression = 
                     GestionDesserte.supprimerDesserte(table, desserte[0], desserte[1]);
             

@@ -40,14 +40,14 @@ public class GestionDesserte {
    public static String lireArret() {
 
         String arretLu = "";
-        int compteur = 0;
+        int compteur;
 
         do {
             arretLu = GestionInterface.saisirNomArret();
-
+            compteur = 0;
             /* parcourir la chaine afin de voir si elle ne contient pas de chiffres */
             for (int i = 0; i < arretLu.length(); i++) {
-                if (!Character.isDigit(arretLu.charAt(i))) {
+                if (Character.isLetter(arretLu.charAt(i)) || arretLu.charAt(i) == ' ') {
                     compteur++;
                 } 
             }

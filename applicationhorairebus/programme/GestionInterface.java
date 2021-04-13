@@ -432,10 +432,10 @@ public class GestionInterface {
         /* gestion d'erreur et redemmande si chaine vide */
         nomArret = OutilSaisie.lireChaineNonVide("Veuillez entrer un nom d'arret : "); 
         if (nomArret.length() > LG_MAX_ARRET) {     // algo de tronquage
-            nomArret = nomArret.substring(0,25); 
+            nomArret = nomArret.substring(0,LG_MAX_ARRET); 
             System.out.println("Votre nom d'arret a ete tronque ! " + nomArret);
         }
-        return nomArret.trim();
+        return nomArret;
     }
 
     
